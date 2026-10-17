@@ -2,8 +2,10 @@
   "type": "code",
   "modid": "embalmedeats",
   "name": "Embalmed Eats",
-  "version": "1.0.0",
-  "authors": ["demonic69"],
+  "version": "1.0.1",
+  "authors": [
+    "demonic69"
+  ],
   "description": "Preserve any food (vanilla or modded) as permanent decoration. Embalmed food never rots and keeps its original look, but eating it is a very bad idea. Methods: formaldehyde barrel soak, salt & lime barrel cure, wax dipping and resin lacquer.",
   "side": "Universal",
   "requiredOnClient": true,
