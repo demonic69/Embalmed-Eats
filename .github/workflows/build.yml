@@ -1,0 +1,75 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["README.md", "LICENSE"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  VS_VERSION: "1.22.7"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Vintage Story server
+        uses: actions/cache@v4
+        with:
+          path: vs
+          key: vs-server-${{ env.VS_VERSION }}
+
+      - name: Download Vintage Story server
+        run: bash .github/scripts/get-server.sh
+
+      - name: Detect .NET version used by the game
+        id: net
+        run: |
+          fw=$(python3 -c "import json;d=json.load(open('vs/VintagestoryServer.runtimeconfig.json'));o=d['runtimeOptions'];f=o.get('framework') or o['frameworks'][0];print(f['version'])")
+          major=${fw%%.*}
+          echo "Game runs on .NET $fw"
+          echo "sdk=${major}.0.x" >> "$GITHUB_OUTPUT"
+          echo "tfm=net${major}.0" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ steps.net.outputs.sdk }}
+
+      - name: Probe game assets
+        continue-on-error: true
+        run: bash .github/scripts/probe.sh
+
+      - name: Build mod
+        id: build
+        continue-on-error: true
+        run: bash .github/scripts/build.sh "${{ steps.net.outputs.tfm }}"
+
+      - name: Server smoke test
+        id: smoke
+        if: steps.build.outcome == 'success'
+        continue-on-error: true
+        run: bash .github/scripts/smoke.sh
+
+      - name: Upload mod zip
+        if: steps.build.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmbalmedEats-mod
+          path: out/*.zip
+          if-no-files-found: ignore
+
+      - name: Publish results to ci-results branch
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/scripts/publish-results.sh "${{ steps.build.outcome }}" "${{ steps.smoke.outcome }}"
+
+      - name: Fail job if build or smoke test failed
+        if: steps.build.outcome != 'success' || (steps.smoke.outcome != 'success' && steps.smoke.outcome != 'skipped')
+        run: exit 1

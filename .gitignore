@@ -1,0 +1,10 @@
+bin/
+obj/
+build-out/
+out/
+vs/
+vsdata/
+ci/
+*.user
+.vs/
+.idea/
