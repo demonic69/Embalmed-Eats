@@ -94,15 +94,23 @@ public static class SelfTest
 
         Check("preserved food gives no nutrition but stays edible", () =>
         {
-            var fresh = new ItemStack(meat, 1);
-            var preserved = new ItemStack(meat, 1);
+            // Raw meat isn't directly edible, so use something that is (cooked meat, else any edible item)
+            CollectibleObject? edible = world.GetItem(new AssetLocation("game:redmeat-cooked"));
+            if (edible?.NutritionProps == null || edible.NutritionProps.Satiety <= 0)
+            {
+                edible = world.Collectibles.FirstOrDefault(c => c is Item && c.NutritionProps?.Satiety > 0 && Preservation.IsPreservableCollectible(c));
+            }
+            if (edible == null) return "no directly edible food found";
+
+            var fresh = new ItemStack(edible, 1);
+            var preserved = new ItemStack(edible, 1);
             Preservation.Apply(preserved, PreservationMethods.Resin);
-            var freshProps = meat.GetNutritionProperties(world, fresh, null);
-            var presProps = meat.GetNutritionProperties(world, preserved, null);
-            if (freshProps == null || freshProps.Satiety <= 0) return "fresh meat has no nutrition (test assumption broken)";
+            var freshProps = edible.GetNutritionProperties(world, fresh, null);
+            var presProps = edible.GetNutritionProperties(world, preserved, null);
+            if (freshProps == null || freshProps.Satiety <= 0) return $"fresh {edible.Code} has no nutrition";
             if (presProps == null) return "preserved food became inedible";
             if (presProps.Satiety != 0 || presProps.Health != 0) return $"preserved food still gives {presProps.Satiety} satiety";
-            if (meat.GetNutritionProperties(world, fresh, null)?.Satiety <= 0) return "fresh food nutrition was modified";
+            if (edible.GetNutritionProperties(world, fresh, null)?.Satiety <= 0) return "fresh food nutrition was modified";
             return null;
         });
 
@@ -236,6 +244,9 @@ public static class SelfTest
             if (first == null || first.PoisonDamage > 0 || first.SatietyLossPercent <= 0) return "first stage should be vomiting only";
             var last = ToxicitySystem.StageFor(99f, stages);
             if (last == null || last.PoisonDamage <= first.PoisonDamage) return "later stages should be worse";
+            if (ToxicitySystem.Decay(3f, 100, 108, 0.125f) is float d && Math.Abs(d - 2f) > 0.001f) return $"decay wrong: {d}";
+            if (ToxicitySystem.Decay(1f, 100, 1000, 0.125f) != 0f) return "decay went below zero";
+            if (ToxicitySystem.Instance == null) return "toxicity system not running";
             return null;
         });
 

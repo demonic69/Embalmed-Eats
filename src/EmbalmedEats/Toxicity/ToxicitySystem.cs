@@ -55,11 +55,15 @@ public class ToxicitySystem
         ITreeAttribute? tree = entity.WatchedAttributes.GetTreeAttribute(AttrTree);
         if (tree == null) return 0;
 
-        float tox = tree.GetFloat("toxicity");
         double now = sapi.World.Calendar.TotalHours;
-        double last = tree.GetDouble("lastUpdateHours", now);
-        double hours = Math.Max(0, now - last);
-        return Math.Max(0, tox - (float)(hours * Math.Max(0, Config.ToxicityDecayPerGameHour)));
+        return Decay(tree.GetFloat("toxicity"), tree.GetDouble("lastUpdateHours", now), now, Config.ToxicityDecayPerGameHour);
+    }
+
+    /// <summary>Toxicity left after wearing off between two in-game times.</summary>
+    public static float Decay(float toxicity, double lastUpdateHours, double nowHours, float decayPerHour)
+    {
+        double hours = Math.Max(0, nowHours - lastUpdateHours);
+        return Math.Max(0, toxicity - (float)(hours * Math.Max(0, decayPerHour)));
     }
 
     public void SetToxicity(Entity entity, float value)
@@ -176,7 +180,7 @@ public class ToxicitySystem
             1.5f, 1f, 0.15f, 0.45f, EnumParticleModel.Cube);
 
         sapi.World.SpawnParticles(props);
-        sapi.World.PlaySoundAt(new AssetLocation("game:sounds/effect/squish1"), ep, null, true, 16);
+        sapi.World.PlaySoundAt(new AssetLocation("game:sounds/environment/smallsplash"), ep, null, true, 16);
     }
 
     void Tell(EntityPlayer ep, string langKey, string foodName)

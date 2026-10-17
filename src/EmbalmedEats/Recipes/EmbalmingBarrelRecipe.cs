@@ -70,10 +70,11 @@ public class EmbalmingBarrelRecipe : BarrelRecipe
     {
         if (!FindSlots(slots, out ItemSlot food, out ItemSlot agent, out string method)) return null;
 
-        int foodCount = food.Itemstack.StackSize;
-        if (agent.Itemstack.StackSize < RequiredAgent(method, agent.Itemstack, foodCount)) return null;
+        ItemStack foodStack = food.Itemstack!, agentStack = agent.Itemstack!;
+        int foodCount = foodStack.StackSize;
+        if (agentStack.StackSize < RequiredAgent(method, agentStack, foodCount)) return null;
 
-        ItemStack preview = food.Itemstack.Clone();
+        ItemStack preview = foodStack.Clone();
         Preservation.Apply(preview, method);
 
         var cfg = Preservation.Config;
@@ -103,14 +104,14 @@ public class EmbalmingBarrelRecipe : BarrelRecipe
         // Contents changed or config changed since sealing: just unseal without doing anything
         if (!FindSlots(slots, out ItemSlot food, out ItemSlot agent, out string method) || method != Method) return true;
 
-        int foodCount = food.Itemstack.StackSize;
-        int required = RequiredAgent(method, agent.Itemstack, foodCount);
-        if (agent.Itemstack.StackSize < required) return true;
+        ItemStack foodStack = food.Itemstack!, agentStack = agent.Itemstack!;
+        int required = RequiredAgent(method, agentStack, foodStack.StackSize);
+        if (agentStack.StackSize < required) return true;
 
-        agent.Itemstack.StackSize -= required;
-        if (agent.Itemstack.StackSize <= 0) agent.Itemstack = null;
+        agentStack.StackSize -= required;
+        if (agentStack.StackSize <= 0) agent.Itemstack = null;
 
-        Preservation.Apply(food.Itemstack, method);
+        Preservation.Apply(foodStack, method);
 
         food.MarkDirty();
         agent.MarkDirty();
