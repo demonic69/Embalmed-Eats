@@ -33,3 +33,8 @@ for lf in "$A"/game/lang/en.json "$A"/survival/lang/en.json; do
 done
 
 echo "Probe done: $(find "$out" -type f | wc -l) files"
+
+# Second round of reference info
+cp "$A"/survival/config/handbook/07-foodpreservation.json "$out/" 2>/dev/null
+(cd "$A" && find . -path '*sounds*' -type f | sed 's|^\./||' | sort) > "$out/sound-files.txt"
+grep -rlE 'shelvable|displaycaseable' "$A"/survival/itemtypes/food "$A"/survival/blocktypes 2>/dev/null | sed "s|$A/||" > "$out/display-capable-files.txt"

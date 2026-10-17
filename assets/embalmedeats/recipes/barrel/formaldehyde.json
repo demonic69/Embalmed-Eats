@@ -1,0 +1,10 @@
+[
+	{
+		code: "embalmedeats-formaldehyde",
+		ingredients: [
+			{ type: "item", code: "game:alcoholportion", litres: 5 },
+			{ type: "item", code: "game:powder-borax", quantity: 1 }
+		],
+		output: { type: "item", code: "embalmedeats:formaldehydeportion", litres: 5 }
+	}
+]

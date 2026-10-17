@@ -1,0 +1,13 @@
+[
+	{
+		ingredientPattern: "SL",
+		ingredients: {
+			"S": { type: "item", code: "game:salt" },
+			"L": { type: "item", code: "game:lime" }
+		},
+		width: 2,
+		height: 1,
+		shapeless: true,
+		output: { type: "item", code: "embalmedeats:curingsalt", quantity: 2 }
+	}
+]
