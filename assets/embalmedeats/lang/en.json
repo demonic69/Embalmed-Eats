@@ -18,7 +18,7 @@
 	"preservedname-saltcure": "Mummified {0}",
 
 	"desc-preserved": "<font color=\"#c8d6a0\">Preserved by {0}.</font>",
-	"desc-norot": "Will never rot. Made for decoration: shelves and display cases accept it.",
+	"desc-norot": "Will never rot. Made for decoration: it goes on shelves, in display cases and on the ground (shift + right-click).",
 	"desc-toxic": "<font color=\"#ff7a6b\">Toxic! Eating it makes you sick, and worse the more you eat.</font>",
 
 	"toxicity-mild": "The {0} tastes foul. Your stomach churns.",
@@ -28,8 +28,23 @@
 	"toxicity-severe": "Your vision swims and your limbs grow heavy. The {0} was a terrible mistake.",
 	"toxicity-lethal": "You have eaten far too much preserved food. Your body is shutting down.",
 
+	"game:tabname-embalmedeats-wax": "Embalmed Eats: Wax-sealed",
+	"game:tabname-embalmedeats-resin": "Embalmed Eats: Lacquered",
+	"game:tabname-embalmedeats-formaldehyde": "Embalmed Eats: Embalmed",
+	"game:tabname-embalmedeats-saltcure": "Embalmed Eats: Mummified",
+
+	"help-title": "Embalmed Eats commands:",
+	"help-help": "Show this list",
+	"help-preserve": "Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)",
+	"help-unpreserve": "Make the preserved food in your hand normal again",
+	"help-toxicity": "Show how poisoned you (or another player) are from eating preserved food",
+	"help-cure": "Clear the poisoning",
+	"help-info": "Show how many foods the mod found and what it patched",
+	"help-selftest": "Run the mod's built-in checks",
+	"help-needs": "needs the {0} privilege",
+
 	"handbook-guide-title": "Embalmed Eats",
-	"handbook-guide-text": "Any food, vanilla or modded, can be preserved as permanent decoration. Preserved food keeps its exact look, never rots, and can go on shelves and in display cases.<br><br><strong>Wax dipping</strong>: put the food and a piece of <a href=\"handbook://item-beeswax\">beeswax</a> in the crafting grid.<br><br><strong>Resin lacquer</strong>: put the food and a piece of <a href=\"handbook://item-resin\">resin</a> in the crafting grid.<br><br><strong>Formaldehyde soak</strong>: in a barrel, mix 5 litres of <a href=\"handbook://item-alcoholportion\">alcohol</a> with 1 <a href=\"handbook://item-powder-borax\">powdered borax</a> to make formaldehyde solution. Then seal food in a barrel with the solution. By default it takes 0.25 litres per food item and 2 days.<br><br><strong>Salt and lime cure</strong>: craft <a href=\"handbook://item-salt\">salt</a> and <a href=\"handbook://item-lime\">lime</a> into curing salt. Seal food in a barrel with the curing salt. By default it takes 1 curing salt per food item and 5 days.<br><br><strong>Do not eat it.</strong> The first bite makes you vomit. Keep eating preserved food and it turns into poisoning, nausea and sluggishness, and finally a lethal dose. The effect wears off with time.<br><br>Preserved food can't be cooked, ground or used in recipes.",
+	"handbook-guide-text": "Any food, vanilla or modded, can be preserved as permanent decoration. Preserved food keeps its exact look, never rots, and can go on shelves and in display cases.<br><br><strong>Wax dipping</strong>: put the food and a piece of <a href=\"handbook://item-beeswax\">beeswax</a> in the crafting grid.<br><br><strong>Resin lacquer</strong>: put the food and a piece of <a href=\"handbook://item-resin\">resin</a> in the crafting grid.<br><br><strong>Formaldehyde soak</strong>: in a barrel, mix 5 litres of <a href=\"handbook://item-alcoholportion\">alcohol</a> with 1 <a href=\"handbook://item-powder-borax\">powdered borax</a> to make formaldehyde solution. Then seal food in a barrel with the solution. By default it takes 0.25 litres per food item and 2 days.<br><br><strong>Salt and lime cure</strong>: craft <a href=\"handbook://item-salt\">salt</a> and <a href=\"handbook://item-lime\">lime</a> into curing salt. Seal food in a barrel with the curing salt. By default it takes 1 curing salt per food item and 5 days.<br><br><strong>Displaying it</strong>: preserved food goes on shelves and in display cases, and on the ground with shift + right-click, even food that normally can't. In creative mode, every food is ready-made in the Embalmed Eats tabs, one per method.<br><br><strong>Do not eat it.</strong> The first bite makes you vomit. Keep eating preserved food and it turns into poisoning, nausea and sluggishness, and finally a lethal dose. The effect wears off with time.<br><br>Preserved food can't be cooked, ground or used in recipes.",
 
 	"handbook-formaldehyde-title": "Embalming food",
 	"handbook-formaldehyde-text": "Put any food in a barrel together with formaldehyde solution and seal it. When it opens, the food is embalmed: it never rots, but it is poisonous to eat.",

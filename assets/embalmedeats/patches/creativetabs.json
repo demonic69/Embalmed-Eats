@@ -1,0 +1,6 @@
+[
+	{ "op": "add", "path": "/tabConfigs/-", "file": "game:config/creativetabs.json", "value": { "code": "embalmedeats-wax", "listOrder": 0.91, "paddingTop": 15 } },
+	{ "op": "add", "path": "/tabConfigs/-", "file": "game:config/creativetabs.json", "value": { "code": "embalmedeats-resin", "listOrder": 0.92 } },
+	{ "op": "add", "path": "/tabConfigs/-", "file": "game:config/creativetabs.json", "value": { "code": "embalmedeats-formaldehyde", "listOrder": 0.93 } },
+	{ "op": "add", "path": "/tabConfigs/-", "file": "game:config/creativetabs.json", "value": { "code": "embalmedeats-saltcure", "listOrder": 0.94 } }
+]

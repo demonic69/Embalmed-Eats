@@ -40,6 +40,10 @@ if wait_for "Dedicated Server now running|Server now running|now running on Port
   echo "/embalmedeats selftest" >> "$CMDS"
   wait_for "SELFTEST (PASS|FAIL)" 180
   sleep 3
+  echo "/embalmedeats help" >> "$CMDS"
+  sleep 4
+  echo "/embalmedeats" >> "$CMDS"
+  sleep 4
 fi
 
 echo "/stop" >> "$CMDS"
@@ -53,6 +57,9 @@ cp -r "$DATA"/Logs/* ci/server-logs/ 2>/dev/null
   echo "server started: $started"
   echo "--- self test ---"
   grep -hE "SELFTEST" "$LOG" ci/server-logs/* 2>/dev/null | sort -u
+  echo "--- help output ---"
+  grep -hE -A9 "Embalmed Eats commands:" "$LOG" 2>/dev/null | head -40
+  echo "help shown: $(grep -c "Embalmed Eats commands:" "$LOG" 2>/dev/null) time(s) (expected 2: /embalmedeats help and /embalmedeats)"
   echo "--- mod lines ---"
   grep -hiE "embalmed" ci/server-logs/server-main* ci/server-logs/server-debug* "$LOG" 2>/dev/null | head -300
   echo "--- errors / exceptions (all) ---"
@@ -62,6 +69,7 @@ cat ci/smoke-summary.txt
 
 [ "$started" = yes ] || { echo "Server did not start"; exit 1; }
 grep -qE "SELFTEST PASS" ci/smoke-summary.txt || { echo "Self test did not pass"; exit 1; }
+[ "$(grep -c "Embalmed Eats commands:" "$LOG")" -ge 1 ] || { echo "/embalmedeats help printed nothing"; exit 1; }
 if grep -hE "Exception" ci/server-logs/* "$LOG" 2>/dev/null | grep -qi "embalmed"; then
   echo "Exception mentioning the mod"; exit 1
 fi

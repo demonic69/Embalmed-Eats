@@ -37,6 +37,10 @@ public class EmbalmedEatsConfig
     // ---- Decoration ----
     public bool AllowOnShelves = true;
     public bool AllowInDisplayCases = true;
+    /// <summary>Preserved food can be placed on the ground (shift + right-click), even food that normally can't.</summary>
+    public bool AllowOnGround = true;
+    /// <summary>Adds a creative inventory tab for each preservation method, with every food preserved that way.</summary>
+    public bool ShowCreativeTabs = true;
     /// <summary>Shrinks preserved items that have no display transform of their own so they fit shelves and display cases.</summary>
     public float FallbackDisplayScale = 0.5f;
 

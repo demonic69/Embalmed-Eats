@@ -6,12 +6,14 @@ using EmbalmedEats.Recipes;
 using EmbalmedEats.Toxicity;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 
 namespace EmbalmedEats;
 
 /// <summary>
 /// /embalmedeats commands.
+///   help                list the commands (also what plain /embalmedeats shows)
 ///   preserve [method]   preserve the held stack (creative builders, needs gamemode privilege)
 ///   unpreserve          undo preservation on the held stack
 ///   toxicity [player]   show toxicity
@@ -26,8 +28,14 @@ public static class Commands
         var p = sapi.ChatCommands.Parsers;
 
         sapi.ChatCommands.Create("embalmedeats")
-            .WithDescription("Embalmed Eats: preserve food as decoration")
+            .WithDescription("Embalmed Eats: preserve food as decoration. /embalmedeats help lists the commands.")
             .RequiresPrivilege(Privilege.chat)
+            .HandleWith(args => TextCommandResult.Success(HelpText(args.Caller, LangCode(args))))
+
+            .BeginSubCommand("help")
+                .WithDescription("List the Embalmed Eats commands")
+                .HandleWith(args => TextCommandResult.Success(HelpText(args.Caller, LangCode(args))))
+            .EndSubCommand()
 
             .BeginSubCommand("preserve")
                 .WithDescription("Preserve the stack in your hand (methods: wax, resin, formaldehyde, saltcure)")
@@ -91,6 +99,40 @@ public static class Commands
                 .HandleWith(args => TextCommandResult.Success(SelfTest.Run(sapi)))
             .EndSubCommand();
     }
+
+    /// <summary>Every command, with its arguments, lang key for what it does, and the privilege it needs (null = everyone).</summary>
+    public static readonly (string usage, string langKey, string? privilege)[] HelpEntries =
+    {
+        ("/embalmedeats help", "help-help", null),
+        ("/embalmedeats preserve [wax|resin|formaldehyde|saltcure]", "help-preserve", Privilege.gamemode),
+        ("/embalmedeats unpreserve", "help-unpreserve", Privilege.gamemode),
+        ("/embalmedeats toxicity [player]", "help-toxicity", null),
+        ("/embalmedeats cure [player]", "help-cure", Privilege.commandplayer),
+        ("/embalmedeats info", "help-info", Privilege.controlserver),
+        ("/embalmedeats selftest", "help-selftest", Privilege.controlserver),
+    };
+
+    static string LangCode(TextCommandCallingArgs args) =>
+        (args.Caller.Player as IServerPlayer)?.LanguageCode ?? args.LanguageCode ?? Lang.CurrentLocale ?? "en";
+
+    /// <summary>The command list. Commands the caller can't use are still listed, marked with the privilege they need.</summary>
+    public static string HelpText(Caller? caller, string langCode = "en")
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine(Lang.GetL(langCode, "embalmedeats:help-title"));
+        foreach (var (usage, langKey, privilege) in HelpEntries)
+        {
+            string line = usage + " - " + Lang.GetL(langCode, "embalmedeats:" + langKey);
+            if (privilege != null && !HasPrivilege(caller, privilege))
+            {
+                line += " (" + Lang.GetL(langCode, "embalmedeats:help-needs", privilege) + ")";
+            }
+            sb.AppendLine(line);
+        }
+        return sb.ToString().TrimEnd();
+    }
+
+    static bool HasPrivilege(Caller? caller, string privilege) => caller == null || caller.HasPrivilege(privilege);
 
     static TextCommandResult ForPlayers(ICoreServerAPI sapi, TextCommandCallingArgs args, System.Func<IServerPlayer, float, string> fn)
     {

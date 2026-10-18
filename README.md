@@ -20,7 +20,9 @@ New items:
 - **Formaldehyde solution**: in a barrel, mix 5 L of alcohol with 1 powdered borax.
 - **Curing salt**: salt + lime in the crafting grid (makes 2).
 
-The preserved item gets a name prefix (Embalmed, Mummified, Wax-sealed, Lacquered) and a tooltip warning. There is a guide page in the handbook.
+The preserved item gets a name prefix (Embalmed, Mummified, Wax-sealed, Lacquered) and a tooltip warning. There is a guide page in the handbook, and clicking any preserved item in the handbook (or pressing the handbook key while hovering one) opens it.
+
+In creative mode, every food comes ready-made in four **Embalmed Eats** tabs, one per method: Wax-sealed, Lacquered, Embalmed and Mummified.
 
 ## Eating preserved food
 
@@ -36,7 +38,7 @@ Every stage can be tuned or replaced in the config.
 
 ## Decoration
 
-Preserved food can go on **shelves** and in **display cases** even if that food normally can't. Food without its own display setup is scaled down to fit.
+Preserved food can go on **shelves**, in **display cases** and **on the ground** (shift + right-click) even if that food normally can't. Food without its own display setup is scaled down to fit. Fresh food that can't normally go on the ground still can't; only its preserved version can.
 
 Preserved food is kept out of food processing so it can't be turned back into edible food: crafting and barrel recipes, cooking pots, firepit cooking and querns all refuse it.
 
@@ -44,6 +46,7 @@ Preserved food is kept out of food processing so it can't be turned back into ed
 
 | Command | Who | What |
 |---|---|---|
+| `/embalmedeats help` (or just `/embalmedeats`) | everyone | List these commands |
 | `/embalmedeats preserve [wax\|resin\|formaldehyde\|saltcure]` | gamemode privilege | Preserve the held stack instantly (handy for creative builds) |
 | `/embalmedeats unpreserve` | gamemode privilege | Undo preservation on the held stack |
 | `/embalmedeats toxicity [player]` | everyone | Show toxicity |
@@ -59,7 +62,8 @@ Preserved food is kept out of food processing so it can't be turned back into ed
 - which items count as wax and resin (wildcards allowed, so modded waxes work)
 - barrel amounts and seal times
 - `AlwaysPreservable` / `NeverPreservable` code lists (wildcards like `mymod:*`)
-- shelf and display case support, display scale
+- shelf, display case and ground support, display scale
+- the creative tabs
 - whether preserved food is blocked from recipes
 - toxicity per item, decay rate and every toxicity stage
 

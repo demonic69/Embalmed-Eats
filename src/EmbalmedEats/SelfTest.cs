@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EmbalmedEats.Core;
+using EmbalmedEats.Decoration;
 using EmbalmedEats.Patches;
 using EmbalmedEats.Recipes;
 using EmbalmedEats.Toxicity;
+using Newtonsoft.Json.Linq;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
@@ -46,7 +49,7 @@ public static class SelfTest
 
         Check("core patches applied", () =>
         {
-            foreach (string label in new[] { TransitionPatches.Label, NutritionPatches.Label, EatingPatches.Label, CraftingPatches.Label, NamePatches.Label, BarrelPatches.Label, DisplayPatches.Label })
+            foreach (string label in new[] { TransitionPatches.Label, NutritionPatches.Label, EatingPatches.Label, CraftingPatches.Label, NamePatches.Label, BarrelPatches.Label, DisplayPatches.Label, GroundStoragePatches.Label, HandbookPatches.Label })
             {
                 if (PatchUtil.CountPatched(label) == 0) return $"no {label} patches applied";
             }
@@ -247,6 +250,107 @@ public static class SelfTest
             if (ToxicitySystem.Decay(3f, 100, 108, 0.125f) is float d && Math.Abs(d - 2f) > 0.001f) return $"decay wrong: {d}";
             if (ToxicitySystem.Decay(1f, 100, 1000, 0.125f) != 0f) return "decay went below zero";
             if (ToxicitySystem.Instance == null) return "toxicity system not running";
+            return null;
+        });
+
+
+        Check("help command lists every command", () =>
+        {
+            string help = Commands.HelpText(null);
+            if (!help.StartsWith(Lang.Get("embalmedeats:help-title"))) return "no title line";
+            if (help.Contains("embalmedeats:help")) return "missing lang entry in: " + help;
+            foreach (string sub in new[] { "help", "preserve", "unpreserve", "toxicity", "cure", "info", "selftest" })
+            {
+                if (!help.Contains("/embalmedeats " + sub)) return "doesn't list " + sub;
+            }
+            return null;
+        });
+
+        Check("handbook: preserved items open the guide", () =>
+        {
+            var fresh = new ItemStack(meat, 1);
+            var preserved = new ItemStack(meat, 1);
+            Preservation.Apply(preserved, PreservationMethods.Wax);
+            if (GuiHandbookItemStackPage.PageCodeForStack(preserved) != HandbookPatches.GuidePageCode) return "preserved meat doesn't link to the guide";
+            if (GuiHandbookItemStackPage.PageCodeForStack(fresh) == HandbookPatches.GuidePageCode) return "fresh meat links to the guide";
+
+            BlockMeal? mealBlock = world.Blocks.OfType<BlockMeal>().FirstOrDefault(b => b is not BlockPie && b.Code != null && !b.IsMissing);
+            if (mealBlock != null)
+            {
+                var bowl = new ItemStack(mealBlock, 1);
+                mealBlock.SetContents(null, bowl, new[] { new ItemStack(meat, 1) }, 1);
+                Preservation.Apply(bowl, PreservationMethods.Formaldehyde);
+                if (mealBlock.HandbookPageCodeForStack(world, bowl) != HandbookPatches.GuidePageCode) return "preserved meal doesn't link to the guide";
+            }
+
+            var list = new List<ItemStack> { fresh, preserved };
+            HandbookPatches.HandbookStacksPostfix(list);
+            if (list.Count != 1 || list[0] != fresh) return "preserved copies would get handbook pages";
+
+            IAsset? guide = sapi.Assets.TryGet(new AssetLocation("embalmedeats", "config/handbook/embalmedeats-guide.json"));
+            if (guide == null) return "guide page asset missing";
+            if (JObject.Parse(guide.ToText())["pageCode"]?.ToString() != HandbookPatches.GuidePageCode) return "guide page code doesn't match";
+            if (!Lang.HasTranslation("embalmedeats:handbook-guide-text")) return "guide text missing";
+            return null;
+        });
+
+        Check("ground storage for preserved food", () =>
+        {
+            int missing = world.Items.Count(i => i?.Code != null && !i.IsMissing && Preservation.IsPreservableCollectible(i) && !i.HasBehavior<CollectibleBehaviorGroundStorable>());
+            if (cfg.AllowOnGround && missing > 0) return $"{missing} preservable items still can't go on the ground";
+
+            // Food vanilla already allows on the ground: unchanged, fresh and preserved
+            if (GroundStorageSupport.IsAddedFor(meat)) return "raw meat already had ground storage but got a second setup";
+            var freshMeat = new ItemStack(meat, 1);
+            var preservedMeat = new ItemStack(meat, 1);
+            Preservation.Apply(preservedMeat, PreservationMethods.Wax);
+            if (!GroundStorageSupport.CanGoOnGround(freshMeat) || !GroundStorageSupport.CanGoOnGround(preservedMeat)) return "raw meat lost vanilla ground storage";
+
+            // Food that couldn't go on the ground before: only its preserved version can now
+            Item? added = world.Items.FirstOrDefault(i => i?.Code != null && GroundStorageSupport.IsAddedFor(i));
+            if (added == null) return cfg.AllowOnGround ? "no food needed ground storage added (expected cheese, butter and others)" : null;
+            var fresh = new ItemStack(added, 1);
+            var preserved = new ItemStack(added, 1);
+            Preservation.Apply(preserved, PreservationMethods.Resin);
+            if (GroundStorageSupport.CanGoOnGround(fresh)) return $"fresh {added.Code} can now go on the ground (it couldn't before)";
+            if (!GroundStorageSupport.CanGoOnGround(preserved)) return $"preserved {added.Code} can't go on the ground";
+            if (GroundStoragePatches.InteractPrefix(new DummySlot(fresh))) return "placing fresh food isn't blocked";
+            if (!GroundStoragePatches.InteractPrefix(new DummySlot(preserved))) return "placing preserved food is blocked";
+
+            var bh = added.GetBehavior<CollectibleBehaviorGroundStorable>();
+            if (bh?.StorageProps?.Layout != EnumGroundStorageLayout.Quadrants) return "added ground storage has the wrong layout";
+            EnumHandling handling = EnumHandling.PassThrough;
+            if (bh.GetHeldInteractionHelp(new DummySlot(fresh), ref handling)?.Length > 0) return "fresh food shows a place hint";
+            if (!(bh.GetHeldInteractionHelp(new DummySlot(preserved), ref handling)?.Length > 0)) return "preserved food shows no place hint";
+            return null;
+        });
+
+        Check("creative tabs, one per method", () =>
+        {
+            if (!cfg.ShowCreativeTabs) return null;
+            foreach (string method in PreservationMethods.All)
+            {
+                string tab = CreativeTabs.TabFor(method);
+                if (!Lang.HasTranslation("tabname-" + tab)) return "no name for tab " + tab;
+            }
+
+            var entries = CreativeTabs.PreservedEntries(meat).ToList();
+            foreach (string method in PreservationMethods.All)
+            {
+                if (!entries.Any(e => e.tab == CreativeTabs.TabFor(method) && Preservation.GetMethod(e.stack) == method && e.stack.Collectible == meat))
+                {
+                    return $"raw meat missing from the {method} tab";
+                }
+            }
+            // Still in its normal tabs
+            bool normal = meat.CreativeInventoryStacks!.Any(l => !l.Tabs.Any(CreativeTabs.IsOurTab) && l.Stacks.Any(j => j.ResolvedItemstack?.Collectible == meat && !Preservation.IsPreserved(j.ResolvedItemstack)));
+            if (!normal) return "raw meat no longer in its normal tabs";
+
+            int foods = world.Collectibles.Count(c => c?.Code != null && CreativeTabs.PreservedEntries(c).Any());
+            if (foods < 50) return $"only {foods} foods in the creative tabs";
+
+            IAsset? tabs = sapi.Assets.TryGet(new AssetLocation("game", "config/creativetabs.json"));
+            if (tabs != null && !tabs.ToText().Contains("embalmedeats-wax")) return "creative tab order patch not applied";
             return null;
         });
 

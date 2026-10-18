@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using EmbalmedEats.Config;
 using EmbalmedEats.Core;
+using EmbalmedEats.Decoration;
 using EmbalmedEats.Patches;
 using EmbalmedEats.Recipes;
 using EmbalmedEats.Toxicity;
@@ -81,6 +82,7 @@ public class EmbalmedEatsModSystem : ModSystem
         Run(NamePatches.Label, NamePatches.Apply);
         Run(BarrelPatches.Label, BarrelPatches.Apply);
         Run(DisplayPatches.Label, DisplayPatches.Apply);
+        Run(GroundStoragePatches.Label, GroundStoragePatches.Apply);
         Run(HandbookPatches.Label, HandbookPatches.Apply);
 
         api.Logger.Notification("[Embalmed Eats] Applied {0} patches ({1} transition, {2} nutrition, {3} eating, {4} crafting, {5} barrel, {6} display). {7} problems.",
@@ -118,18 +120,36 @@ public class EmbalmedEatsModSystem : ModSystem
         Preservation.ClearCache();
     }
 
+    /// <summary>
+    /// On the server: wax/resin recipes, ground storage and creative tabs. Item changes made here reach clients
+    /// with the item definitions (the same way vanilla adds behaviors). The client repeats the item changes for
+    /// anything that didn't arrive that way; both steps skip items that already have them.
+    /// </summary>
     public override void AssetsFinalize(ICoreAPI api)
     {
-        if (api is not ICoreServerAPI sapi) return;
         Preservation.ClearCache();
-        try
+
+        if (api is ICoreServerAPI sapi)
         {
-            GridRecipeGenerator.Generate(sapi);
+            Step(api, "generate wax/resin recipes", () => GridRecipeGenerator.Generate(sapi));
         }
-        catch (Exception e)
+
+        Step(api, "add ground storage", () =>
         {
-            sapi.Logger.Error("[Embalmed Eats] Failed to generate wax/resin recipes: {0}", e);
-        }
+            int n = GroundStorageSupport.AddToPreservableItems(api);
+            api.Logger.Notification("[Embalmed Eats] Ground storage added to {0} preservable items that didn't have it ({1}).", n, api.Side);
+        });
+        Step(api, "add creative tabs", () =>
+        {
+            int n = CreativeTabs.AddToCreativeInventory(api);
+            api.Logger.Notification("[Embalmed Eats] Creative tabs: {0} foods added ({1}).", n, api.Side);
+        });
+    }
+
+    static void Step(ICoreAPI api, string what, Action action)
+    {
+        try { action(); }
+        catch (Exception e) { api.Logger.Error("[Embalmed Eats] Failed to {0}: {1}", what, e); }
     }
 
     public override void StartServerSide(ICoreServerAPI sapi)

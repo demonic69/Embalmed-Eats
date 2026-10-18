@@ -1,5 +1,6 @@
 using System.Reflection;
 using EmbalmedEats.Core;
+using EmbalmedEats.Decoration;
 using HarmonyLib;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -11,7 +12,7 @@ namespace EmbalmedEats.Patches;
 
 /// <summary>
 /// Lets preserved food go on shelves and in display cases even when that food normally can't,
-/// and shrinks it to a sensible size there if the food has no display transform of its own.
+/// and shrinks it to a sensible size there (and on the ground) if the food has no display transform of its own.
 /// </summary>
 public static class DisplayPatches
 {
@@ -78,14 +79,23 @@ public static class DisplayPatches
         CollectibleObject coll = stack.Collectible;
         var attrs = coll.Attributes;
 
-        // Food that has its own display setup already looks right
-        if (attrs?[__instance.AttributeTransformCode].Exists == true) return;
-        if (attrs?["onDisplayTransform"].Exists == true) return;
-        if (coll.GetCollectibleInterface<IShelvable>() != null) return;
+        if (__instance is BlockEntityGroundStorage)
+        {
+            // Food vanilla already lets on the ground keeps its vanilla look there
+            if (!GroundStorageSupport.IsAddedFor(coll)) return;
+            if (attrs?["groundStorageTransform"].Exists == true) return;
+        }
+        else
+        {
+            // Food that has its own display setup already looks right
+            if (attrs?[__instance.AttributeTransformCode].Exists == true) return;
+            if (attrs?["onDisplayTransform"].Exists == true) return;
+            if (coll.GetCollectibleInterface<IShelvable>() != null) return;
 
-        // Food the vanilla game already allows there keeps its vanilla look
-        if (__instance is BlockEntityShelf && attrs?["shelvable"].Exists == true) return;
-        if (__instance is BlockEntityDisplayCase && attrs?["displaycaseable"].AsBool(false) == true) return;
+            // Food the vanilla game already allows there keeps its vanilla look
+            if (__instance is BlockEntityShelf && attrs?["shelvable"].Exists == true) return;
+            if (__instance is BlockEntityDisplayCase && attrs?["displaycaseable"].AsBool(false) == true) return;
+        }
 
         // Flat (voxelized) items were already shrunk by vanilla
         if (stack.Class == EnumItemClass.Item && (stack.Item.Shape == null || stack.Item.Shape.VoxelizeTexture)) return;
