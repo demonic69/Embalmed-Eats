@@ -38,3 +38,15 @@ echo "Probe done: $(find "$out" -type f | wc -l) files"
 cp "$A"/survival/config/handbook/07-foodpreservation.json "$out/" 2>/dev/null
 (cd "$A" && find . -path '*sounds*' -type f | sed 's|^\./||' | sort) > "$out/sound-files.txt"
 grep -rlE 'shelvable|displaycaseable' "$A"/survival/itemtypes/food "$A"/survival/blocktypes 2>/dev/null | sed "s|$A/||" > "$out/display-capable-files.txt"
+
+# Third round: creative tabs, food item definitions, ground storage users
+cp "$A"/game/config/creativetabs.json "$out/" 2>/dev/null
+mkdir -p "$out/food"
+cp -r "$A"/survival/itemtypes/food/. "$out/food/" 2>/dev/null
+grep -h '"tabname-' "$A"/game/lang/en.json > "$out/lang-tabnames.txt" 2>/dev/null
+grep -rlE 'GroundStorable' "$A"/survival/itemtypes "$A"/survival/blocktypes 2>/dev/null | sed "s|$A/||" | sort > "$out/groundstorable-files.txt"
+grep -rhoE "layout: *['\"][A-Za-z0-9]+['\"]" "$A"/survival 2>/dev/null | sort | uniq -c | sort -rn > "$out/groundstorable-layouts.txt"
+for f in survival/blocktypes/clay/bowl.json survival/blocktypes/food/pie.json survival/blocktypes/clay/crock.json; do
+  [ -f "$A/$f" ] && { mkdir -p "$out/blocks"; cp "$A/$f" "$out/blocks/"; }
+done
+(cd "$A" && find . -path '*blocktypes*' \( -name '*bowl*' -o -name '*pie*' -o -name '*crock*' -o -name '*pot*' \) | sort) > "$out/meal-block-files.txt"
