@@ -334,7 +334,10 @@ public static class SelfTest
                 if (!Lang.HasTranslation("tabname-" + tab)) return "no name for tab " + tab;
             }
 
-            var entries = CreativeTabs.PreservedEntries(meat).ToList();
+            // Built here the way the client builds them (the server's own items are left as they are)
+            CreativeTabAndStackList[]? meatLists = CreativeTabs.Build(meat);
+            if (meatLists == null) return "raw meat gets no creative entries";
+            var entries = CreativeTabs.PreservedEntries(meatLists).ToList();
             foreach (string method in PreservationMethods.All)
             {
                 if (!entries.Any(e => e.tab == CreativeTabs.TabFor(method) && Preservation.GetMethod(e.stack) == method && e.stack.Collectible == meat))
@@ -343,10 +346,11 @@ public static class SelfTest
                 }
             }
             // Still in its normal tabs
-            bool normal = meat.CreativeInventoryStacks!.Any(l => !l.Tabs.Any(CreativeTabs.IsOurTab) && l.Stacks.Any(j => j.ResolvedItemstack?.Collectible == meat && !Preservation.IsPreserved(j.ResolvedItemstack)));
+            bool normal = meatLists.Any(l => !l.Tabs.Any(CreativeTabs.IsOurTab) && l.Stacks.Any(j => j.ResolvedItemstack?.Collectible == meat && !Preservation.IsPreserved(j.ResolvedItemstack)));
             if (!normal) return "raw meat no longer in its normal tabs";
 
-            int foods = world.Collectibles.Count(c => c?.Code != null && CreativeTabs.PreservedEntries(c).Any());
+            int foods = world.Collectibles.Count(c => c?.Code != null && CreativeTabs.PreservedEntries(CreativeTabs.Build(c)).Any());
+            if (meat.CreativeInventoryStacks?.Any(l => l.Tabs?.Any(CreativeTabs.IsOurTab) == true) == true) return "the server's own items were changed";
             if (foods < 50) return $"only {foods} foods in the creative tabs";
 
             IAsset? tabs = sapi.Assets.TryGet(new AssetLocation("game", "config/creativetabs.json"));

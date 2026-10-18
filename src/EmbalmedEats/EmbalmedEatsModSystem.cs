@@ -121,9 +121,9 @@ public class EmbalmedEatsModSystem : ModSystem
     }
 
     /// <summary>
-    /// On the server: wax/resin recipes, ground storage and creative tabs. Item changes made here reach clients
-    /// with the item definitions (the same way vanilla adds behaviors). The client repeats the item changes for
-    /// anything that didn't arrive that way; both steps skip items that already have them.
+    /// On the server: wax/resin recipes and ground storage. The ground storage behavior reaches clients with the
+    /// item definitions (the same way vanilla adds behaviors); the client repeats it only for items that didn't
+    /// get it that way. Creative tabs are client only.
     /// </summary>
     public override void AssetsFinalize(ICoreAPI api)
     {
@@ -139,10 +139,16 @@ public class EmbalmedEatsModSystem : ModSystem
             int n = GroundStorageSupport.AddToPreservableItems(api);
             api.Logger.Notification("[Embalmed Eats] Ground storage added to {0} preservable items that didn't have it ({1}).", n, api.Side);
         });
+        if (api.Side == EnumAppSide.Client) AddCreativeTabs(api);
+    }
+
+    /// <summary>Client only (see CreativeTabs). Runs at the first of two points after the items arrive; the second finds nothing left to do.</summary>
+    void AddCreativeTabs(ICoreAPI api)
+    {
         Step(api, "add creative tabs", () =>
         {
             int n = CreativeTabs.AddToCreativeInventory(api);
-            api.Logger.Notification("[Embalmed Eats] Creative tabs: {0} foods added ({1}).", n, api.Side);
+            if (n > 0) api.Logger.Notification("[Embalmed Eats] Creative tabs: {0} foods added.", n);
         });
     }
 
@@ -164,6 +170,12 @@ public class EmbalmedEatsModSystem : ModSystem
     public override void StartClientSide(ICoreClientAPI capi)
     {
         capi.Network.GetChannel(ModId).SetMessageHandler<ConfigSyncPacket>(OnConfigReceived);
+        // The documented point where a client has all blocks and items from the server
+        capi.Event.BlockTexturesLoaded += () =>
+        {
+            Step(capi, "add ground storage", () => GroundStorageSupport.AddToPreservableItems(capi));
+            AddCreativeTabs(capi);
+        };
     }
 
     void SendConfig(IServerPlayer player)

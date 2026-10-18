@@ -15,6 +15,9 @@ namespace EmbalmedEats.Decoration;
 /// A collectible's creative entries are a list of (tabs, stacks). When a food only had tabs, its normal entry is
 /// kept as the first list item so it still shows where it did before. Preserved stacks are kept out of the
 /// handbook's page list by HandbookPatches.
+///
+/// Client only: some vanilla code calls GetHandBookStacks on the server with no client API, which only works
+/// for collectibles without creative stack lists, so the server's collectibles are left as they are.
 /// </summary>
 public static class CreativeTabs
 {
@@ -46,12 +49,21 @@ public static class CreativeTabs
 
     static bool AddFor(CollectibleObject? coll)
     {
-        if (coll?.Code == null || coll.IsMissing) return false;
-        if (!Preservation.IsPreservableCollectible(coll)) return false;
+        CreativeTabAndStackList[]? lists = Build(coll);
+        if (lists == null) return false;
+        coll!.CreativeInventoryStacks = lists;
+        return true;
+    }
+
+    /// <summary>The collectible's creative entries with the preserved ones added, or null if it gets none (or already has them).</summary>
+    public static CreativeTabAndStackList[]? Build(CollectibleObject? coll)
+    {
+        if (coll?.Code == null || coll.IsMissing) return null;
+        if (!Preservation.IsPreservableCollectible(coll)) return null;
 
         CreativeTabAndStackList[]? existing = coll.CreativeInventoryStacks;
-        // Already done (for example, received from the server with the item)
-        if (existing != null && existing.Any(list => list?.Tabs?.Any(IsOurTab) == true)) return false;
+        // Already done
+        if (existing != null && existing.Any(list => list?.Tabs?.Any(IsOurTab) == true)) return null;
 
         var lists = new List<CreativeTabAndStackList>();
         var sources = new List<ItemStack>();
@@ -76,7 +88,7 @@ public static class CreativeTabs
         }
         else
         {
-            return false; // not in the creative inventory at all
+            return null; // not in the creative inventory at all
         }
 
         // Each different stack once, and only what can be preserved (e.g. a meal bowl needs a meal in it)
@@ -88,7 +100,7 @@ public static class CreativeTabs
             if (unique.Any(u => u.Collectible == stack.Collectible && AttributesKey(u) == key)) continue;
             unique.Add(stack);
         }
-        if (unique.Count == 0) return false;
+        if (unique.Count == 0) return null;
 
         foreach (string method in PreservationMethods.All)
         {
@@ -103,8 +115,7 @@ public static class CreativeTabs
             lists.Add(new CreativeTabAndStackList { Tabs = new[] { TabFor(method) }, Stacks = preserved });
         }
 
-        coll.CreativeInventoryStacks = lists.ToArray();
-        return true;
+        return lists.ToArray();
     }
 
     static string AttributesKey(ItemStack stack) => stack.Attributes?.ToJsonToken() ?? "";
@@ -118,9 +129,9 @@ public static class CreativeTabs
         ResolvedItemstack = stack
     };
 
-    /// <summary>The preserved stacks in a food's creative entries, for the self test.</summary>
-    public static IEnumerable<(string tab, ItemStack stack)> PreservedEntries(CollectibleObject coll) =>
-        (coll.CreativeInventoryStacks ?? Array.Empty<CreativeTabAndStackList>())
+    /// <summary>The preserved stacks in a list of creative entries, for the self test.</summary>
+    public static IEnumerable<(string tab, ItemStack stack)> PreservedEntries(CreativeTabAndStackList[]? lists) =>
+        (lists ?? Array.Empty<CreativeTabAndStackList>())
             .Where(list => list?.Tabs?.Any(IsOurTab) == true && list.Stacks != null)
             .SelectMany(list => list.Stacks.Where(j => j?.ResolvedItemstack != null).Select(j => (list.Tabs.First(IsOurTab), j.ResolvedItemstack!)));
 }
