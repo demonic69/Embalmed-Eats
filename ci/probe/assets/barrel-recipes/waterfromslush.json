@@ -1,0 +1,7 @@
+{
+	code: "waterfromslush",
+	ingredients: [
+		{ type: "item", code: "slush", litres: 1 },
+	],
+	output: { type: "item", code: "waterportion", litres: 1 }
+}

@@ -1,0 +1,216 @@
+server started: yes
+--- self test ---
+20.10.2026 04:05:43 [Notification] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST PASS (23/23)
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: barrel needs enough agent
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: creative lists: players get exactly the server's
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: creative tabs, one per method
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: food detection
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: formaldehyde and curing salt are craftable
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: formaldehyde barrel soak
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: ground storage for preserved food
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: handbook: preserved items open the guide
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: help command lists every command
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: meal containers preserved through their contents
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: mod items loaded
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: names, tooltips and lang
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved and fresh food don't stack together
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved food gives no nutrition but stays edible
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved food refused by recipes
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserving stops rotting
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: salt & lime barrel cure
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: server-side handbook calls are safe
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: shelves accept preserved food
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: toxicity escalates from vomiting to lethal
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: wax and resin recipes generated
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: wax recipe makes a preserved copy of the same food
+20.10.2026 04:05:43 [Server Notification] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST PASS (23/23)
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: barrel needs enough agent
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: creative lists: players get exactly the server's
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: creative tabs, one per method
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: food detection
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: formaldehyde and curing salt are craftable
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: formaldehyde barrel soak
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: ground storage for preserved food
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: handbook: preserved items open the guide
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: help command lists every command
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: meal containers preserved through their contents
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: mod items loaded
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: names, tooltips and lang
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved and fresh food don't stack together
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved food gives no nutrition but stays edible
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved food refused by recipes
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserving stops rotting
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: salt & lime barrel cure
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: server-side handbook calls are safe
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: shelves accept preserved food
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: toxicity escalates from vomiting to lethal
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: wax and resin recipes generated
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: wax recipe makes a preserved copy of the same food
+SELFTEST PASS (23/23)
+SELFTEST ok: barrel needs enough agent
+SELFTEST ok: creative lists: players get exactly the server's
+SELFTEST ok: creative tabs, one per method
+SELFTEST ok: food detection
+SELFTEST ok: formaldehyde and curing salt are craftable
+SELFTEST ok: formaldehyde barrel soak
+SELFTEST ok: ground storage for preserved food
+SELFTEST ok: handbook: preserved items open the guide
+SELFTEST ok: help command lists every command
+SELFTEST ok: meal containers preserved through their contents
+SELFTEST ok: mod items loaded
+SELFTEST ok: names, tooltips and lang
+SELFTEST ok: preserved and fresh food don't stack together
+SELFTEST ok: preserved food gives no nutrition but stays edible
+SELFTEST ok: preserved food refused by recipes
+SELFTEST ok: preserving stops rotting
+SELFTEST ok: salt & lime barrel cure
+SELFTEST ok: server-side handbook calls are safe
+SELFTEST ok: shelves accept preserved food
+SELFTEST ok: toxicity escalates from vomiting to lethal
+SELFTEST ok: wax and resin recipes generated
+SELFTEST ok: wax recipe makes a preserved copy of the same food
+--- help output ---
+20.10.2026 04:05:51 [Server Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+20.10.2026 04:05:55 [Server Notification] Handling Console Command /embalmedeats 
+20.10.2026 04:05:55 [Server Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+20.10.2026 04:05:59 [Server Notification] Handling Console Command /stop 
+20.10.2026 04:05:59 [Server Notification] Message to all in group 0: Console Admin commenced a server shutdown
+help shown: 2 time(s) (expected 2: /embalmedeats help and /embalmedeats)
+--- mod lines ---
+20.10.2026 04:05:08 [Notification] Savegame ~/work/Embalmed-Eats/Embalmed-Eats/vsdata/Saves/default.vcdbs loaded
+20.10.2026 04:05:08 [Notification]     ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods
+20.10.2026 04:05:08 [Notification]     ~/work/Embalmed-Eats/Embalmed-Eats/vsdata/Mods
+20.10.2026 04:05:09 [Notification] Mods, sorted by dependency: game, creative, survival, embalmedeats
+20.10.2026 04:05:09 [Notification] External Origins in load order: modorigin@~/work/Embalmed-Eats/Embalmed-Eats/vs/assets/creative/, modorigin@~/work/Embalmed-Eats/Embalmed-Eats/vs/assets/survival/, mod@EmbalmedEats_v1.1.1.zip
+20.10.2026 04:05:09 [Notification] [Embalmed Eats] Applied 48 patches (11 transition, 4 nutrition, 3 eating, 9 crafting, 2 barrel, 3 display). 0 problems.
+20.10.2026 04:05:17 [Notification] [Embalmed Eats] Generated 1334 wax/resin crafting recipes for 667 preservable foods.
+20.10.2026 04:05:17 [Notification] [Embalmed Eats] Ground storage added to 57 preservable items that didn't have it (Server).
+20.10.2026 04:05:17 [Notification] [Embalmed Eats] Creative tabs: 518 foods added.
+20.10.2026 04:05:17 [Notification]     Mod 'EmbalmedEats_v1.1.1.zip' (embalmedeats):
+20.10.2026 04:05:17 [Notification]         EmbalmedEats.EmbalmedEatsModSystem
+20.10.2026 04:05:43 [Notification] Handling Console Command /embalmedeats selftest
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: mod items loaded
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: food detection
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserving stops rotting
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved food gives no nutrition but stays edible
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: names, tooltips and lang
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved and fresh food don't stack together
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: wax and resin recipes generated
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: wax recipe makes a preserved copy of the same food
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: preserved food refused by recipes
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: formaldehyde barrel soak
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: salt & lime barrel cure
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: barrel needs enough agent
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: formaldehyde and curing salt are craftable
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: meal containers preserved through their contents
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: shelves accept preserved food
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: toxicity escalates from vomiting to lethal
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: help command lists every command
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: handbook: preserved items open the guide
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: ground storage for preserved food
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: creative tabs, one per method
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: creative lists: players get exactly the server's
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST ok: server-side handbook calls are safe
+20.10.2026 04:05:43 [Notification] [Embalmed Eats] SELFTEST PASS (23/23)
+20.10.2026 04:05:51 [Notification] Handling Console Command /embalmedeats help
+20.10.2026 04:05:51 [Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+20.10.2026 04:05:55 [Notification] Handling Console Command /embalmedeats 
+20.10.2026 04:05:55 [Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+20.10.2026 04:05:08.911 [VerboseDebug] [VSCreativeMod.dll] Check for mod systems in mod ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSCreativeMod.dll
+20.10.2026 04:05:08.969 [VerboseDebug] [VSCreativeMod.dll] Selected assembly ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSCreativeMod.dll
+20.10.2026 04:05:08.978 [VerboseDebug] [VSEssentials.dll] Check for mod systems in mod ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSEssentials.dll
+20.10.2026 04:05:08.991 [VerboseDebug] [VSEssentials.dll] Selected assembly ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSEssentials.dll
+20.10.2026 04:05:08.992 [VerboseDebug] [VSSurvivalMod.dll] Check for mod systems in mod ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSSurvivalMod.dll
+20.10.2026 04:05:09.000 [VerboseDebug] [VSSurvivalMod.dll] Selected assembly ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods/VSSurvivalMod.dll
+20.10.2026 04:05:09.027 [VerboseDebug] [embalmedeats] Check for mod systems in mod /home/runner/work/Embalmed-Eats/Embalmed-Eats/vsdata/Cache/unpack/EmbalmedEats_v1.1.1.zip_dca4b4d41ae4/EmbalmedEats.dll
+20.10.2026 04:05:09.028 [VerboseDebug] [embalmedeats] Loaded assembly /home/runner/work/Embalmed-Eats/Embalmed-Eats/vsdata/Cache/unpack/EmbalmedEats_v1.1.1.zip_dca4b4d41ae4/EmbalmedEats.dll
+20.10.2026 04:05:09.070 [VerboseDebug] Instantiate mod systems for embalmedeats
+20.10.2026 04:05:17.578 [VerboseDebug] Starting system: EmbalmedEatsModSystem
+20.10.2026 04:05:08 [Server Notification] Savegame ~/work/Embalmed-Eats/Embalmed-Eats/vsdata/Saves/default.vcdbs loaded
+20.10.2026 04:05:08 [Server Notification]     ~/work/Embalmed-Eats/Embalmed-Eats/vs/Mods
+20.10.2026 04:05:08 [Server Notification]     ~/work/Embalmed-Eats/Embalmed-Eats/vsdata/Mods
+20.10.2026 04:05:09 [Server Notification] Mods, sorted by dependency: game, creative, survival, embalmedeats
+20.10.2026 04:05:09 [Server Notification] External Origins in load order: modorigin@~/work/Embalmed-Eats/Embalmed-Eats/vs/assets/creative/, modorigin@~/work/Embalmed-Eats/Embalmed-Eats/vs/assets/survival/, mod@EmbalmedEats_v1.1.1.zip
+20.10.2026 04:05:09 [Server Notification] [Embalmed Eats] Applied 48 patches (11 transition, 4 nutrition, 3 eating, 9 crafting, 2 barrel, 3 display). 0 problems.
+20.10.2026 04:05:17 [Server Notification] [Embalmed Eats] Generated 1334 wax/resin crafting recipes for 667 preservable foods.
+20.10.2026 04:05:17 [Server Notification] [Embalmed Eats] Ground storage added to 57 preservable items that didn't have it (Server).
+20.10.2026 04:05:17 [Server Notification] [Embalmed Eats] Creative tabs: 518 foods added.
+20.10.2026 04:05:17 [Server Notification]     Mod 'EmbalmedEats_v1.1.1.zip' (embalmedeats):
+20.10.2026 04:05:17 [Server Notification]         EmbalmedEats.EmbalmedEatsModSystem
+20.10.2026 04:05:43 [Server Notification] Handling Console Command /embalmedeats selftest
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: core patches applied
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: mod items loaded
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: food detection
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserving stops rotting
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved food gives no nutrition but stays edible
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: names, tooltips and lang
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved and fresh food don't stack together
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: wax and resin recipes generated
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: wax recipe makes a preserved copy of the same food
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: preserved food refused by recipes
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: formaldehyde barrel soak
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: salt & lime barrel cure
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: barrel needs enough agent
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: formaldehyde and curing salt are craftable
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: meal containers preserved through their contents
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: shelves accept preserved food
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: toxicity escalates from vomiting to lethal
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: help command lists every command
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: handbook: preserved items open the guide
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: ground storage for preserved food
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: creative tabs, one per method
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: creative lists: players get exactly the server's
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST ok: server-side handbook calls are safe
+20.10.2026 04:05:43 [Server Notification] [Embalmed Eats] SELFTEST PASS (23/23)
+20.10.2026 04:05:51 [Server Notification] Handling Console Command /embalmedeats help
+20.10.2026 04:05:51 [Server Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+20.10.2026 04:05:55 [Server Notification] Handling Console Command /embalmedeats 
+20.10.2026 04:05:55 [Server Notification] Embalmed Eats commands:
+/embalmedeats help - Show this list
+/embalmedeats preserve [wax|resin|formaldehyde|saltcure] - Preserve the food in your hand straight away (method: wax, resin, formaldehyde or saltcure)
+/embalmedeats unpreserve - Make the preserved food in your hand normal again
+/embalmedeats toxicity [player] - Show how poisoned you (or another player) are from eating preserved food
+/embalmedeats cure [player] - Clear the poisoning
+/embalmedeats info - Show how many foods the mod found and what it patched
+/embalmedeats selftest - Run the mod's built-in checks
+--- errors / exceptions (all) ---

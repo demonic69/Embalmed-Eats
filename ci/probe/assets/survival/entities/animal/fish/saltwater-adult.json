@@ -1,0 +1,362 @@
+{
+	code: "fish-saltwater",
+	class: "EntityFish",
+	variantgroups: [
+		{ "code": "type", 
+			"states": [
+					//"Below fish group for fish less than 2kg or so,
+				"bream", "gurnard", "haddock", "hake", "herring", "mackerel", "pollock", "perch",
+					//"Below fish group for fish roughly 2-18kg.",
+				"barracuda", "grouper", "salmon", "snapper", "tuna", "wolf",
+					//"Below fish group for fish roughly 18-70kg.",
+				"amberjack", "mahi-mahi", "wreckfish",
+					//"Below fish group for fish from roughly 70kg and up.",
+				"coelacanth", "sturgeon"
+			]
+		},
+		{ "code": "species", 
+			"states": [
+				"alaska", "atlantic", "bay", "cape", "common", "pacific", "sea", "silver",
+				"bering", "black", "great", "pink", "red", "skipjack",
+				"yellowtail"
+			] 
+		},		
+		{ "code": "age", "states": ["adult"] }
+	],
+	allowedVariants: [
+		"fish-saltwater-bream-sea-*",
+		"fish-saltwater-gurnard-cape-*",
+		"fish-saltwater-haddock-common-*",
+		"fish-saltwater-hake-silver-*",
+		"fish-saltwater-herring-atlantic-*",
+		"fish-saltwater-mackerel-atlantic-*",
+		"fish-saltwater-pollock-alaska-*",
+		"fish-saltwater-perch-pacific-*",
+		
+		"fish-saltwater-barracuda-great-*",
+		"fish-saltwater-grouper-black-*",
+		"fish-saltwater-salmon-pink-*",
+		"fish-saltwater-snapper-red-*",
+		"fish-saltwater-tuna-skipjack-*",
+		"fish-saltwater-wolf-bering-*",
+
+		"fish-saltwater-amberjack-yellowtail-*",
+		"fish-saltwater-mahi-mahi-common-*",
+		"fish-saltwater-wreckfish-atlantic-*",
+
+		"fish-saltwater-coelacanth-common-*",
+		"fish-saltwater-sturgeon-atlantic-*"
+	],
+	hitboxSizeByType:{
+		"@fish-saltwater-(bream|gurnard|haddock|hake|herring|mackerel|pollock|perch)-.*": {	x: 0.5, y: 0.25	},
+		"@fish-saltwater-(barracuda|grouper|salmon|snapper|tuna|wolf)-.*": { x: 0.6, y: 0.25 },
+		"fish-saltwater-amberjack-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-mahi-mahi-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-wreckfish-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-coelacanth-*": { x: 0.8, y: 0.25 },
+		"fish-saltwater-sturgeon-*": { x: 0.8, y: 0.25 }
+	},
+	deadhitboxSizeByType:{
+		"@fish-saltwater-(bream|gurnard|haddock|hake|herring|mackerel|pollock|perch)-.*": {	x: 0.5, y: 0.25	},
+		"@fish-saltwater-(barracuda|grouper|salmon|snapper|tuna|wolf)-.*": { x: 0.6, y: 0.25 },
+		"fish-saltwater-amberjack-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-mahi-mahi-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-wreckfish-*": { x: 0.7, y: 0.25 },
+		"fish-saltwater-coelacanth-*": { x: 0.8, y: 0.25 },
+		"fish-saltwater-sturgeon-*": { x: 0.8, y: 0.25 }
+	},
+	eyeHeight: 0.2,
+	drops: [ { type: "item", code: "fishraw-saltwater-{type}-{species}-{age}" } ],
+	attributes: {
+		handbook: {
+			"groupcode": "creaturegroup-fish-saltwater"
+		},
+		baitTagsByType: {
+			"fish-reef-*": ["nobait", "bait-worm", "bait-meat", "bait-stinkmeat", "bait-stinkdough"],
+			"@fish-saltwater-(amberjack|barracuda|mahi-mahi|grouper|coelacanth|sturgeon)-.*-juvenile": ["bait-worm", "bait-stinkmeat", "bait-meat", "bait-fishtiny"],
+			"*-juvenile": ["nobait", "bait-worm", "bait-meat", "bait-stinkmeat", "bait-stinkdough"],
+			"fish-saltwater-perch-*-adult": ["nobait", "bait-worm", "bait-meat", "bait-stinkmeat", "bait-stinkdough"],
+			"@fish-saltwater-(amberjack|barracuda|mahi-mahi)-.*-adult": ["bait-meat", "bait-fishtiny", "bait-fishsmall"],
+			"@fish-saltwater-(grouper|coelacanth|sturgeon)-.*-adult": ["bait-stinkmeat", "bait-meat", "bait-fishtiny", "bait-fishsmall"],
+			"fish-saltwater-pike-*-adult": ["bait-stinkmeat", "bait-meat", "bait-fishtiny", "bait-fishsmall"],
+			"*": ["bait-worm", "bait-meat", "bait-stinkmeat", "bait-stinkdough"],
+		}
+	},
+	habitat: "Underwater",
+	client: {
+		renderer: "Shape",
+		size: 1,
+		shape: { base: "entity/animal/fish/saltwater/{type}-{age}" },
+		texture: { base: "entity/animal/fish/saltwater/{type}-{species}-{age}*" },
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 0 }, 
+			{ code: "interpolateposition" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "despawn", minPlayerDistance: 64, minSeconds: 210 },
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "swim",
+				animation: "swim"
+			},
+			{
+				code: "swimfast",
+				animation: "run"
+			},
+			{
+				code: "die",
+				animation: "dead",
+			},
+			{
+				code: "idle-land",
+				animation: "idle-land"
+			},
+			{
+				code: "flop",
+				animation: "flopping"
+			},
+			{
+				code: "flop2",
+				animation: "flopping2"
+			},
+			{
+				code: "eat",
+				animation: "eat"
+			},
+			{
+				code: "eat2",
+				animation: "rising-eat"
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "despawn", minPlayerDistance: 12, belowLightLevel: 8, minSeconds: 200 },
+			{ code: "health", 
+				currenthealthByType: { 
+					"@fish-saltwater-(bream|gurnard|haddock|hake|herring|mackerel|pollock|perch)-.*": 2,
+					"@fish-saltwater-(barracuda|grouper|salmon|snapper|tuna|wolf)-.*": 4,
+					"fish-saltwater-amberjack-*": 6,
+					"fish-saltwater-mahi-mahi-*": 6,
+					"fish-saltwater-wreckfish-*": 6,
+					"fish-saltwater-coelacanth-common-adult": 12,
+					"fish-saltwater-sturgeon-atlantic-adult": 24
+				},
+				maxhealthByType: { 
+					"@fish-saltwater-(bream|gurnard|haddock|hake|herring|mackerel|pollock|perch)-.*": 2,
+					"@fish-saltwater-(barracuda|grouper|salmon|snapper|tuna|wolf)-.*": 4,
+					"fish-saltwater-amberjack-*": 6,
+					"fish-saltwater-mahi-mahi-*": 6,
+					"fish-saltwater-wreckfish-*": 6,
+					"fish-saltwater-coelacanth-common-adult": 12,
+					"fish-saltwater-sturgeon-atlantic-adult": 24
+				}
+			},
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ 
+				code: "emotionstates",
+				states: [
+					{ code: "fleeondamage", duration: 10, chance: 1, slot: 0, priority: 1, accumType: "max" }
+				]
+			},
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "fishoutofwater", 
+						priority: 2.5, 
+						priorityForCancel: 2.6,
+						movespeed: 0.005,
+						animation: "flopping",
+						animationSpeed: 1.5
+					},
+					{
+						code: "fishoutofwater", 
+						priority: 2.5, 
+						priorityForCancel: 2.6,
+						movespeed: 0.005,
+						animation: "flopping2",
+						animationSpeed: 1.5
+					},
+					{
+						code: "fishoutofwater", 
+						priority: 2.5, 
+						animation: "idle-land"
+					},
+					{
+						code: "fleeentity",
+						id: "fleecreature",
+						entityCodes: ["player", "wolf-*", "fox-*", "hyena-*"],
+						priority: 2,
+						whenSwimming: true,
+						fleeDurationMs: 10000,
+						fleeingDistance: 23,
+						movespeed: 0.06,
+						seekingRange: 14,
+						animation: "swimfast",
+						animationSpeed: 2.3
+					},
+					{
+						code: "seekbobber",
+						id: "seekbobber",
+						entityCodes: ["bobber-*"],
+						searchType: "Inanimate",
+						targetOnlyInteractableEntities: false,
+						priority: 1.8,
+						whenSwimming: true,
+						seekingRange: 25,
+						movespeed: 0.01,
+						animation: "swim",
+						animationSpeed: 2
+					},
+					{
+						// This task is started through code in EntityBobber
+						code: "fleeentity",
+						id: "fleebobber",
+						entityCodes: ["bobber-*"],
+						priority: -1,
+						priorityForCancel: 2,
+						whenSwimming: true,
+						fleeDurationMs: 10000,
+						fleeingDistance: 30,
+						movespeed: 0.06,
+						seekingRange: 14,
+						animation: "swimfast",
+						animationSpeed: 2.3
+					},
+					{
+						code: "wander", 
+						priority: 1.2, 
+						priorityForCancel: 1.35,
+						movespeed: 0.005,
+						animation: "swim"
+					},
+					{
+						code: "fishmovefast", 
+						priority: 0.8, 
+						priorityForCancel: 1.5,
+						movespeed: 0.045,
+						animation: "swimfast"
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						priorityForCancel: 1.5,
+						minduration: 1000,
+						maxduration: 6000,
+						mincooldown: 2000,
+						maxcooldown: 20000,
+						animation: "idle"
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						minduration: 500,
+						maxduration: 1000,
+						mincooldown: 2000,
+						maxcooldown: 30000,
+						animation: "idle"
+					}
+				]
+			}
+		],
+		spawnconditions: {
+			worldgen: {
+				TriesPerChunkByType: { 
+					"*":	{ avg: 0.02, var: 0 }
+				},
+				tryOnlySurface: true,
+				minLightLevel: 3,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["saltwater-still-7"],
+				randomMapCodePool: ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish7", "fish8", "fish9"]
+			},
+			runtime: {
+				group: "passive",
+				maxQuantityByGroup: { "code": "fish-saltwater-{type}-*", "maxQuantity": 4 },
+				chance: 0.0001,
+				tryOnlySurface: true,
+				minLightLevel: 3,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["saltwater-still-7"],
+				randomMapCodePool: ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish7", "fish8", "fish9"]
+			},
+			climate: {
+				minTempByType: {
+					"fish-saltwater-sturgeon-atlantic-*": -10,
+					"fish-saltwater-coelacanth-common-*": 15,
+
+					"fish-saltwater-wreckfish-atlantic-*": -15,
+					"fish-saltwater-amberjack-yellowtail-*": 0,
+
+					"fish-saltwater-wolf-bering-*": -20,
+					"fish-saltwater-tuna-skipjack-*": -10,
+					"fish-saltwater-snapper-red-*": 15,
+					"fish-saltwater-salmon-pink-*": -11,
+					"fish-saltwater-grouper-black-*": 6,
+
+					"fish-saltwater-perch-pacific-*": -10,
+					"fish-saltwater-pollock-alaska-*": -11,
+					"fish-saltwater-mackerel-atlantic-*": -13,
+					"fish-saltwater-herring-atlantic-*": -19,
+					"fish-saltwater-hake-silver-*": 6,
+					"fish-saltwater-haddock-common-*": -18,
+					"fish-saltwater-bream-sea-*": -7,
+
+					"*": 4
+				},
+				maxTempByType: {
+					"fish-saltwater-sturgeon-atlantic-*": 19,
+
+					"fish-saltwater-wolf-bering-*": 6,
+					"fish-saltwater-salmon-pink-*": 5,
+
+					"fish-saltwater-perch-pacific-*": 15,
+					"fish-saltwater-pollock-alaska-*": 11,
+					"fish-saltwater-mackerel-atlantic-*": 18,
+					"fish-saltwater-herring-atlantic-*": 14,
+					"fish-saltwater-hake-silver-*": 32,
+					"fish-saltwater-haddock-common-*": 11,
+					"fish-saltwater-gurnard-cape-*": 24,
+					"fish-saltwater-bream-sea-*": 27,
+
+					"*": 40	
+				},
+				minYByType: {
+					"fish-saltwater-coelacanth-common-*": 0.3,
+
+					"fish-saltwater-huge-wolf-bering-*": 0.7,
+					"fish-saltwater-snapper-red-*": 0.7,
+					"fish-saltwater-barracuda-great-*": 0.7,
+
+					"*": 0.8
+				},
+				maxYByType: {
+					"fish-saltwater-coelacanth-common-*": 0.6,
+
+					"fish-saltwater-grouper-black-*": 0.95,
+
+					"*": 1.0
+				}
+			}
+		}
+	}
+}

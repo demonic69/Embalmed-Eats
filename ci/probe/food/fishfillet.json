@@ -1,0 +1,134 @@
+{
+	code: "fish",
+	maxstacksize: 64,
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } }
+	],
+	attributes: {
+		inContainerTextureByType: {
+			"*-raw": { base: "block/wood/barrel/{type}-fish" },
+			"*-cooked": { base: "block/wood/barrel/{type}-fish" },
+			"*-cured": { base: "block/wood/barrel/{type}-fish" }
+		},
+		inFirePitProps: {
+			transform: {
+				scale: 0.8,
+				origin: { x: 0.5, y: 0.0625, z: 0.5 },
+				translation: { x: 0, y: 0.1875, z: 0 },
+				rotation: { x: 0, y: 53, z: -90 }
+			},
+			useFirepitModel: "Spit"
+		},	
+		groundStorageTransform: {
+			rotation: { x: 0, y: 40, z: 0 }
+		},
+		nutritionPropsWhenInMeal: { satiety: 375, foodcategory: "Protein" },
+		displaycaseable: true,
+		shelvable: true,
+        displayable: {
+            shelf: {
+                size: { width: 5.5, height: 1, length: 3.5 }
+            }
+        },
+		inPiePropertiesByType: {
+			"*-raw": { texture: "block/food/pie/fill-fish", partType: 'Filling', mixingCodes: ["potpie"] }
+		},
+		inTrapTransform: {
+			"small": {
+				translation: { x: -0.07, y: 0.05, z: -0.03 },
+				rotation: { x: 0, y: 96, z: 0 },
+				scale: 0.85
+			},
+			"large": {
+				translation: { x: 0.03, y: 0.2, z: 0 },
+				rotation: { x: 0, y: 0, z: -90 },
+				scale: 0.85
+			}
+		},
+		foodTags: ["meat"],
+		handbook: {
+			groupBy: ["@(bushmeat|fish|poultry|redmeat)-{type}"]
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["raw", "cooked", "cured", "smoked", "cured-smoked"] },
+	],
+	shape: { base: "item/food/meat/fish" },
+	textures: {
+		"raw": {base: "item/food/meat/{type}" }
+	},
+	creativeinventory: { "general": ["*-raw", "*-cooked", "*-cured"], "items": ["*-raw", "*-cooked", "*-cured"] },
+	nutritionPropsByType: {
+		"*-raw": { satiety: 50, foodcategory: "Protein" },
+		"*-cooked": { satiety: 100, foodcategory: "Protein" },
+		"*-cured": { satiety: 75, foodcategory: "Protein" },
+		"*-smoked": { satiety: 75, foodcategory: "Protein" },
+		"*-cured-smoked": { satiety: 75, foodcategory: "Protein" },
+	},
+	transitionablePropsByType: {
+		"*-raw": [{
+			type: "Perish",
+			freshHours: { avg: 36 },
+			transitionHours: { avg: 24 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		}],
+		"*-cooked": [{
+			type: "Perish",
+			freshHours: { avg: 120 },
+			transitionHours: { avg: 36 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		}],
+		"*-cured": [{
+			type: "Perish",
+			freshHours: { avg: 8760 },
+			spoilHours: { avg: 4380 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		}],
+		"*-smoked": [{
+			type: "Perish",
+			freshHours: { avg: 8760 },
+			spoilHours: { avg: 4380 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		}],
+		"*-cured-smoked": [{
+			type: "Perish",
+			freshHours: { avg: 10920 },
+			spoilHours: { avg: 5460 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		}]
+	},
+	materialDensity: 600,
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -22.5, y: -44, z: -158 },
+		origin: { x: 0.5, y: -0, z: 0.5 },
+		scale: 2.81
+	},
+	tpHandTransform: {
+		translation: { x: -0.89, y: -0.2, z: -0.91 },
+		rotation: { x: -106, y: -1, z: -5 },
+		origin: { x: 0.5, y: 0.12, z: 0.54 },
+		scale: 0.65
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3
+	},
+	combustiblePropsByType: {
+		"fish-raw": {
+			meltingPoint: 150,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fish-cooked" },
+			requiresContainer: false
+		}
+	}
+}

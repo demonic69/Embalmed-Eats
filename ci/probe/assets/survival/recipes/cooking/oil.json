@@ -1,0 +1,131 @@
+[
+	{
+		code: "rendered fat1",
+		isFood: "true",
+		perishableProps: {
+			type: "Harden",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.01 },
+			transitionRatio: 1,
+			transitionedStack: { type: "item", code: "fat-rendered" }
+		},
+		shape: { base: "block/food/meal/liquid" },
+		ingredients: [
+			{ 
+				code: "fat", 
+				validStacks: [
+					{ type: "item", code: "fat" },
+				],
+				minQuantity: 1,
+				maxQuantity: 1,
+				portionSizeLitres: 0.5
+			},
+		],
+		cooksInto: { type: "Item", code: "fat-rendered", quantity: 1 }
+	},
+	{
+		code: "rendered fat2",
+		isFood: "true",
+		perishableProps: {
+			type: "Harden",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.01 },
+			transitionRatio: 1,
+			transitionedStack: { type: "item", code: "fat-rendered" }
+		},
+		shape: { base: "block/food/meal/liquid" },
+		ingredients: [
+			{ 
+				code: "fat", 
+				validStacks: [
+					{ type: "item", code: "fat" },
+				],
+				minQuantity: 2,
+				maxQuantity: 2,
+				portionSizeLitres: 0.5
+			},
+		],
+		cooksInto: { type: "Item", code: "fat-rendered", quantity: 2 }
+	},
+	{
+		code: "rendered fat3",
+		isFood: "true",
+		perishableProps: {
+			type: "Harden",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.01 },
+			transitionRatio: 1,
+			transitionedStack: { type: "item", code: "fat-rendered" }
+		},
+		shape: { base: "block/food/meal/liquid" },
+		ingredients: [
+			{ 
+				code: "fat", 
+				validStacks: [
+					{ type: "item", code: "fat" },
+				],
+				minQuantity: 3,
+				maxQuantity: 3,
+				portionSizeLitres: 0.5
+			},
+		],
+		cooksInto: { type: "Item", code: "fat-rendered", quantity: 3 }
+	},
+	{
+		code: "rendered fat4",
+		isFood: "true",
+		perishableProps: {
+			type: "Harden",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.01 },
+			transitionRatio: 1,
+			transitionedStack: { type: "item", code: "fat-rendered" }
+		},
+		shape: { base: "block/food/meal/liquid" },
+		ingredients: [
+			{ 
+				code: "fat", 
+				validStacks: [
+					{ type: "item", code: "fat" },
+				],
+				minQuantity: 4,
+				maxQuantity: 4,
+				portionSizeLitres: 0.5
+			},
+		],
+		cooksInto: { type: "Item", code: "fat-rendered", quantity: 4 }
+	},
+	{
+		code: "linseed",
+		perishableProps: {
+			type: "None",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.01 },
+			transitionRatio: 1,
+			transitionedStack: { type: "item", code: "rot" }
+		},
+		shape: { base: "block/food/meal/liquid" },
+		ingredients: [
+			{ 
+				code: "water", 
+				validStacks: [ 
+					{ 
+						type: "item", 
+						code: "waterportion", 
+						shapeElement: "bowl/water"
+					}
+				],
+				minQuantity: 1,
+				maxQuantity: 1,
+				portionSizeLitres: 1,
+			},
+			{ 
+				code: "flax flour", 
+				validStacks: [  { type: "item", code: "flour-flax" } ],
+				minQuantity: 3,
+				maxQuantity: 3
+			}
+		],
+		cooksInto: { type: "Item", code: "oilportion-flax", quantity: 10 }
+	},
+]

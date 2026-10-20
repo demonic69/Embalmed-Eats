@@ -1,0 +1,11 @@
+[
+	{
+		code: "dye-red",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 5 },
+			{ type: "item", code: "crushed-cinnabar", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-red", litres: 5 }
+	}
+]

@@ -1,0 +1,73 @@
+{
+	code: "pickledlegume",
+	maxstacksize: 64,
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } }
+	],
+	attributes: {
+		inContainerTexture: { base: "block/wood/barrel/pickled-{type}" },
+		crockable: true,
+		inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', foodCategory: "Vegetable" },
+		groundStorageTransform: {
+			translation: { x: 0.025, y: -0.075, z: 0.025 },
+			scale: 0.86
+		},
+		handbook: {
+			groupBy: ["pickledlegume-*", "pickledvegetable-*"]
+		},
+        displayable: {
+            shelf: {
+                size: { width: 4, height: 4, length: 4 }
+            }
+        }
+	},
+	variantgroups: [
+		{ code: "type", states: ["soybean"] },
+	],
+	shapebytype: {
+		"*-soybean": { base: "item/resource/crushed/normal" },
+	},
+	texture: { base: "item/food/legume/soybeanpickled" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	nutritionPropsByType: {
+		"*": { satiety: 150, health: 0, foodcategory: "Protein" },
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 4320 },
+		transitionHours: { avg: 432 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.5
+	}],
+	materialDensity: 600,
+	guiTransformByType: {
+		"*-soybean": {
+			translation: { x: 2.5, y: 1, z: 0 },
+			rotation: { x: 137, y: 131, z: 0 },
+			origin: { x: 0.5, y: 0.15, z: 0.5 },
+			scale: 2.84
+		}
+	},
+	tpHandTransformByType: {
+		"*-soybean": {
+			translation: { x: -0.13, y: -1.05, z: -0.8 },
+			rotation: { x: 116, y: -4, z: -69 },
+			origin: { x: -0.1, y: 0.42, z: 0.73 },
+			scale: 0.46
+		}
+	},
+	groundTransformByType: {
+		"*-soybean": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 3.5
+		},
+	},
+	"heldRightReadyAnimationByType": {
+		"*": "holdbothhands"
+	},
+	"heldTpIdleAnimationByType": {
+		"*": "holdbothhands"
+    }
+}

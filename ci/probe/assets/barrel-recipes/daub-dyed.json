@@ -1,0 +1,56 @@
+[
+	{
+		"code": "daub-blue",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-blue", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "brownweathered", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-blue", quantity: 10 }
+	},
+	{
+		"code": "daub-blue",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-woad", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "brownweathered", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-blue", quantity: 10 }
+	},
+	{
+		"code": "daub-green",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-green", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-green", quantity: 10 }
+	},
+	{
+		"code": "daub-orange",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-orange", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-orange", quantity: 10 }
+	},
+	{
+		"code": "daub-pink",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-pink", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-pink", quantity: 10 }
+	},
+	{
+		"code": "daub-yellow",
+		"sealHours": 4,
+		"ingredients": [
+			{ "type": "item", "code": "dye-yellow", litres: 1 },
+			{ type: "item", code: "daubraw-*", name: "color", allowedVariants: ["ash", "browngolden", "brownlight", "tan"], quantity: 10  },
+		],
+		"output": { "type": "item", "code": "daubraw-yellow", quantity: 10 }
+	}
+]

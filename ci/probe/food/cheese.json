@@ -1,0 +1,147 @@
+{
+	code: "cheese",
+	class: "ItemCheese",
+	maxstacksizeByType: {
+		"*-1slice": 16,
+		"*-2slice": 8,
+		"*-3slice": 6,
+		"*-4slice": 4,
+	},
+	attributes: {
+		onDisplayTransform: {
+			rotation: { x: 0, y: 40, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.73
+		},
+		onshelfTransformByType: {
+			"*-1slice": {
+				translation: { x: 0.15, y: 0, z: 0.15 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+			"*-2slice": {
+				translation: { x: 0.15, y: 0, z: 0 },
+				rotation: { x: 0, y: 90, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+			"*": {
+				rotation: { x: 0, y: 40, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			}
+		},
+		displaycaseable: true,
+		shelvableByType: {
+			"*-1slice": "Quadrants",
+			"*-2slice": "Halves",
+			"*": "SingleCenter"
+		},
+		nutritionPropsWhenInMeal: {
+			satietyByType:  {
+				"*-blue-1slice": 300,
+				"*-cheddar-1slice": 360,
+			},
+			foodcategory: "Dairy"
+		},
+		inPiePropertiesByType: {
+			"*-cheddar-1slice": { texture: "block/food/pie/fill-cheddar", partType: 'Filling' },
+			"*-blue-1slice": { texture: "block/food/pie/fill-bluecheese", partType: 'Filling' }
+		},
+		handbook: {
+			groupBy: ["cheese-*-{part}"]
+		},
+        displayable: {
+            shelf: {
+                sizeByType: {
+                    "*-1slice": { width: 5, height: 4, length: 5 },
+                    "*-2slice": { width: 10, height: 4, length: 5 },
+                    "*": { width: 10, height: 4, length: 10 }
+                },
+                "transformByType": {
+                    "*-1slice": {
+                        "translation": { "x": 0.175, "y": 0, "z": 0.175 }
+                    }
+                }
+            }
+        }
+	},
+	heldTpIdleAnimationByType: {
+		"*-4slice": "holdbothhandslarge", 
+	},
+	heldTpUseAnimationByType: {
+		"*-4slice": "twohandplaceblock",
+	},
+	variantgroups: [
+		{ code: "type", states: ["cheddar", "blue", "waxedcheddar"] },
+		{ code: "part", states: ["1slice", "2slice", "3slice", "4slice"] },
+	],
+	skipVariants: [
+		"cheese-waxedcheddar-1slice",
+		"cheese-waxedcheddar-2slice",
+		"cheese-waxedcheddar-3slice",
+	],
+	shape: { base: "item/food/dairy/cheese/{type}-{part}" },
+	creativeinventory: { "general": ["*-4slice", "*-1slice"], "items": ["*-4slice", "*-1slice"] },
+	materialDensity: 700,
+	nutritionPropsByType: {
+		"*-blue-1slice": { satiety: 200, health: 0, foodcategory: "Dairy" },
+		"*-cheddar-1slice": { satiety: 240, health: 0, foodcategory: "Dairy" }
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHoursByType: {
+			"cheese-cheddar-*": { avg: 4320 },
+			"cheese-waxedcheddar-*": { avg: 8640 },
+			"cheese-blue-*": { avg: 5400 },
+		},
+		transitionHours: { avg: 12 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatioByType: {
+			"*-1slice": 1,
+			"*-2slice": 2,
+			"*-3slice": 3,
+			"*-4slice": 4,
+		}
+	}],
+	guiTransformByType: {
+		"*-1slice": {
+			translation: { x: 0, y: 1, z: 0 },
+			rotation: { x: -34, y: 27, z: -18 },
+			origin: { x: 0.36, y: 0.1, z: 0.36 },
+			scale: 2.59
+		},
+		"*-2slice": {
+			rotation: { x: -10, y: 59, z: -19 },
+			origin: { x: 0.5, y: 0.1, z: 0.35 },
+			scale: 2
+		},
+		"*-3slice": {
+			rotation: { x: -10, y: 59, z: -19 },
+			origin: { x: 0.5, y: 0.1, z: 0.42 },
+			scale: 2
+		},
+		"*-4slice": {
+			rotation: { x: -10, y: 59, z: -19 },
+			origin: { x: 0.5, y: 0.1, z: 0.48 },
+			scale: 2
+		}
+	},
+	tpHandTransformByType: {
+		"*-1slice": {
+			translation: { x: -1, y: -0.2, z: -0.8 },
+			rotation: { x: 33, y: 33, z: -14 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.65
+		},
+		"*": {
+			translation: { x: -0.8, y: 0, z: -0.4 },
+			rotation: { x: -27, y: 25, z: 87 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.65
+		}
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.2
+	}
+}

@@ -1,0 +1,12 @@
+./survival/blocktypes/clay/fired/bowl-meal.json
+./survival/blocktypes/clay/fired/bowl.json
+./survival/blocktypes/clay/fired/crock.json
+./survival/blocktypes/clay/fired/dirtypot.json
+./survival/blocktypes/clay/fired/flowerpot.json
+./survival/blocktypes/clay/fired/pot.json
+./survival/blocktypes/clay/flowerpot-fancy.json
+./survival/blocktypes/clay/raw/bowl.json
+./survival/blocktypes/clay/raw/crock.json
+./survival/blocktypes/clay/raw/flowerpot.json
+./survival/blocktypes/clay/raw/pot.json
+./survival/blocktypes/food/pie.json

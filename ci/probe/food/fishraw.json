@@ -1,0 +1,1163 @@
+{
+	code: "fishraw",
+	behaviorsByType: {
+		"*":[
+				{ name: "GroundStorable", 
+					properties: { 
+						layoutByType: {
+							"fishraw-reef-*":'Quadrants',
+							"fishraw-freshwater-arapaima-*-juvenile":'SingleCenter',
+							"*-juvenile":'Quadrants',
+							"@fishraw-saltwater-(herring|mackerel|perch)-.*-adult": 'Quadrants',
+							"@fishraw-freshwater-(alewife|chub|crappie|perch|tilapia)-.*-adult": 'Quadrants',
+							"@fishraw-saltwater-(coelacanth|mahi-mahi|grouper|amberjack|barracuda|sturgeon)-.*-adult":'SingleCenter',
+							"fishraw-freshwater-arapaima-*-adult":'SingleCenter',
+							"fishraw-freshwater-sheatfish-*-adult":'SingleCenter',
+							"fishraw-freshwater-pike-*-adult":'SingleCenter',
+							"*":'Halves'
+						},
+						collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } 
+					} 
+				},
+				{ name: "GroundStoredProcessable",
+					properties: {
+						processTimeByType: {
+							"fishraw-saltwater-coelacanth-*-adult": 6,
+							"fishraw-saltwater-mahi-mahi-*-adult": 5,
+							"fishraw-saltwater-grouper-*-adult": 5,
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult": 4,
+							"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult": 3,
+							
+							"fishraw-saltwater-coelacanth-*-juvenile": 5,
+							"fishraw-saltwater-mahi-mahi-*-juvenile": 4,
+							"fishraw-saltwater-grouper-*-juvenile": 4,
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-juvenile": 3,
+
+							"fishraw-freshwater-arapaima-*-adult": 6,
+							"fishraw-freshwater-sheatfish-*-adult": 5,
+							"fishraw-freshwater-pike-*-adult": 4,
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-adult": 3,
+
+							"fishraw-freshwater-arapaima-*-juvenile": 3,
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-juvenile": 2,
+
+							"*": 2
+						},
+						processedStacksByType: {
+							"fishraw-reef-*": [{ type: "item", code: "fish-raw", quantity: { avg: 1 } }],
+							"fishraw-saltwater-coelacanth-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 9 } }],
+							"fishraw-saltwater-mahi-mahi-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 9 } }],
+							"fishraw-saltwater-grouper-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 9 } }],
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 7 } }],
+							"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 4 }}],
+							"@fishraw-saltwater-(herring|mackerel|perch)-.*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+
+							"fishraw-saltwater-coelacanth-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"fishraw-saltwater-mahi-mahi-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"fishraw-saltwater-grouper-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"@fishraw-saltwater-(salmon|snapper|tuna|wolf|wreckfish)-.*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 }}],
+
+							"fishraw-freshwater-arapaima-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 15 } }],
+							"fishraw-freshwater-sheatfish-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 10 } }],
+							"fishraw-freshwater-pike-*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 7 } }],
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 4 } }],
+							"@fishraw-freshwater-(crappie|perch|trout|tilapia|piranha)-.*-adult": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+
+							"fishraw-freshwater-arapaima-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 4 } }],
+							"fishraw-freshwater-sheatfish-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"fishraw-freshwater-pike-*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-juvenile": [{ type: "item", code: "fish-raw", quantity: { avg: 2 } }],
+
+							"*": [{ type: "item", code: "fish-raw", quantity: { avg: 1 } }]
+						},
+						toolDurabilityCostByType: {
+							"fishraw-reef-*": 1,
+							"fishraw-saltwater-coelacanth-*-adult": 4,
+							"fishraw-saltwater-mahi-mahi-*-adult": 4,
+							"fishraw-saltwater-grouper-*-adult": 4,
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult": 2,
+							"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult": 2,
+
+							"fishraw-saltwater-coelacanth-*-juvenile": 2,
+							"fishraw-saltwater-mahi-mahi-*-juvenile": 2,
+							"fishraw-saltwater-grouper-*-juvenile": 2,
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-juvenile": 2,
+
+							"fishraw-freshwater-arapaima-*-adult": 5,
+							"fishraw-freshwater-sheatfish-*-adult": 4,
+							"fishraw-freshwater-pike-*-adult": 5,
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-adult": 2,
+							"fishraw-freshwater-arapaima-*-juvenile": 2,
+							"fishraw-freshwater-sheatfish-*-juvenile": 2,
+							"fishraw-freshwater-pike-*-juvenile": 2,
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|tilapia|walleye)-.*-juvenile": 1,
+
+							"*": 1
+						},
+						remainingItemByType: { 
+							"fishraw-saltwater-coelacanth-*-adult": { type: "item", code: "bone-fish", quantity: 6 },
+							"fishraw-saltwater-mahi-mahi-*-adult": { type: "item", code: "bone-fish", quantity: 4 },
+							"fishraw-saltwater-grouper-*-adult": { type: "item", code: "bone-fish", quantity: 4 },
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult": { type: "item", code: "bone-fish", quantity: 3 },
+							"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult": { type: "item", code: "bone-fish", quantity: 2 },
+							"fishraw-saltwater-coelacanth)-*-juvenile": { type: "item", code: "bone-fish", quantity: 2 },
+							"@fishraw-saltwater-(amberjack|barracuda|sturgeon|mahi-mahi|grouper)-.*-juvenile": { type: "item", code: "bone-fish", quantity: 1 },
+
+							"fishraw-freshwater-arapaima-*-adult": { type: "item", code: "bone-fish", quantity: 6 },
+							"fishraw-freshwater-sheatfish-*-adult": { type: "item", code: "bone-fish", quantity: 3 },
+							"fishraw-freshwater-pike-*-adult": { type: "item", code: "bone-fish", quantity: 3 },
+							"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-adult": { type: "item", code: "bone-fish", quantity: 2 },
+							"@fishraw-freshwater-(perch|trout|piranha)-.*": { type: "item", code: "bone-fish", quantity: 1 },
+							"fishraw-freshwater-arapaima-*-juvenile": { type: "item", code: "bone-fish", quantity: 2 },
+							"fishraw-freshwater-sheatfish-*-juvenile": { type: "item", code: "bone-fish", quantity: 1 },
+							"fishraw-freshwater-pike-*-juvenile": { type: "item", code: "bone-fish", quantity: 1 },
+							"*": null
+						},
+						tool: "knife",
+						processingSound: "game:sounds/tool/groundcrafting/hidecut*",
+						interactionHelpCode: "groundstoredaction-flay",
+						handbookProcessIntoTitle: "groundstoredflaydesc-title",
+						handbookCreatedByTitle: "handbook-createdby-groundstoredflaying",
+						transferFreshness: true
+				}
+			}
+		]
+	},
+	variantgroups: [
+		{ "code": "habitat", "states": ["freshwater", "saltwater", "reef"] },
+		{ "code": "type", 
+			"states": [ 
+				"angel", "butterfly", "clown", "puffer", "tang", "trigger", "wrasse",
+				"alewife", "bream", "chub", "gurnard", "haddock", "hake", "herring", "mackerel", "pollock", "perch", "crappie", "piranha", "trout",
+				"barracuda", "grouper", "salmon", "snapper", "tuna", "wolf", "bass", "carp", "catfish", "pickerel", "tilapia", "walleye",
+				"amberjack", "mahi-mahi", "wreckfish", "pike",
+				"coelacanth", "sturgeon", "arapaima", "sheatfish"
+			]
+		},
+		{ "code": "species", 
+			"states": [
+				"common", "banded", "bicolor", "black", "blackwedged", "copperband", "creole", "longspine", "powderblue", "titan", "yellowstripe",
+				"alaska", "atlantic", "bay", "cape", "pacific", "sea", "silver", "brown", "european", "rainbow", "river", "shad", "white", "yellow",
+				"bering", "great", "pink", "red", "skipjack", "blue", "chain", "channel", "coho", "grass", "largemouth", "nile", "smallmouth",
+				"yellowtail", "northern",
+				"arapaima", "gigas"
+			] 
+		},
+		{ "code": "age", "states": ["adult", "juvenile"] }
+	],
+	shape: { base: "entity/animal/fish/{habitat}/{type}-{age}" },
+	textures: { "skin": { base: "entity/animal/fish/{habitat}/{type}-{species}-adult*"} },
+	allowedVariants: [
+		"fishraw-reef-angel-bicolor-adult",
+		"fishraw-reef-butterfly-blackwedged-adult",
+		"fishraw-reef-butterfly-copperband-adult",
+		"fishraw-reef-clown-black-adult",
+		"fishraw-reef-clown-common-adult",
+		"fishraw-reef-clown-yellowstripe-adult",
+		"fishraw-reef-puffer-longspine-adult",
+		"fishraw-reef-tang-banded-adult",
+		"fishraw-reef-tang-powderblue-adult",
+		"fishraw-reef-trigger-titan-adult",
+		"fishraw-reef-wrasse-creole-adult",
+		
+		"fishraw-saltwater-bream-sea-adult",
+		"fishraw-saltwater-gurnard-cape-adult",
+		"fishraw-saltwater-haddock-common-adult",
+		"fishraw-saltwater-hake-silver-adult",
+		"fishraw-saltwater-herring-atlantic-adult",
+		"fishraw-saltwater-mackerel-atlantic-adult",
+		"fishraw-saltwater-pollock-alaska-adult",
+		"fishraw-saltwater-perch-pacific-adult",
+		
+		"fishraw-saltwater-salmon-pink-*",
+		"fishraw-saltwater-snapper-red-*",
+		"fishraw-saltwater-tuna-skipjack-*",
+		"fishraw-saltwater-wolf-bering-*",
+		"fishraw-saltwater-wreckfish-atlantic-*",
+
+		"fishraw-saltwater-barracuda-great-*",
+		"fishraw-saltwater-sturgeon-atlantic-*",
+		"fishraw-saltwater-amberjack-yellowtail-*",
+
+		"fishraw-saltwater-grouper-black-*",
+		"fishraw-saltwater-mahi-mahi-common-*",
+		"fishraw-saltwater-coelacanth-common-*",
+
+		"fishraw-freshwater-alewife-shad-adult",
+		"fishraw-freshwater-chub-river-adult",
+		"fishraw-freshwater-crappie-black-adult",
+		"fishraw-freshwater-crappie-white-adult",
+		"fishraw-freshwater-perch-european-adult",
+		"fishraw-freshwater-perch-yellow-adult",
+		"fishraw-freshwater-piranha-black-adult",
+		"fishraw-freshwater-piranha-red-adult",
+		"fishraw-freshwater-tilapia-nile-adult",
+		"fishraw-freshwater-tilapia-red-adult",
+		"fishraw-freshwater-trout-brown-adult",
+		"fishraw-freshwater-trout-rainbow-adult",
+		
+		"fishraw-freshwater-bass-largemouth-*",
+		"fishraw-freshwater-bass-smallmouth-*",
+		"fishraw-freshwater-carp-common-*",
+		"fishraw-freshwater-carp-grass-*",
+		"fishraw-freshwater-catfish-blue-*",
+		"fishraw-freshwater-catfish-channel-*",
+		"fishraw-freshwater-pickerel-chain-*",
+		"fishraw-freshwater-salmon-coho-*",
+		"fishraw-freshwater-walleye-common-*",
+
+		"fishraw-freshwater-pike-northern-*",
+
+		"fishraw-freshwater-arapaima-arapaima-*",
+		"fishraw-freshwater-arapaima-gigas-*",
+		"fishraw-freshwater-sheatfish-black-*",
+		"fishraw-freshwater-sheatfish-white-*"
+	],
+	attributes: {
+        handbook: {
+            groupBy: [ "fishraw-*" ]
+        },
+		groundStorageTransformByType: {
+			"fishraw-freshwater-alewife-*": {
+				translation: { x: -0.1, y: -0.16, z: -0.02 },
+				rotation: { x: -90, y: 1, z: 30 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-freshwater-chub-*": {
+				translation: { x: -0.1, y: -0.16, z: -0.02 },
+				rotation: { x: -90, y: 1, z: 30 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-freshwater-tilapia-*": {
+				translation: { x: -0.07, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 1, z: 30 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-saltwater-perch-*": {
+				translation: { x: -0.08, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 1, z: 30 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-saltwater-mackerel-*": {
+				translation: { x: -0.05, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 0, z: 33 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-saltwater-*-juvenile": {
+				translation: { x: -0.05, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 0, z: 33 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"fishraw-freshwater-*-juvenile": {
+				translation: { x: -0.05, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 0, z: 33 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"@fishraw-saltwater-(coelacanth|grouper|mahi-mahi|amberjack|barracuda|sturgeon)-.*-adult": {
+				translation: { x: 0, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 1, z: 30 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			},
+			"*": {
+				translation: { x: 0, y: -0.16, z: 0 },
+				rotation: { x: -90, y: 1, z: 85 },
+				origin: { x: 0.5, y: 0.2, z: 0.5 }
+			}
+		},
+		inFirePitPropsByType: {
+			"fishraw-reef-*":{
+				transform: {
+					translation: { x: -0.125, y: 0.3, z: 0 },
+					rotation: { x: 0, y: -45, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"@fishraw-saltwater-(coelacanth|grouper|mahi-mahi)-.*-adult":{
+				transform: {
+					translation: { x: -0.15, y: 0.1, z: -0.1 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.8
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-amberjack-*-adult":{
+				transform: {
+					translation: { x: -0.2, y: 0.15, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-barracuda-*-adult":{
+				transform: {
+					translation: { x: -0.1, y: 0.15, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-sturgeon-*-adult":{
+				transform: {
+					translation: { x: -0.07, y: 0.15, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"@fishraw-saltwater-(herring|mackerel|perch)-.*":{
+				transform: {
+					translation: { x: -0.1, y: 0.3, z: 0 },
+					rotation: { x: 0, y: -45, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"@fishraw-saltwater-(coelacanth|grouper|mahi-mahi)-.*-juvenile":{
+				transform: {
+					translation: { x: -0.06, y: 0.2, z: -0.06 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-sturgeon-*-juvenile":{
+				transform: {
+					translation: { x: 0.01, y: 0.19, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-barracuda-*-juvenile":{
+				transform: {
+					translation: { x: 0.01, y: 0.19, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-saltwater-amberjack-*-juvenile":{
+				transform: {
+					translation: { x: -0.04, y: 0.18, z: -0.05 },
+					rotation: { x: 0, y: -37, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-arapaima-*-adult":{
+				transform: {
+					translation: { x: 0.075, y: 0.15, z: -0.1 },
+					rotation: { x: 0, y: 51, z: 4 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-sheatfish-*-adult":{
+				transform: {
+					translation: { x: -0.05, y: 0.1, z: -0.1 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.8
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-pike-*-adult":{
+				transform: {
+					translation: { x: -0.05, y: 0.1, z: -0.1 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.8
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-trout-*":{
+				transform: {
+					translation: { x: -0.1, y: 0.12, z: 0 },
+					rotation: { x: 0, y: -45, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-perch-*":{
+				transform: {
+					translation: { x: -0.1, y: 0.3, z: 0 },
+					rotation: { x: 0, y: -45, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-crappie-*":{
+				transform: {
+					translation: { x: -0.125, y: 0.29, z: 0 },
+					rotation: { x: 0, y: -42, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-tilapia-*":{
+				transform: {
+					translation: { x: -0.125, y: 0.29, z: 0 },
+					rotation: { x: 0, y: -42, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-arapaima-*-juvenile":{
+				transform: {
+					translation: { x: -0.07, y: 0.14, z: 0 },
+					rotation: { x: 0, y: -42, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-sheatfish-*-juvenile":{
+				transform: {
+					translation: { x: 0.02, y: 0.25, z: -0.1 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishraw-freshwater-pike-*-juvenile":{
+				transform: {
+					translation: { x: 0.04, y: 0.18, z: -0.1 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"*-juvenile":{
+				transform: {
+					translation: { x: -0.04, y: 0.2, z: 0 },
+					rotation: { x: 0, y: -38, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"*":{
+				transform: {
+					translation: { x: -0.125, y: 0.15, z: 0 },
+					rotation: { x: 0, y: -42, z: -90 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			}
+		},
+		isFishBaitByType: {
+			"fishraw-saltwater-reef-*": true,
+			"fishraw-saltwater-perch-*": true,
+			"fishraw-saltwater-mackerel-*": true,
+			"fishraw-saltwater-herring-*": true,
+			"*-juvenile": true,
+			"@fishraw-freshwater-(alewife|chub|crappie|perch|trout|tilapia|piranha)-.*": true,
+			"*": false
+		},
+		baitTagByType: {
+			"fishraw-saltwater-reef-clownfish-*": "bait-fishtiny",
+			"fishraw-saltwater-reef-*": "bait-fishsmall",
+			"fishraw-saltwater-perch-*": "bait-fishsmall",
+			"fishraw-saltwater-mackerel-*": "bait-fishsmall",
+			"fishraw-saltwater-herring-*": "bait-fishsmall",
+			"*-juvenile": "bait-fishtiny",
+			"fishraw-freshwater-chub-*": "bait-fishtiny",
+			"fishraw-freshwater-alewife-*": "bait-fishtiny",
+			"@fishraw-freshwater-(crappie|perch|trout|tilapia|piranha)-.*": "bait-fishsmall"
+		}
+	},
+	combustiblePropsByType: {
+		"fishraw-freshwater-arapaima-*-adult": null,
+		"fishraw-reef-*": {
+			meltingPoint: 150,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fish-cooked" },
+			requiresContainer: false
+		},
+		"@fishraw-saltwater-(coelacanth|grouper|mahi-mahi)-.*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 500,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-9-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-saltwater-amberjack-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 330,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-7-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-saltwater-barracuda-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 330,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-7-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-saltwater-sturgeon-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 330,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-7-cooked" },
+			requiresContainer: false
+		},
+		"@fishraw-saltwater-(herring|mackerel|perch)-.*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 90,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-2-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-pike-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 330,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-7-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-sheatfish-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 330,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-7-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-pickerel-*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 150,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-4-cooked" },
+			requiresContainer: false
+		},
+		"@fishraw-freshwater-(perch|piranha|trout)-.*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 90,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-2-cooked" },
+			requiresContainer: false
+		},
+		"@fishraw-freshwater-(alewife|chub|crappie|tilapia)-.*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fish-cooked" },
+			requiresContainer: false
+		},
+		"*-adult": {
+			meltingPoint: 150,
+			meltingDuration: 150,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-4-cooked" },
+			requiresContainer: false
+		},
+		"@fishraw-saltwater-(amberjack|barracuda|sturgeon|coelacanth|grouper|mahi-mahi)-.*-juvenile": {
+			meltingPoint: 150,
+			meltingDuration: 90,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-2-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-arapaima-*-juvenile": {
+			meltingPoint: 150,
+			meltingDuration: 150,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-long-4-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-pike-*-juvenile": {
+			meltingPoint: 150,
+			meltingDuration: 90,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-2-cooked" },
+			requiresContainer: false
+		},
+		"fishraw-freshwater-sheatfish-*-juvenile": {
+			meltingPoint: 150,
+			meltingDuration: 90,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fishchunk-standard-2-cooked" },
+			requiresContainer: false
+		},
+		"*": {
+			meltingPoint: 150,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltingType: "cook",
+			smeltedStack: { type: "item", code: "fish-cooked" },
+			requiresContainer: false
+		}
+	},
+	storageFlags: 257,
+	maxstacksizeByType: {
+		"@fishraw-saltwater-(coelacanth|grouper|mahi-mahi)-.*": 4,
+		"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*": 8,
+		"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*": 16,
+		"@fishraw-saltwater-(herring|mackerel|perch)-.*": 32,
+
+		"fishraw-freshwater-arapaima-*": 4,
+		"fishraw-freshwater-sheatfish-*": 8,
+		"fishraw-freshwater-pike-*": 8,
+		"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*": 16,
+		"@fishraw-freshwater-(crappie|perch|trout|tilapia|piranha)-.*": 32,
+		"*": 64
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 600,
+	heldRightReadyAnimationByType: {
+		"@fishraw-saltwater-(amberjack|coelacanth|sturgeon|amberjack|mahi-mahi|barracuda|grouper)-.*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-arapaima-*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-pike-*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-sheatfish-*-adult": "holdbothhandslarge",
+		"*": "holdinglanternrighthand"
+	},
+	heldTpIdleAnimationByType: {
+		"@fishraw-saltwater-(amberjack|coelacanth|sturgeon|amberjack|mahi-mahi|barracuda|grouper)-.*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-arapaima-*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-pike-*-adult": "holdbothhandslarge",
+		"fishraw-freshwater-sheatfish-*-adult": "holdbothhandslarge",
+		"*": "holdinglanternrighthand"
+	},
+	heldLeftTpIdleAnimationbyType: {
+		"*": "holdinglanternlefthand"
+	},
+	transitionablePropsByType: {
+		"*": [{
+			type: "Perish",
+			freshHours: { avg: 36 },
+			transitionHours: { avg: 24 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatioByType: {
+				"fishraw-saltwater-coelacanth-*-adult": 10,
+				"fishraw-saltwater-mahi-mahi-*-adult": 9,
+				"fishraw-saltwater-grouper-*-adult": 9,
+				"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult": 7,
+				"@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult": 5,
+				"@fishraw-saltwater-(herring|mackerel|perch)-.*-adult": 3,
+
+				"fishraw-saltwater-coelacanth-*-juvenile": 6,
+				"fishraw-saltwater-mahi-mahi-*-juvenile": 4,
+				"fishraw-saltwater-grouper-*-juvenile": 4,
+				"@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-juvenile": 3,
+				"@fishraw-saltwater-(salmon|snapper|tuna|wolf|wreckfish)-.*-juvenile": 2,
+
+				"fishraw-freshwater-arapaima-*": 10,
+				"fishraw-freshwater-sheatfish-*": 10,
+				"fishraw-freshwater-pike-*": 7,
+				"@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|tilapia|walleye)-.*": 5,
+				"fishraw-freshwater-perch-*": 3,
+				"fishraw-freshwater-piranha-*": 3,
+				"fishraw-freshwater-trout-*": 3,
+				"fishraw-freshwater-alewife-*": 0.25,
+				"fishraw-freshwater-chub-*": 0.25,
+				"*": 1
+			}		
+		}]
+	},
+	guiTransformByType: {
+		"fishraw-reef-clown-common-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.16, z: 0.42 },
+			scale: 4.87
+		},
+		"fishraw-saltwater-haddock-common-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.09, z: 0.52 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-mahi-mahi-common-juvenile": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.34, y: 0.06, z: 0.58 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-coelacanth-common-juvenile": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.13, z: 0.51 },
+			scale: 2.99
+		},
+		"fishraw-reef-tang-banded-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.19, z: 0.42 },
+			scale: 4.18
+		},
+		"fishraw-reef-angel-bicolor-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.15, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-reef-clown-black-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.17, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-saltwater-grouper-black-juvenile": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.13, z: 0.52 },
+			scale: 2.99
+		},
+		"fishraw-reef-butterfly-blackwedged-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.19, z: 0.42 },
+			scale: 4.18
+		},
+		"fishraw-reef-butterfly-copperband-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.19, z: 0.43 },
+			scale: 4.18
+		},
+		"fishraw-reef-wrasse-creole-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.17, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-reef-puffer-longspine-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.16, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-reef-tang-powderblue-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.18, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-reef-clown-yellowstripe-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.17, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-saltwater-pollock-alaska-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.09, z: 0.55 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-herring-atlantic-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.06, z: 0.5899 },
+			scale: 3
+		},
+		"fishraw-saltwater-mackerel-atlantic-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.07, z: 0.5599 },
+			scale: 3
+		},
+		"fishraw-saltwater-wreckfish-atlantic-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.55, y: 0.12, z: 0.48 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-sturgeon-atlantic-juvenile": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.07, z: 0.53 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-gurnard-cape-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.09, z: 0.54 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-perch-pacific-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.07, z: 0.5699 },
+			scale: 3
+		},
+		"fishraw-saltwater-bream-sea-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.12, z: 0.5 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-hake-silver-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.1, z: 0.52 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-wolf-bering-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.08, z: 0.54 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-barracuda-great-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.03, z: 0.55 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-salmon-pink-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.09, z: 0.53 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-snapper-red-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.09, z: 0.53 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-tuna-skipjack-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.07, z: 0.52 },
+			scale: 2.99
+		},
+		"fishraw-freshwater-salmon-coho-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.08, z: 0.52 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-amberjack-yellowtail-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.1, z: 0.51 },
+			scale: 2.99
+		},		
+		"fishraw-freshwater-pickerel-*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.65, y: 0.14, z: 0.44 },
+			scale: 2.99
+		},
+		"fishraw-freshwater-catfish-*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.65, y: 0.14, z: 0.44 },
+			scale: 2.99
+		},
+		"@fishraw-freshwater-(bass|carp|walleye)-.*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.6, y: 0.17, z: 0.44 },
+			scale: 2.99
+		},
+		"fishraw-freshwater-sheatfish-*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.03, z: 0.56 },
+			scale: 3
+		},
+		"fishraw-freshwater-pike-*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.03, z: 0.56 },
+			scale: 3
+		},
+		"fishraw-freshwater-pike-*": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.55, y: 0.34, z: 0.3 },
+			scale: 2.99
+		},
+		"fishraw-freshwater-arapaima-*-juvenile": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.4, y: 0.07, z: 0.52 },
+			scale: 3
+		},
+		"fishraw-reef-clown-common-adult": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.66, y: 0.2, z: 0.42 },
+			scale: 4.18
+		},		
+		"fishraw-reef-puffer-common-adult": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.2, z: 0.44 },
+			scale: 4.18
+		},
+		"fishraw-reef-*": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.7, y: 0.23, z: 0.44 },
+			scale: 4.18
+		},	
+		"@fishraw-saltwater-(herring|mackerel|perch)-.*": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.07, z: 0.59 },
+			scale: 3
+		},
+		"@fishraw-freshwater-(alewife|chub|crappie|perch|tilapia)-.*": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.07, z: 0.59 },
+			scale: 3
+		},
+		"fishraw-freshwater-sheatfish-*-adult": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.3, y: 0.27, z: 0.44 },
+			scale: 2.99
+		},
+		"fishraw-freshwater-arapaima-*-adult": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: -0.2, y: 0.23, z: 0.44 },
+			scale: 3
+		},
+		"fishraw-saltwater-sturgeon-*": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.2, z: 0.44 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-mahi-mahi-*": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.34, y: 0.42, z: 0.44 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-grouper-*": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.43, z: 0.4 },
+			scale: 2.99
+		},
+		"fishraw-saltwater-coelacanth-*": {
+			rotation: { x: 70, y: 1, z: -113 },
+			origin: { x: 0.5, y: 0.4, z: 0.44 },
+			scale: 2.99
+		},
+		"*": {
+			rotation: { x: 63, y: 2, z: -117 },
+			origin: { x: 0.5, y: 0.27, z: 0.44 },
+			scale: 2.99
+		}
+	},	
+	tpHandTransformByType: {
+		"fishraw-reef-*": {
+			translation: { x: -0.26, y: -0.25, z: -0.42 },
+			rotation: { x: -86, y: 0, z: 174 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-*-juvenile": {
+			translation: { x: -0.2, y: -0.24, z: -0.38 },
+			rotation: { x: -90, y: -4, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-mackerel-*": {
+			translation: { x: -0.13, y: -0.25, z: -0.4 },
+			rotation: { x: -86, y: 0, z: 174 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-herring-*": {
+			translation: { x: -0.13, y: -0.25, z: -0.4 },
+			rotation: { x: -86, y: 0, z: 174 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-perch-*": {
+			translation: { x: -0.24, y: -0.25, z: -0.4 },
+			rotation: { x: -86, y: 0, z: 174 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"@fishraw-saltwater-(amberjack|coelacanth|grouper|mahi-mahi)-.*": {
+			translation: { x: -0.65, y: -0, z: -0.4 },
+			rotation: { x: 180, y: 75, z: -8 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-sturgeon-*": {
+			translation: { x: -0.6, y: -0.22, z: -0.4 },
+			rotation: { x: 178, y: 77, z: -11 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-barracuda-*": {
+			translation: { x: -0.6, y: -0.22, z: -0.4 },
+			rotation: { x: 178, y: 77, z: -11 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-arapaima-*-juvenile": {
+			translation: { x: 0, y: -0.24, z: -0.41 },
+			rotation: { x: -90, y: -4, z: 173 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-*-juvenile": {
+			translation: { x: -0.2, y: -0.24, z: -0.38 },
+			rotation: { x: -90, y: -4, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-arapaima-*": {
+			translation: { x: -0.65, y: -0, z: -0.4 },
+			rotation: { x: 180, y: 75, z: -8 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-sheatfish-*": {
+			translation: { x: -0.6, y: -0.1, z: -0.2 },
+			rotation: { x: 103, y: 0, z: -76 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-piranha-*": {
+			translation: { x: -0.1, y: -0.24, z: -0.5 },
+			rotation: { x: -90, y: -4, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-perch-*": {
+			translation: { x: -0.13, y: -0.25, z: -0.44 },
+			rotation: { x: -90, y: -4, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"@fishraw-freshwater-(alewife|chub|crappie|tilapia)-.*": {
+			translation: { x: -0.27, y: -0.25, z: -0.4 },
+			rotation: { x: -86, y: 0, z: 174 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-pike-*": {
+			translation: { x: -0.6, y: -0.22, z: -0.4 },
+			rotation: { x: 178, y: 77, z: -11 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"*": {
+			translation: { x: 0, y: -0.24, z: -0.5 },
+			rotation: { x: -90, y: -4, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		}
+	},
+	tpOffHandTransformByType: {
+		"@fishraw-saltwater-(amberjack|grouper|mahi-mahi|coelacanth)-.*": {
+			translation: { x: -0, y: -0.15, z: -0.55 },
+			rotation: { x: 76, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-sturgeon-*": {
+			translation: { x: -0.1, y: -0.25, z: -0.55 },
+			rotation: { x: 76, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-barracuda-*": {
+			translation: { x: -0.1, y: -0.25, z: -0.55 },
+			rotation: { x: 76, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-herring-*": {
+			translation: { x: -0.12, y: -0.22, z: -0.58 },
+			rotation: { x: 85, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-saltwater-mackerel-*": {
+			translation: { x: -0.12, y: -0.22, z: -0.58 },
+			rotation: { x: 85, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"@fishraw-saltwater-perch-*": {
+			translation: { x: -0.23, y: -0.22, z: -0.59 },
+			rotation: { x: 86, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-arapaima-*": {
+			translation: { x: -0.5, y: -0.13, z: -0.6 },
+			rotation: { x: 76, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-sheatfish-*": {
+			translation: { x: -0.2, y: -0.15, z: -0.55 },
+			rotation: { x: 89, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-pike-*": {
+			translation: { x: -0.1, y: -0.25, z: -0.55 },
+			rotation: { x: 76, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-perch-*": {
+			translation: { x: -0.12, y: -0.23, z: -0.56 },
+			rotation: { x: 85, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-freshwater-piranha-*": {
+			translation: { x: -0.07, y: -0.23, z: -0.5 },
+			rotation: { x: 85, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"@fishraw-freshwater-(alewife|chub|crappie|tilapia)-.*": {
+			translation: { x: -0.27, y: -0.22, z: -0.58 },
+			rotation: { x: 85, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"fishraw-reef-*": {
+			translation: { x: -0.27, y: -0.25, z: -0.58 },
+			rotation: { x: 90, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"*": {
+			translation: { x: -0, y: -0.25, z: -0.5 },
+			rotation: { x: 86, y: 0, z: 171 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		}
+	},
+	groundTransformByType: {
+		"@fishraw-saltwater-(amberjack|grouper|mahi-mahi|coelacanth)-.*": {
+			translation: { x: 0, y: 0.05, z: -0 },
+			rotation: { x: 90, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.28125, z: 0.5 },
+			scale: 5
+		},
+		"fishraw-freshwater-arapaima-*": {
+			translation: { x: 0, y: 0.05, z: -0 },
+			rotation: { x: 90, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.28125, z: 0.5 },
+			scale: 5
+		},
+		"fishraw-freshwater-pike-*": {
+			translation: { x: 0, y: 0.05, z: -0 },
+			rotation: { x: 90, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.28125, z: 0.5 },
+			scale: 5
+		},
+		"fishraw-freshwater-sheatfish-*": {
+			translation: { x: 0, y: 0.05, z: -0 },
+			rotation: { x: 90, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.28125, z: 0.5 },
+			scale: 5
+		},
+		"*": {
+			translation: { x: -0.05, y: 0.035, z: 0.07 },
+			rotation: { x: 90, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0.125, z: 0.5 },
+			scale: 5
+		}
+	}
+}

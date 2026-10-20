@@ -1,0 +1,74 @@
+[
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+			ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 2, consumeLitres: 2 },
+			{ type: "item", code: "hide-raw-*", name: "species", quantity: 1, tags: ["size-small"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+			ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 2, consumeLitres: 2 },
+			{ type: "item", code: "hide-salted-*", name: "species", quantity: 1, tags: ["size-small"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 4, consumeLitres: 4 },
+			{ type: "item", code: "hide-raw-*", name: "species", quantity: 1, tags: ["size-medium"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 4, consumeLitres: 4 },
+			{ type: "item", code: "hide-salted-*", name: "species", quantity: 1, tags: ["size-medium"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 6, consumeLitres: 6 },
+			{ type: "item", code: "hide-raw-*", name: "species", quantity: 1, tags: ["size-large"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 6, consumeLitres: 6 },
+			{ type: "item", code: "hide-salted-*", name: "species", quantity: 1, tags: ["size-large"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1 }
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 10, consumeLitres: 10 },
+			{ type: "item", code: "hide-raw-*", name: "species", quantity: 1, tags: ["size-huge"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1}
+	},
+	{
+		code: "soakedhidelime",
+		sealHours: 20,
+		ingredients: [
+			{ type: "item", code: "limewaterportion", litres: 10, consumeLitres: 10 },
+			{ type: "item", code: "hide-salted-*", name: "species", quantity: 1, tags: ["size-huge"] }
+		],
+		output: { type: "item", code: "hide-soaked-{species}", stackSize: 1}
+	}
+]

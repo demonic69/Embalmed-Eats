@@ -1,0 +1,44 @@
+{
+	code: "candle",
+	// The BlockCandle (BlockBunchOCandles) contains code to spawn the fire particles at the right spot
+	class: "BlockCandle",
+	maxstacksize: 1,
+	behaviors: [ {name: "Unstable"} ],
+	shape: { base: "block/wax/candle3" },
+	creativeinventory: {  },
+	blockmaterial: "Other",
+	replaceable: 900,
+	lightAbsorption: 0,
+	resistance: 1.25,
+	sideopaque: { all: false },
+	sidesolid: { all: false },
+	lightHsv: [7, 7, 7],
+	particleProperties: [
+		{
+			// Fire quads
+			hsvaColor: [{ avg: 20, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+			opacityEvolve: { transform: "quadratic", factor: -16 },
+			gravityEffect: { avg: 0, var: 0 },
+			velocity: [ { avg: 0, var: 0.0125 }, { avg: 0.03, var: 0.01 }, { avg: 0, var: 0.0125 }],
+			quantity: { avg: 0.1 },
+			size: { avg: 0.05, var: 0.025 },
+			lifeLength: { avg: 0.5 },
+			sizeEvolve: { transform: "linear", factor: 0.1 },
+			particleModel: "Quad",
+			vertexFlags: 128,
+			windAffectednes: 0.05
+		}		
+	],
+	sounds: {
+		place: "block/planks",
+		break: "block/planks",
+		hit: "block/planks"
+	},
+	drops: [  { type: "item", code: "candle", quantity: { avg: 1 } } ],
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 500,
+		burnDuration: 8,
+	},
+	collisionSelectionBox: { x1: 0.42, y1: 0, z1: 0.42, x2: 0.58, y2: 0.32, z2: 0.58 }
+}

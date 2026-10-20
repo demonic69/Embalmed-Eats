@@ -1,0 +1,387 @@
+{
+	code: "fruit",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } }
+	],
+	variantgroups: [
+		{ code: "fruit", loadFromProperties: "block/fruit" },
+	],
+	skipVariants: [
+		"*-plumnatal",
+		"*-guava",
+		"*-gooseberry",
+		"*-kumquat",
+		"*-cactusfruit"
+	],
+	shapebytype: {
+		"*-pineapple": { base: "item/food/fruit/pineapple-slice" },
+		"*": { base: "item/food/fruit/{fruit}" }
+	},
+	textureByType: {
+		"*apple": null,
+		"*currant": null,
+		"*-peach": null,
+		"*-pear": null,
+		"*-orange": null,
+		"*-breadfruit": null,
+		"*-lychee": null,
+		"*-pomegranate": null,
+		"*": { base: "item/food/fruit/{fruit}" },
+	},
+	attributes: {
+		foodTags: ["{fruit}", "fruit"],
+		handbook: {
+			groupBy: ["fruit-*"]
+		},
+		nutritionPropsWhenInMeal: {
+			satietyByType:  {
+				"*-saguaro": 90,
+				"*-cranberry": 90,
+				"*-cherry": 60,
+				"*-lychee": 60,
+				"*-breadfruit": 250,
+				"*":  120
+			},
+			foodcategory: "Fruit"
+		},
+		eatHealthEffectDurationSec: 10,
+		eatHealthEffectTicks: 10,
+		inPiePropertiesByType: {
+			"*-pinkapple": { texture: "block/food/pie/fill-apple", partType: 'Filling' },
+			"*-redapple": { texture: "block/food/pie/fill-apple", partType: 'Filling' },
+			"*-yellowapple": { texture: "block/food/pie/fill-apple", partType: 'Filling' },
+			"*": { texture: "block/food/pie/fill-{fruit}", partType: 'Filling' },
+		},
+		juiceablePropertiesByType: {
+			"@*-(pinkapple|redapple|yellowapple)": {
+				litresPerItem: 0.3125,
+				liquidStack: { type: "item", code: "juiceportion-apple", stacksize: 1 },
+				pressedStack: { type: "item", code: "pressedmash-apple", stacksize: 1 }
+			},
+			"*": {
+				litresPerItem: 0.3125,
+				liquidStack: { type: "item", code: "juiceportion-{fruit}", stacksize: 1 },
+				pressedStack: { type: "item", code: "pressedmash-{fruit}", stacksize: 1 }
+			}
+		},
+		groundStorageTransformByType: {
+			"@*(apple|-peach|-pear|-orange|-mango|-pomegranate|-pomegranate|-saguaro|guava)": {
+				origin: { x: 0.5, y: -0, z: 0.5 },
+				scale: 0.8
+			},
+			"*": {
+				origin: { x: 0.5, y: -0, z: 0.5 }
+			}
+		},
+		inTrapTransformByType: {
+			"*-blueberry": {
+				"small": {
+					translation: { x: 0, y: -0.13, z: -0.05 },
+					rotation: { x: 0, y: 51, z: 0 },
+					scale: 0.5
+				},
+				"large": {
+					translation: { x: -0.3, y: 0.42, z: 0.1 },
+					rotation: { x: 16, y: 0, z: 0 },
+					scale: 0.5
+				}
+			},
+			"*-breadfruit": {
+				"small": {
+					translation: { x: -0.1, y: 0.13, z: 0 },
+					rotation: { x: 0, y: -99, z: 0 }
+				},
+				"large": {
+					translation: { x: 0.1, y: 0.2, z: 0 },
+					rotation: { x: 0, y: 0, z: -70 }
+				}
+			},
+			"*-cherry": {
+				"small": {
+					translation: { x: -0.25, y: -0.2, z: 0 },
+					rotation: { x: -89, y: 61, z: 90 },
+					scale: 0.5
+				},
+				"large": {
+					translation: { x: -0.32, y: 0.45, z: 0.02 },
+					rotation: { x: 0, y: 87, z: 0 },
+					scale: 0.5
+				}
+			},
+			"*cranberry": {
+				"small": {
+					translation: { x: 0, y: -0.13, z: -0.05 },
+					rotation: { x: 0, y: 51, z: 0 },
+					scale: 0.5
+				},
+				"large": {
+					translation: { x: -0.3, y: 0.33, z: -0.1 },
+					rotation: { x: -40, y: 0, z: 0 },
+					scale: 0.5
+				}
+			},
+			"*currant": {
+				"small": {
+					translation: { x: 0, y: -0.13, z: -0.05 },
+					rotation: { x: 0, y: 51, z: 0 },
+					scale: 0.5
+				},
+				"large": {
+					translation: { x: -0.14, y: 0.27, z: 0.05 },
+					rotation: { x: 132, y: 1, z: -94 },
+					scale: 0.5
+				}
+			},
+			"*-lychee": {
+				"small": {
+					translation: { x: 0, y: -0.075, z: -0.03 },
+					rotation: { x: 0, y: -17, z: 0 },
+					scale: 0.6
+				},
+				"large": {
+					translation: { x: -0.1, y: 0.2, z: 0 },
+					rotation: { x: 0, y: 0, z: -90 },
+					scale: 0.6
+				}
+			},
+			"@.*-(pear|mango|saguaro)": {
+				"small": {
+					translation: { x: -0.16, y: -0.33, z: 0.1 },
+					rotation: { x: 90, y: 24, z: 0 },
+					scale: 0.5
+				},
+				"large": {
+					translation: { x: -0.34, y: 0.3, z: 0 },
+					rotation: { x: 0, y: 176, z: -9 },
+					scale: 0.5
+				}
+			},
+			"*-pineapple": {
+				"small": {
+					translation: { x: -0.1, y: -0.08, z: 0 },
+					rotation: { x: 0, y: 17, z: 0 },
+					scale: 0.6
+				},
+				"large": {
+					translation: { x: -0.1, y: 0.16, z: -0.05 },
+					rotation: { x: 134, y: 0, z: -92 },
+					scale: 0.6
+				}
+			},
+			"*-pomegranate": {
+				"small": {
+					translation: { x: 0, y: -0.13, z: -0.05 },
+					rotation: { x: 0, y: 51, z: 0 },
+					scale: 0.6
+				},
+				"large": {
+					translation: { x: -0.15, y: 0.25, z: 0.015 },
+					rotation: { x: 0, y: 0, z: -72 },
+					scale: 0.6
+				}
+			},
+			"*": {
+				"small": {
+					translation: { x: 0, y: -0.075, z: -0.03 },
+					rotation: { x: 0, y: -17, z: 0 },
+					scale: 0.6
+				},
+				"large": {
+					translation: { x: -0.33, y: 0.44, z: 0.02 },
+					rotation: { x: 0, y: 31, z: 11 },
+					scale: 0.6
+				}
+			}
+		},
+		inMouthTransformByType: {
+			"*-cranberry": {
+				translation: { x: -1.51, y: -1.26, z: -0.95 },
+				rotation: { x: 13, y: -125, z: -79 },
+				scale: 0.4
+			},
+			"*-pomegranate": {
+				translation: { x: -1.36, y: -0.67, z: -1.4 },
+				rotation: { x: 6, y: 155, z: -41 },
+				origin: { x: 0.45, y: 0.2, z: 0.5 },
+				scale: 0.38
+			},
+			"*-lychee": {
+				translation: { x: -1.85, y: -0.33, z: -1.73 },
+				rotation: { x: 124, y: -15, z: 76 },
+				origin: { x: 0.7, y: 0.1, z: 0.7 },
+				scale: 0.38
+			},
+			"*-breadfruit": {
+				translation: { x: -0.55, y: -0.03, z: -0.63 },
+				rotation: { x: 66, y: 8, z: -170 },
+				origin: { x: 0.8, y: 0.1, z: 0.6 },
+				scale: 0.98
+			},
+			"*-pineapple": {
+				translation: { x: -1.98, y: -1.09, z: -1.34 },
+				rotation: { x: 2, y: 1, z: -87 },
+				scale: 0.41
+			},
+			"*-blueberry": {
+				translation: { x: -1.51, y: -1.26, z: -0.95 },
+				rotation: { x: 13, y: -125, z: -79 },
+				scale: 0.4
+			},
+			"@*-saguaro": {
+				translation: { x: -1.36, y: -1.21, z: -1.57 },
+				rotation: { x: 13, y: -125, z: -79 },
+				scale: 0.4
+			},
+			"@*-(redcurrant|whitecurrant|blackcurrant)": {
+				translation: { x: -1.4, y: -0.3, z: -1.4 },
+				rotation: { x: 0, y: 55, z: 0 },
+				origin: { x: 0.5, y: 0.12, z: 0.5 },
+				scale: 0.36
+			},
+			"@*(apple|-cherry|-peach|-pear|-orange|-mango)": {
+				translation: { x: -1.3899, y: -1.06, z: -0.98 },
+				rotation: { x: -27, y: 0, z: -90 },
+				scale: 0.56
+			}
+		},
+        displayable: {
+            shelf: {
+                size: { width: 4, height: 4, length: 4 }
+            }
+        }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 64,
+	materialDensityByType: {
+		"*-cranberry": 600,
+	},
+	nutritionPropsByType: {
+		"*-saguaro": { satiety: 60, health: 1, foodcategory: "Fruit" },
+		"*-cranberry": { satiety: 60, foodcategory: "Fruit" },
+
+		"*-cherry": { satiety: 40, foodcategory: "Fruit" },
+		"*-lychee": { satiety: 40, foodcategory: "Fruit" },
+		"*-breadfruit": { satiety: 200, foodcategory: "Fruit" },
+
+		"*": { satiety: 80, foodcategory: "Fruit" }
+	},
+	transitionablePropsByType: {
+		"*-cranberry": [{
+			type: "Perish",
+			freshHours: { avg: 96 },
+			transitionHours: { avg: 12 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.25
+		}],
+		"@*-(orange|mango|lychee|pomegranate)": [{
+			type: "Perish",
+			freshHours: { avg: 360 },
+			transitionHours: { avg: 48 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.25
+		}],
+		"@*-(pinkapple|redapple|yellowapple|pear|breadfruit)": [{
+			type: "Perish",
+			freshHours: { avg: 960 },
+			transitionHours: { avg: 48 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.25
+		}],
+		"*": [{
+			type: "Perish",
+			freshHours: { avg: 48 },
+			transitionHours: { avg: 12 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.25
+		}]
+	},
+	guiTransformByType: {
+		"*-pineapple": {
+			translation: { x: 2, y: 3, z: 0 },
+			rotation: { x: 127, y: 180, z: 23 },
+			origin: { x: 0.55, y: 0.05, z: 0.5 },
+			scale: 2.04
+		},
+		"*-breadfruit": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -26, y: 0, z: 152 },
+			origin: { x: 0.5, y: 0.18, z: 0.5 },
+			scale: 3.91
+		},
+		"@*-(mango|saguaro|pear|guava)": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -27, y: 0, z: 157 },
+			origin: { x: 0.5, y: 0.28, z: 0.5 },
+			scale: 2.67
+		},
+
+		"@*-(pinkapple|redapple|yellowapple|peach|pomegranate|orange|saguaro|pear)": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 162, y: -175, z: -15 },
+			origin: { x: 0.5, y: 0.19, z: 0.5 },
+			scale: 3.19
+		},
+		"*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 138, y: 0, z: -1 },
+			origin: { x: 0.48, y: 0.1, z: 0.5 },
+			scale: 3.19
+		}
+	},
+	tpHandTransformByType: {
+		"*-breadfruit": {
+			translation: { x: -0.4, y: -0, z: -0.42 },
+			rotation: { x: 0, y: 0, z: -90 },
+			origin: { x: 0.5, y: -0, z: 0.5 },
+			scale: 1
+		},
+		"*-pineapple": {
+			translation: { x: -1.98, y: -0.99, z: -1.22 },
+			rotation: { x: 2, y: 1, z: -87 },
+			scale: 0.41
+		},
+		"@*(apple|-peach|-pear|-orange|-mango|pomegranate|pomegranate|saguaro|guava)": {
+			translation: { x: -1.3899, y: -0.96, z: -0.86 },
+			rotation: { x: -27, y: 0, z: -90 },
+			scale: 0.56
+		},
+		"*": {
+			translation: { x: -2.1, y: -0.9, z: -0.6 },
+			rotation: { x: 0, y: 22, z: -90 },
+			origin: { x: 1.4, y: 0, z: 0.5 },
+			scale: 0.7
+		}
+	},
+	groundTransformByType: {
+		"*-breadfruit": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: -3 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 5.0
+		},
+		"*-pineapple": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: -3 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 2.35
+		},
+		"@*(apple|-cherry|-peach|-pear|-orange|-mango|pomegranate)": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 95, y: 11, z: -135 },
+			origin: { x: 0.6, y: 0.2, z: 0.41 },
+			scale: 3.2
+		},
+		"*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 2, y: 0, z: 0 },
+			origin: { x: 0.5, y: -0, z: 0.5 },
+			scale: 4
+		}
+	},
+	heldRightReadyAnimationByType: {
+		"@*(blueberry|cranberry|redcurrant|whitecurrant|blackcurrant|cherry|lychee|beautyberry|blackberry|cactusfruit|cloudberry|gooseberry|plumnatal|raspberry|strawberry|kumquat)": "holdbothhands"
+	},
+	heldTpIdleAnimationByType: {
+		"@*(blueberry|cranberry|redcurrant|whitecurrant|blackcurrant|cherry|lychee|beautyberry|blackberry|cactusfruit|cloudberry|gooseberry|plumnatal|raspberry|strawberry|kumquat)": "holdbothhands"
+	}
+}

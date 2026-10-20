@@ -1,0 +1,11 @@
+[
+	{
+			code: "dye-blue",
+			sealHours: 8,
+			ingredients: [
+				{ type: "item", code: "waterportion", litres: 2 },
+				{ type: "block", code: "flower-woad-free", quantity: 1 }
+			],
+			output: { type: "item", code: "dye-woad", litres: 2 }
+	}
+]

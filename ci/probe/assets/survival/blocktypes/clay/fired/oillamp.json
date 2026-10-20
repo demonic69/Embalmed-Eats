@@ -1,0 +1,136 @@
+{
+	code: "oillamp",
+	class: "BlockOilLamp",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } },
+		{ name: "GroundUnplaceable" }, // The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility
+		{ name: "Lockable" }, 
+		{ name: "RightClickPickup" }, 
+		{ name: "OmniAttachable", 
+			properties: { 
+				facingCode: "orientation",
+				attachmentAreas: {
+					"down": { x1: 7, y1: 15, z1: 7, x2: 8, y2: 15, z2: 8 },
+					"up": { x1: 4, y1: 0, z1: 4, x2: 11, y2: 0, z2: 11 },
+					"north": { x1: 7, y1: 11, z1: 0, x2: 8, y2: 13, z2: 1 },
+					"east": { x1: 7, y1: 11, z1: 0, x2: 8, y2: 13, z2: 1, rotateY: 90 },
+					"south": { x1: 7, y1: 11, z1: 0, x2: 8, y2: 13, z2: 1, rotateY: 180 },
+					"west": { x1: 7, y1: 11, z1: 0, x2: 8, y2: 13, z2: 1, rotateY: 270 }
+				}
+			}
+		}
+	],
+	variantgroups: [
+		{ code: "color", states: ["blue", "fire", "black", "brown", "cream", "earthyorange", "gray", "orange", "red", "tan", ] },
+		{ code: "orientation", states: ["up", "down"], loadFromProperties: "abstract/horizontalorientation" }
+	],
+	shapebytype: {
+		"*-up": { base: "block/clay/claylamp-ground" },
+		"*-north": { base: "block/clay/claylamp-wall", rotateY: 0 },
+		"*-east": { base: "block/clay/claylamp-wall", rotateY: 270 },
+		"*-south": { base: "block/clay/claylamp-wall", rotateY: 180 },
+		"*-west": { base: "block/clay/claylamp-wall", rotateY: 90 },
+		"*-down": { base: "block/clay/claylamp-ceiling" }
+	},
+	textures: {
+		"ceramic": { base: "block/clay/oillamp/{color}" },
+		"fire": { base: "block/fire"  },
+		"oil": { base: "block/food/dairy/cottagecheese", alpha: 200 }
+	},
+	attributes: {
+		reinforcable: true,
+		allowUnstablePlacement: true,
+		handbook: {
+			groupBy: ["oillamp-*"]
+		},
+		groundStorageTransform: {
+			rotation: { x: 0, y: 45, z: 0 }
+		},
+        displayable: {
+            shelf: {
+                size: { width: 6, height: 2, length: 6 },
+                randYRotAngle: 7
+            }
+        }
+	},
+	storageFlags: 257,
+	doNotRenderAtLod2: true,
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	sounds: {
+		place: "player/build"
+	},
+	heldRightReadyAnimationByType: {
+		"*": "holdinglanternrighthand"
+	},
+	creativeinventory: { "general": ["*-up"], "decorative": ["*-up"] },
+	replaceable: 5001,
+	resistance: 0.5,
+	maxStackSize: 8,
+	lightAbsorption: 0,
+	lightHsv: [4, 2, 11],
+	particleProperties: [
+		{
+			// Fire quads
+			hsvaColor: [{ avg: 20, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+			opacityEvolve: { transform: "quadratic", factor: -16 },
+			gravityEffect: { avg: 0, var: 0 },
+			velocity: [ { avg: 0, var: 0.0125 }, { avg: 0.03, var: 0.01 }, { avg: 0, var: 0.0125 }],
+			quantity: { avg: 0.5 },
+			size: { avg: 0.1, var: 0.05 },
+			lifeLength: { avg: 0.25 },
+			sizeEvolve: { transform: "linear", factor: 0.1 },
+			particleModel: "Quad",
+			vertexFlags: 255,
+			windAffectednes: 0.05
+		},
+		{
+			// Occasional smoke
+			hsvaColor: [{ avg: 0, var: 0 }, { avg: 0, var: 0 }, { avg: 30, var: 15 },  { avg: 220, var: 50 }],
+			opacityEvolve: { transform: "quadratic", factor: -16 },
+			gravityEffect: { avg: 0, var: 0 },
+			posOffset: [ { avg: 0, var: 0.1 }, { avg: 0, var: 0 }, { avg: 0, var: 0.1 }],
+			velocity: [ { avg: 0, var: 0.025 }, { avg: 0.1, var: 0.025 }, { avg: 0, var: 0.025 }],
+			quantity: { avg: 0.05 },
+			size: { avg: 0.1, var: 0.05 },
+			sizeEvolve: { transform: "linear", factor: 0.5 },
+			particleModel: "Quad"
+		}
+	],
+	collisionbox: null,
+	selectionboxbytype: {
+		"*-up": { x1: 0.3125, y1: 0, z1: 0.3125, x2: 0.6875, y2: 0.125, z2: 0.6875 },
+		"*-east": { x1: 0.3125, y1: 0.2825, z1: 0.5625, x2: 0.6875, y2: 0.46785, z2: 1, rotateY: 270 },
+		"*-south": { x1: 0.3125, y1: 0.2825, z1: 0.5625, x2: 0.6875, y2: 0.46785, z2: 1, rotateY: 180 },
+		"*-west": { x1: 0.3125, y1: 0.2825, z1: 0.5625, x2: 0.6875, y2: 0.46785, z2: 1, rotateY: 90 },
+		"*-north": { x1: 0.3125, y1: 0.2825, z1: 0.5625, x2: 0.6875, y2: 0.46785, z2: 1, rotateY: 0 }
+	},
+	blockmaterial: "Other",
+	guiTransform: {
+		translation: { x: 0, y: 4, z: 0 },
+		rotation: { x: -29, y: -45.3, z: -2 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 },
+		scale: 3.52
+	},
+	groundTransform: {
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -0.7, y: -0.4, z: -0.6 },
+		rotation: { x: 90, y: 2, z: -82 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.8
+	},
+	tpOffHandTransform: {
+		translation: { x: -0.7, y: -0.4, z: -0.65 },
+		rotation: { x: 97, y: 0, z: -96 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.8
+	},
+	rainPermeable: true,
+	materialDensity: 600
+}

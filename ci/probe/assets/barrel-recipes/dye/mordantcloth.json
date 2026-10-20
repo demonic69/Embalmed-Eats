@@ -1,0 +1,29 @@
+[
+	{
+		code: "dyedcloth",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 2, consumelitres: 2 },
+			{ type: "item", code: "cloth-plain", quantity: 1 }
+		],
+		output: { type: "item", code: "cloth-mordant", stackSize: 1 }
+	},
+	{
+		code: "dyedcloth",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2, consumelitres: 2 },
+			{ type: "item", code: "cloth-plain", quantity: 1 }
+		],
+		output: { type: "item", code: "cloth-mordant", stackSize: 1 }
+	},
+	{
+		code: "dyedcloth",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 2, consumelitres: 2 },
+			{ type: "item", code: "cloth-plain", quantity: 1 }
+		],
+		output: { type: "item", code: "cloth-mordant", stackSize: 1 }
+	}
+]

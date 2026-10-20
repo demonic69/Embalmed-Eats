@@ -1,0 +1,68 @@
+{
+	code: "rawcheese",
+	class: "ItemCheese",
+	maxstacksize: 4,
+	attributes: {
+		onDisplayTransform: {
+			rotation: { x: 0, y: 40, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.73
+		},
+		onshelfTransform: {
+			rotation: { x: 0, y: 40, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 }
+		},
+		displaycaseable: true,
+		shelvable: "SingleCenter",
+		handbook: {
+			groupBy: ["rawcheese-*"]
+		},
+        displayable: {
+            shelf: {
+                size: { width: 10, height: 4, length: 10 }
+            }
+        }
+	},
+	variantgroups: [
+		{ code: "type", states: ["salted", "waxed"] }
+	],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	shape: { base: "item/food/dairy/cheese/rawcheese-{type}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 700,
+	transitionableProps: [{
+		type: "Ripen",
+		freshHours: { avg: 0 },
+		transitionHours: { avg: 336 },
+		transitionedStack: { type: "item", codeByType: 
+			{
+				"*-salted": "cheese-cheddar-4slice",
+				"*-waxed": "cheese-waxedcheddar-4slice"
+			}
+		},
+		transitionRatio: 1
+	}, {
+		type: "Perish",
+		freshHours: { avg: 360 },
+		transitionHours: { avg: 168 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 4
+	}],
+	guiTransform: {
+		rotation: { x: -10, y: 59, z: -19 },
+		origin: { x: 0.5, y: 0.1, z: 0.48 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: 0, z: -0.4 },
+		rotation: { x: -27, y: 25, z: 87 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.65
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.2
+	}
+}

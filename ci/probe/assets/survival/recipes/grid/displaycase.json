@@ -1,0 +1,22 @@
+[
+	{
+		ingredientPattern: "G,P",
+		ingredients: {
+			"G": { type: "block", code: "glassslab-plain-down-free" },
+			"P": { type: "item", code: "plank-*", quantity: 2 },
+		},
+		width: 1,
+		height: 2,
+		output: { type: "block", code: "displaycase-generic"}
+	},
+	{
+		ingredientPattern: "G,P",
+		ingredients: {
+			"G": { type: "block", code: "glass-plain" },
+			"P": { type: "item", code: "plank-*", quantity: 2 },
+		},
+		width: 1,
+		height: 2,
+		output: { type: "block", code: "talldisplaycase-generic"}
+	}
+]

@@ -1,0 +1,35 @@
+Archive:  out/EmbalmedEats_v1.1.1.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    70618  2026-10-20 04:05   modicon.png
+    85504  2026-10-20 04:05   EmbalmedEats.dll
+        0  2026-10-20 04:05   assets/
+        0  2026-10-20 04:05   assets/embalmedeats/
+        0  2026-10-20 04:05   assets/embalmedeats/config/
+        0  2026-10-20 04:05   assets/embalmedeats/config/handbook/
+      130  2026-10-20 04:05   assets/embalmedeats/config/handbook/embalmedeats-guide.json
+        0  2026-10-20 04:05   assets/embalmedeats/lang/
+     4543  2026-10-20 04:05   assets/embalmedeats/lang/en.json
+        0  2026-10-20 04:05   assets/embalmedeats/itemtypes/
+     1221  2026-10-20 04:05   assets/embalmedeats/itemtypes/formaldehydeportion.json
+     1465  2026-10-20 04:05   assets/embalmedeats/itemtypes/curingsalt.json
+        0  2026-10-20 04:05   assets/embalmedeats/textures/
+        0  2026-10-20 04:05   assets/embalmedeats/textures/block/
+        0  2026-10-20 04:05   assets/embalmedeats/textures/block/resource/
+     1149  2026-10-20 04:05   assets/embalmedeats/textures/block/resource/curingsalt.png
+        0  2026-10-20 04:05   assets/embalmedeats/textures/block/liquid/
+     1667  2026-10-20 04:05   assets/embalmedeats/textures/block/liquid/formaldehyde.png
+        0  2026-10-20 04:05   assets/embalmedeats/textures/item/
+        0  2026-10-20 04:05   assets/embalmedeats/textures/item/resource/
+     1149  2026-10-20 04:05   assets/embalmedeats/textures/item/resource/curingsalt.png
+        0  2026-10-20 04:05   assets/embalmedeats/recipes/
+        0  2026-10-20 04:05   assets/embalmedeats/recipes/barrel/
+      270  2026-10-20 04:05   assets/embalmedeats/recipes/barrel/formaldehyde.json
+        0  2026-10-20 04:05   assets/embalmedeats/recipes/grid/
+      265  2026-10-20 04:05   assets/embalmedeats/recipes/grid/curingsalt.json
+        0  2026-10-20 04:05   assets/embalmedeats/patches/
+      613  2026-10-20 04:05   assets/embalmedeats/patches/creativetabs.json
+      540  2026-10-20 04:05   modinfo.json
+    30808  2026-10-20 04:05   EmbalmedEats.pdb
+---------                     -------
+   199942                     30 files

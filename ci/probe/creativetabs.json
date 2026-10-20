@@ -1,0 +1,18 @@
+{
+	tabConfigs: [
+		{ code: "general", listOrder: 0 },
+		{ code: "flora", listOrder: 0.1, paddingTop: 15 },
+		{ code: "terrain", listOrder: 0.2 },
+		{ code: "decorative", listOrder: 0.3 },
+		{ code: "clutter", listOrder: 0.35 },
+		{ code: "construction", listOrder: 0.4 },
+		{ code: "mechanics", listOrder: 0.45 },
+		{ code: "aquatic", listOrder: 0.47 },
+		{ code: "items", listOrder: 0.5, paddingTop: 15 },
+		{ code: "liquids", listOrder: 0.55 },
+		{ code: "tools", listOrder: 0.6 },
+		{ code: "clothing", listOrder: 0.7 },
+		{ code: "creatures", listOrder: 0.8 },
+		{ code: "meta", listOrder: 0.9, paddingTop: 15 }		
+	]
+}

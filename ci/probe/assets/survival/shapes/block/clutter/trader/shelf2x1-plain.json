@@ -1,0 +1,77 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"aged": "block/wood/debarked/aged"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 16.0, 8.0 ],
+			"to": [ 8.0, 16.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 16.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "surfaceW",
+					"from": [ -8.0, -1.0, -8.0 ],
+					"to": [ 8.0, 0.0, 6.0 ],
+					"faces": {
+						"north": { "texture": "#aged", "uv": [ 0.0, 2.5, 16.0, 3.5 ] },
+						"south": { "texture": "#aged", "uv": [ 0.0, 3.5, 16.0, 4.5 ] },
+						"west": { "texture": "#aged", "uv": [ 0.0, 12.0, 14.0, 13.0 ] },
+						"up": { "texture": "#aged", "uv": [ 0.0, 1.5, 16.0, 15.5 ] },
+						"down": { "texture": "#aged", "uv": [ 0.0, 1.5, 16.0, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "surfaceE",
+							"from": [ 16.0, 0.0, 0.0 ],
+							"to": [ 32.0, 1.0, 14.0 ],
+							"rotationOrigin": [ 16.0, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#aged", "uv": [ 0.0, 7.5, 16.0, 8.5 ] },
+								"east": { "texture": "#aged", "uv": [ 1.5, 3.5, 15.5, 4.5 ] },
+								"south": { "texture": "#aged", "uv": [ 0.0, 12.5, 16.0, 13.5 ] },
+								"up": { "texture": "#aged", "uv": [ 0.0, 1.5, 16.0, 15.5 ] },
+								"down": { "texture": "#aged", "uv": [ 0.0, 0.0, 16.0, 14.0 ] }
+							}
+						},
+						{
+							"name": "supportW",
+							"from": [ 1.0, -3.0, 0.0 ],
+							"to": [ 4.0, 0.0, 8.0 ],
+							"rotationOrigin": [ 2.6, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#aged", "uv": [ 10.5, 11.5, 13.5, 14.5 ] },
+								"east": { "texture": "#aged", "uv": [ 0.5, 8.5, 8.5, 11.5 ] },
+								"south": { "texture": "#aged", "uv": [ 5.5, 10.5, 8.5, 13.5 ] },
+								"west": { "texture": "#aged", "uv": [ 7.0, 7.0, 15.0, 10.0 ] },
+								"down": { "texture": "#aged", "uv": [ 0.5, 7.0, 8.5, 10.0 ], "rotation": 90 }
+							}
+						},
+						{
+							"name": "supportE",
+							"from": [ 28.0, -3.0, 0.0 ],
+							"to": [ 31.0, 0.0, 8.0 ],
+							"rotationOrigin": [ 29.6, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#aged", "uv": [ 8.0, 4.5, 11.0, 7.5 ] },
+								"east": { "texture": "#aged", "uv": [ 0.0, 8.0, 8.0, 11.0 ] },
+								"south": { "texture": "#aged", "uv": [ 1.5, 8.5, 4.5, 11.5 ] },
+								"west": { "texture": "#aged", "uv": [ 4.5, 6.0, 12.5, 9.0 ] },
+								"down": { "texture": "#aged", "uv": [ 5.5, 2.5, 13.5, 5.5 ], "rotation": 90 }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

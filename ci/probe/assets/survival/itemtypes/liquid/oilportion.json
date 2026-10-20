@@ -1,0 +1,70 @@
+{
+	code: "oilportion",
+	class: "ItemLiquidPortion",
+	matterState: "liquid",
+	variantgroups: [
+		{ code:"type", states: ["flax", "olive", "fat", "fatsolid"] }
+	],
+	skipVariants: [
+		"*-fat",
+		"*-fatsolid"
+	],
+	attributes: {
+		handbook: {
+			ignoreCreativeInvStacks: true,
+			groupBy: ["oilportion-*"]
+		},
+		waterTightContainerProps: {
+			containable: true,
+			isopaque: true,
+			itemsPerLitreByType: {
+				"*-fat": 2,
+				"*-fatsolid": 2,
+				"*": 100
+			},
+			textureByType: { 
+				"*-olive": { base: "block/food/pie/fill-olive", alpha: 180 },
+				"*-flax": { base: "block/liquid/dye/yellow", alpha: 150 },
+				"*": { base: "block/food/dairy/cottagecheese", alpha: 200 }
+			},
+			isOpaqueByType: {
+				"*": false
+			},			
+			allowSpill: true,
+			whenSpilled: { 
+				action: "DropContents",
+				stackByType: {
+					"*-fatsolid": { type: "item", code: "fat-rendered" },
+					"*": { type: "item", code: "oilportion-{type}" } 
+				}
+			}
+		}
+	},
+	shape: { base: "item/liquid" },
+	textureByType: { 
+		"*-olive": { base: "block/food/pie/fill-olive", alpha: 180 },
+		"*-flax": { base: "block/liquid/dye/yellow", alpha: 150 },
+		"*": { base: "block/food/dairy/cottagecheese", alpha: 200 }
+	},	
+	creativeinventoryStacks: [ { tabs: ["general", "liquids"], stacks: [ { type: "block", code: "woodbucket", attributes: { ucontents: [ { type:"item", code: "oilportion-{type}", makefull: true } ] } } ] } ],
+	maxstacksize: 5000,
+	materialDensity: 200,
+	transitionablePropsByType: {
+		"*-fat": [{
+			type: "Harden",
+			freshHours: { avg: 6 },
+			transitionHours: { avg: 0.1 },
+			transitionedStack: { type: "item", code: "oilportion-fatsolid" },
+			transitionRatio: 1
+		}]
+	},
+	guiTransform: {
+		translation: { x: 0, y: 1, z: 0 },
+		rotation: { x: 123, y: -33, z: -13 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 1.4
+	},
+	tpHandTransform: {
+		translation: { x: -1.5, y: -1, z: -1.4 }
+	}
+}

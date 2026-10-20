@@ -1,0 +1,2 @@
+game/sounds/soundconfig.json
+survival/sounds/soundconfig.json

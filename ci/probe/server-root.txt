@@ -1,0 +1,18 @@
+total 9268
+drwxr-xr-x 5 runner runner    4096 Oct 17 15:36 .
+drwxr-xr-x 9 runner runner    4096 Oct 20 04:04 ..
+drwxr-xr-x 2 runner runner    4096 Oct 17 15:36 Lib
+drwxr-xr-x 2 runner runner    4096 Oct 17 15:36 Mods
+-rw-r--r-- 1 runner runner 2151424 Aug 16 15:52 VintagestoryAPI.dll
+-rw-r--r-- 1 runner runner  789684 Aug 16 15:52 VintagestoryAPI.pdb
+-rw-r--r-- 1 runner runner 2119676 Aug 16 15:52 VintagestoryAPI.xml
+-rw-r--r-- 1 runner runner 3050496 Aug 16 15:52 VintagestoryLib.dll
+-rw-r--r-- 1 runner runner 1092232 Aug 16 15:52 VintagestoryLib.pdb
+-rwxr-xr-x 1 runner runner   78256 Aug 16 15:52 VintagestoryServer
+-rw-r--r-- 1 runner runner   34090 Aug 16 15:52 VintagestoryServer.deps.json
+-rw-r--r-- 1 runner runner   94208 Aug 16 15:52 VintagestoryServer.dll
+-rw-r--r-- 1 runner runner   13432 Aug 16 15:52 VintagestoryServer.pdb
+-rw-r--r-- 1 runner runner     383 Aug 16 15:52 VintagestoryServer.runtimeconfig.json
+drwxr-xr-x 5 runner runner    4096 Oct 17 15:36 assets
+-rw-r--r-- 1 runner runner   10456 Aug 16 15:52 credits.txt
+-rwxr-xr-x 1 runner runner   11705 Aug 16 15:52 server.sh

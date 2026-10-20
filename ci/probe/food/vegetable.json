@@ -1,0 +1,527 @@
+{
+	code: "vegetable",
+	maxstacksize: 64,
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } }
+	],
+	variantgroups: [
+		{ code: "type", states: ["carrot", "cabbage", "onion", "turnip", "parsnip", "cookedcattailroot", "pumpkin", "cassava", 
+			 "cookedpapyrusroot", "bellpepper", "olive", "fennel" ]
+		}
+	],
+	shapebytype: {
+		"*-cookedcattailroot": { base: "item/food/vegetable/cattailsroot-cooked" },
+		"*-cookedpapyrusroot": { base: "item/food/vegetable/papyrusroot-cooked" },
+		"*-olive": { base: "item/food/fruit/olive" },
+		"*": { base: "item/food/vegetable/{type}" }
+	},
+	attributes: {
+		handbook: {
+			groupBy: ["vegetable-*", "legume-*", "rawcassava-*"]
+		},
+		inTrapTransformByType: {
+			"*-bellpepper": {
+				"small": {
+					translation: { x: -0.15, y: -0.33, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 },
+					scale: 0.85
+				},
+				"large": {
+					translation: { x: -0.3, y: 0.27, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 },
+					scale: 0.85
+				}
+			},
+			"*-cabbage": {
+				"small": {
+					translation: { x: -0.2, y: 0.13, z: 0 }
+				},
+				"large": {
+					translation: { x: 0, y: -0.07, z: 0 },
+					rotation: { x: 0, y: 0, z: -150 }
+				}
+			},
+			"@.*-(carrot|parsnip)": {
+				"small": {
+					translation: { x: -0.15, y: -0.4, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 }
+				},
+				"large": {
+					translation: { x: -0.35, y: 0.35, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 }
+				}
+			},
+			"*-olive": {
+				"small": {
+					translation: { x: -0.3, y: -0.6, z: -0.2 },
+					rotation: { x: -158, y: 6, z: 23 },
+					scale: 0.85
+				},
+				"large": {
+					translation: { x: -0.32, y: 0.2, z: -0.23 },
+					rotation: { x: -72, y: -12, z: 0 },
+					scale: 0.85
+				}
+			},
+			"@.*-(onion|fennel)": {
+				"small": {
+					translation: { x: -0.18, y: -0.36, z: -0.45 },
+					rotation: { x: -90, y: 0, z: 0 }
+				},
+				"large": {
+					translation: { x: -0.33, y: 0.34, z: -0.42 },
+					rotation: { x: -90, y: 0, z: 0 }
+				}
+			},
+			"*-pumpkin": {
+				"small": {
+					translation: { x: -0.1, y: 0.125, z: -0.02 },
+					rotation: { x: 0, y: 78, z: 0 }
+				},
+				"large": {
+					translation: { x: -0.8, y: 0.3, z: -0.02 },
+					rotation: { x: -89, y: 0, z: 87 }
+				}
+			},
+			"*-turnip": {
+				"small": {
+					translation: { x: -0.1, y: -0.35, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 }
+				},
+				"large": {
+					translation: { x: -0.3, y: 0.34, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 }
+				}
+			},
+			"*root": {
+				"small": {
+					translation: { x: -0.15, y: -0.32, z: -0.1 },
+					rotation: { x: -90, y: 0, z: 0 },
+					scale: 0.85
+				},
+				"large": {
+					translation: { x: -0.32, y: 0.29, z: -0.1 },
+					rotation: { x: -97, y: 86, z: -39 },
+					scale: 0.85
+				}
+			},
+			"*": {
+					translation: { x: -0.15, y: -0.4, z: -0.3 },
+					rotation: { x: -90, y: 0, z: 0 }
+			}
+		}
+	},
+	attributesByType: {
+		"*-cookedcattailroot": {
+			foodTags: ["{type}"],
+			groundStorageTransform: {
+				translation: { x: -0.1, y: -0.44, z: 0 },
+				rotation: { x: 90, y: 0, z: 6 }
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-cookedpapyrusroot": {
+			foodTags: ["{type}"],
+			groundStorageTransform: {
+				translation: { x: 0.05, y: -0.44, z: -0.05 },
+				rotation: { x: 90, y: 0, z: 36 }
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-cabbage": {
+			foodTags: ["{type}", "tastyvegetable"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 450, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-pumpkin": {
+			foodTags: ["{type}", "tastyvegetable"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 180, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-cassava": {
+			foodTags: ["{type}"],
+			inContainerTexture: { base: "block/wood/barrel/peeled-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 120, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+			handbook: {
+				extraSections: [
+					{ title: "item-handbooktitle-cassava", text: "item-handbooktext-cassava" }
+				]},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-bellpepper": {
+			foodTags: ["{type}"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 150, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+			groundStorageTransform: {
+				translation: { x: -0.2, y: -0.45, z: 0.1 },
+				rotation: { x: 0, y: 33, z: 90 },
+				scale: 0.6
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-onion": {
+			foodTags: ["{type}"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 150, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+			groundStorageTransform: {
+				translation: { x: -0.3, y: -0.45, z: 0.2 },
+				rotation: { x: 0, y: 33, z: 90 }
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-olive": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 95, y: 11, z: -135 },
+			origin: { x: 0.6, y: 0.2, z: 0.41 },
+			scale: 3.4,		
+			juiceableProperties: {
+				litresPerItem: 0.3125,
+				liquidStack: { type: "item", code: "oilportion-olive", stacksize: 1 },
+				pressedStack: { type: "item", code: "pressedmash-olive", stacksize: 1 }			
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*-fennel": {
+			foodTags: ["{type}"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 60, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+			groundStorageTransform: {
+				translation: { x: -0.3, y: -0.45, z: 0.2 },
+				rotation: { x: 0, y: 33, z: 90 }
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		},
+		"*": {
+			foodTags: ["{type}", "tastyvegetable"],
+			inContainerTexture: { base: "block/wood/barrel/raw-{type}" },
+			nutritionPropsWhenInMeal: { satiety: 150, foodcategory: "vegetable" },
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', mixingCodes: ["potpie"] },
+			groundStorageTransform: {
+				translation: { x: -0.2, y: -0.45, z: 0.1 },
+				rotation: { x: 0, y: 33, z: 90 }
+			},
+            displayable: {
+                shelf: {
+                    size: { width: 4, height: 4, length: 4 }
+                }
+            }
+		}
+	},
+	heldTpIdleAnimationByType: {
+		"*-cabbage": "holdbothhandslarge",
+	},
+	heldRightReadyAnimationByType: {
+		"*-cabbage": "holdbothhandslarge"
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	nutritionPropsByType: {
+		"*-cabbage": { satiety: 300, foodcategory: "vegetable" },
+		"*-pumpkin": { satiety: 140, foodcategory: "vegetable" },
+		"*-fennel": { satiety: 50, foodcategory: "vegetable" },
+		"*": { satiety: 100, foodcategory: "vegetable" },
+	},
+	transitionablePropsByType: {
+		"*-pumpkin": [{
+			type: "Perish",
+			freshHours: { avg: 216 },
+			transitionHours: { avg: 72 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.55
+		}],
+		"*-onion": [{
+			type: "Perish",
+			freshHours: { avg: 672 },
+			transitionHours: { avg: 120 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.5
+		}],
+		"*-cookedcattailroot": [{
+			type: "Perish",
+			freshHours: { avg: 48 },
+			transitionHours: { avg: 18 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.5
+		}],
+		"*-cookedpapyrusroot": [{
+			type: "Perish",
+			freshHours: { avg: 48 },
+			transitionHours: { avg: 18 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.5
+		}],
+		"*-cassava": [
+		{
+			type: "Perish",
+			freshHours: { avg: 240 },
+			transitionHours: { avg: 48 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 1
+		},
+		{
+			type: "Dry",
+			freshHours: { avg:  6 },
+			transitionHours: { avg: 48 },
+			transitionedStack: { type: "item", code: "rawcassava-dried" },
+			transitionRatio: 1
+		}],
+		"*-bellpepper": [{
+			type: "Perish",
+			freshHours: { avg: 288 },
+			transitionHours: { avg: 72 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.5
+		}],
+		"*": [{
+			type: "Perish",
+			freshHours: { avg:  504 },
+			transitionHours: { avg: 96 },
+			transitionedStack: { type: "item", code: "rot" },
+			transitionRatio: 0.5
+		}]
+	},
+	materialDensity: 600,
+	guiTransformByType: {
+		"*-cabbage": {
+			translation: { x: 2.5, y: 1, z: 0 },
+			rotation: { x: 137, y: 131, z: 0 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 2.6
+		},
+		"*-carrot": {
+			translation: { x: 2, y: 1, z: 0 },
+			rotation: { x: 180, y: 44, z: 56 },
+			origin: { x: 0.5, y: 0.26, z: 0.5 },
+			scale: 4.4
+		},
+		"*-onion": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -37, y: 135, z: -155 },
+			origin: { x: 0.5, y: 0.15, z: 0.5 },
+			scale: 4.85
+		},
+		"*-fennel": {
+			rotation: { x: -37, y: 135, z: -155 },
+			origin: { x: 0.42, y: 0.22, z: 0.5 },
+			scale: 2.93
+		},
+		"*-parsnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 180, y: 43, z: 52 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 4.44
+		},
+		"*-turnip": {
+			translation: { x: 2, y: 2, z: 0 },
+			rotation: { x: 180, y: 158, z: 38 },
+			origin: { x: 0.5, y: 0.23, z: 0.5 },
+			scale: 3.6
+		},
+		"*-pumpkin": {
+			translation: { x: 2, y: 2, z: 0 },
+			rotation: { x: 127, y: 180, z: 38 },
+			origin: { x: 0.5, y: 0.05, z: 0.5 },
+			scale: 3.5999
+		},
+		"*-cassava": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 134, y: -173, z: -8 },
+			origin: { x: 0.5, y: 0.09, z: 0.5 },
+			scale: 3
+		},
+		"*-cookedcattailroot": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 43, y: 166, z: 98 },
+			origin: { x: 0.53, y: 0.43, z: 0.55 },
+			scale: 2.64
+		},
+		"*-cookedpapyrusroot": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -15, y: 27, z: 53 },
+			origin: { x: 0.51, y: 0.56, z: 0.43 },
+			scale: 2.33
+		},
+		"*-bellpepper": {
+			translation: { x: 3, y: 0, z: 0 },
+			rotation: { x: -37, y: 135, z: -155 },
+			origin: { x: 0.5, y: 0.22, z: 0.5 },
+			scale: 3
+		},
+		"*-olive": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 154, y: 45, z: -15 },
+			origin: { x: 0.52, y: 0.05, z: 0.5 },
+			scale: 3.63
+		},
+	},
+	tpHandTransformByType: {
+		"*-cabbage": {
+			translation: { x: -0.6, y: 0.06, z: -0.38 },
+			rotation: { x: -33, y: 9, z: -95 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.79
+		},
+		"*-carrot": {
+			translation: { x: -0.57, y: -0.14, z: -0.56 },
+			rotation: { x: 0, y: 0, z: -89 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.88
+		},
+		"@.*-(onion|fennel)": {
+			translation: { x: -0.75, y: -0.13, z: -0.57 },
+			rotation: { x: 0, y: 0, z: -67 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.84
+		},
+		"*-parsnip": {
+			translation: { x: -0.57, y: -0.14, z: -0.56 },
+			rotation: { x: 0, y: 0, z: -89 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.88
+		},
+		"*-turnip": {
+			translation: { x: -0.68, y: -0.18, z: -0.6 },
+			rotation: { x: 0, y: 0, z: -84 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		},
+		"*-pumpkin": {
+			translation: { x: -0.8, y: -0.2, z: -0.59 },
+			rotation: { x: 84, y: 3, z: 4 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.75
+		},
+		"*-cassava": {
+			translation: { x: -0.9, y: -0.3, z: -0.7 },
+			rotation: { x: 0, y: -21, z: 1 },
+			scale: 0.69
+		},
+		"*-cookedcattailroot": {
+			translation: { x: -1, y: -1.1, z: -1 },
+			rotation: { x: 180, y: 9, z: 50 },
+			scale: 0.48
+		},
+		"*-cookedpapyrusroot": {
+			translation: { x: -1.13, y: -0.26, z: -0.83 },
+			rotation: { x: 180, y: 4, z: 76 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 0.59
+		},
+		"*-bellpepper": {
+			translation: { x: -0.8, y: -0.18, z: -0.7 },
+			rotation: { x: 0, y: 0, z: -76 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.69
+		},
+		"*-olive": {
+			translation: { x: -1.2599, y: -1.4, z: -1.08 },
+			rotation: { x: -87, y: -118, z: -88 },
+			scale: 0.47
+		},
+	},
+	groundTransformByType: {
+		"*-cabbage": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 3.5
+		},
+		"*-carrot": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.45, y: 0.25, z: 0.49 },
+			scale: 4.3
+		},
+		"@.*-(onion|fennel)": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.3
+		},
+		"*-parsnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.45, y: 0.25, z: 0.49 },
+			scale: 4.3
+		},
+		"*-turnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 75 },
+			origin: { x: 0.42, y: 0.21, z: 0.5 },
+			scale: 3.8
+		},
+		"*-pumpkin": {
+			translation: { x: 0, y: 0.01, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.0
+		},
+		"*-cassava": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 97, y: -18, z: -16 },
+			origin: { x: 0.5, y: 0.5, z: 0.5299 },
+			scale: 2.8
+		},
+		"*-cookedcattailroot": {
+			scale: 3
+		},
+		"*-cookedpapyrusroot": {
+			scale: 3
+		},
+		"*-bellpepper": {
+			translation: { x: 0, y: 0.045, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 3
+		},
+		"*-olive": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.6, y: -0, z: 0.41 },
+			scale: 4
+		},
+	}
+}

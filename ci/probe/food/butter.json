@@ -1,0 +1,42 @@
+{
+	code: "butter",
+	handbook: { exclude: true },
+	maxstacksize: 32,
+	shape: { base: "item/food/dairy/butter" },
+	texture: { base: "block/food/dairy/cheddarjack" },
+	notcreativeinventory: { "general": ["*"], "items": ["*"] },
+	attributes: {
+		displaycaseable: true,
+		shelvable: true,
+		"nutritionPropsWhenInMeal": { satiety: 100, foodcategory: "Dairy" }
+	},
+	variantgroups: [
+		{ code: "type", states: ["unsalted", "salted" ] },
+	],
+	materialDensity: 200,
+	guiTransform: {
+		translation: { x: 2, y: 0, z: 0 },
+		rotation: { x: -28, y: 23, z: 180 },
+		origin: { x: 0.5, y: 0.07, z: 0.5 },
+		scale: 4
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 1 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4
+	},
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 25, y: 106, z: 54 },
+		origin: { x: 0.32, y: -0.25, z: -0.06 },
+		scale: 0.7
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 168 },
+		transitionHours: { avg: 48 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.5
+	}]
+}

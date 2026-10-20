@@ -1,0 +1,65 @@
+[
+	{
+		ingredientPattern: "BF",
+		ingredients: {
+			"B": { type: "block", code: "oillamp-genie-*-fired", name: "color" },
+			"F": { type: "item", code: "fat-rendered" }
+		},
+		recipegroup: 1,
+		width: 2,
+		height: 1,
+		shapeless: true,
+		output: { type: "block", code: "oillamp-{color}-up"  }
+	},
+	{
+		ingredientPattern: "BF",
+		ingredients: {
+			"B": { type: "block", code: "oillamp-genie-*-fired", name: "color" },
+			"F": { type: "block", code: "bowl-*-fired" },
+		},
+		attributes: {
+			liquidContainerProps: {
+				requiresContent: { type: "item", code: "oilportion-olive" },
+				requiresLitres: 0.5
+			}
+		},
+		width: 2,
+		height: 1,
+		shapeless: true,
+		output: { type: "block", code: "oillamp-{color}-up"  }
+	},
+	{
+		ingredientPattern: "BF",
+		ingredients: {
+			"B": { type: "block", code: "oillamp-genie-*-fired", name: "color" },
+			"F": { type: "block", code: "woodbucket" },
+		},
+		attributes: {
+			liquidContainerProps: {
+				requiresContent: { type: "item", code: "oilportion-olive" },
+				requiresLitres: 0.5
+			}
+		},
+		width: 2,
+		height: 1,
+		shapeless: true,
+		output: { type: "block", code: "oillamp-{color}-up"  }
+	},
+	{
+		ingredientPattern: "BF",
+		ingredients: {
+			"B": { type: "block", code: "oillamp-genie-*-fired", name: "color" },
+			"F": { type: "block", code: "jug-*-fired" },
+		},
+		attributes: {
+			liquidContainerProps: {
+				requiresContent: { type: "item", code: "oilportion-olive" },
+				requiresLitres: 0.5
+			}
+		},
+		width: 2,
+		height: 1,
+		shapeless: true,
+		output: { type: "block", code: "oillamp-{color}-up"  }
+	}
+]

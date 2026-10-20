@@ -1,0 +1,214 @@
+{
+	code: "fishchunk",
+	behaviors: [
+		{ name: "GroundStorable", 
+			properties: { 
+				layoutByType: {
+					"fishchunk-standard-2-*": 'Quadrants',
+					"*": 'SingleCenter'
+				},
+				collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } 
+			} 
+		}
+	],
+	variantgroups: [
+		{ code: "form", states: ["standard", "long", "section"] },
+		{ code: "size", states: ["2", "4", "7", "9"] },
+		{ code: "doneness", states: ["cooked"] }
+	],
+	textures: { 
+		raw: {base: "item/food/meat/{doneness}" }
+	},
+	allowedVariants: [
+		"fishchunk-standard-2-cooked",
+		"fishchunk-standard-4-cooked",
+		"fishchunk-standard-7-cooked",
+		"fishchunk-standard-9-cooked",
+		"fishchunk-long-4-cooked",
+		"fishchunk-long-7-cooked",
+	],
+	shape: { base: "item/food/meat/fish-{form}-{size}" },
+	texturesByType: { 
+		"*": {
+			"fishfillet": { base: "item/food/meat/{doneness}"}
+		}
+	},
+	nutritionPropsByType: {
+		"*-9-cooked": { satiety: 900, foodcategory: "Protein" },
+		"*-7-cooked": { satiety: 700, foodcategory: "Protein" },
+		"*-4-cooked": { satiety: 400, foodcategory: "Protein" },
+		"*-2-cooked": { satiety: 200, foodcategory: "Protein" },
+	},
+	attributes: {
+		foodTags: ["meat"],
+		nutritionPropsWhenInMealByType: {
+			"fishchunk-standard-9-cooked": { satiety: 375, foodcategory: "Protein" }
+		},
+		groundStorageTransformByType: {
+			"fishchunk-standard-2-*": {
+				translation: { x: 0.15, y: 0, z: -0.15 },
+				rotation: { x: 0, y: 45, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+			"fishchunk-long-4-*": {
+				translation: { x: 0.05, y: 0, z: 0.05 },
+				rotation: { x: 0, y: 45, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+			"fishchunk-long-7-*": {
+				translation: { x: -0.03, y: 0, z: 0.09 },
+				rotation: { x: 0, y: 45, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+			"*": {
+				translation: { x: 0.05, y: 0, z: -0.05 },
+				rotation: { x: 0, y: 45, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 }
+			},
+		},
+		handbook: {
+			groupBy: ["fishchunk-*"]
+		},
+		rackable: true,
+		toolrackTransformByType: {
+			"*": {
+				translation: { x: -0.93, y: 0.5, z: 0 },
+				rotation: { x: 2, y: 180, z: -1 },
+				origin: { x: 0.5, y: -0, z: 0.5 },
+				scale: 1.5
+			}
+		},
+		inFirePitPropsByType: {
+			"fishchunk-standard-9-*":{
+				transform: {
+					translation: { x: 0.045, y: 0, z: -0.05 },
+					rotation: { x: -4, y: -121, z: -94 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishchunk-standard-7-*":{
+				transform: {
+					translation: { x: 0.045, y: 0, z: -0.05 },
+					rotation: { x: -4, y: -121, z: -94 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishchunk-standard-4-*":{
+				transform: {
+					translation: { x: 0.045, y: 0, z: -0.05 },
+					rotation: { x: -4, y: -121, z: -94 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"fishchunk-standard-2-*":{
+				transform: {
+					translation: { x: 0.045, y: -0.07, z: -0.05 },
+					rotation: { x: -4, y: -121, z: -94 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			},
+			"*":{
+				transform: {
+					translation: { x: 0.045, y: 0.1, z: -0.05 },
+					rotation: { x: -4, y: -121, z: -94 },
+					origin: { x: 0.5, y: 0.0625, z: 0.5 },
+					scale: 0.95
+				},
+				useFirepitModel: "Spit"
+			}
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksizeByType: {
+		"*-2-cooked": 32,
+		"*": 16
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHoursByType: {
+			"*-raw": {avg: 36},
+			"*-cooked": {avg: 120},
+			"*-cured": {avg: 8760},
+			"*-smoked": {avg: 8760},
+			"*-cured-smoked": {avg: 10920}
+		},
+		transitionHoursByType: {
+			"*-raw": {avg: 24},
+			"*-cooked": {avg: 36},
+			"*-cured": {avg: 4380},
+			"*-smoked": {avg: 4380},
+			"*-cured-smoked": {avg: 5460}
+		},
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatioByType: {
+			"*-9-cooked": 9,
+			"*-7-cooked": 7,
+			"*-4-cooked": 4,
+			"*": 3
+		}
+	}],
+	materialDensity: 1100,
+	heldRightReadyAnimationByType: {
+		"fishchunk-standard-*": "idle",
+		"*": "holdbothhandslarge"
+	},
+	heldTpIdleAnimationByType: {
+		"fishchunk-standard-*": "idle",
+		"*": "holdbothhandslarge"
+	},	
+	guiTransformByType: {
+		"fishchunk-section-*": {
+			rotation: { x: 150, y: -140, z: 36 },
+			origin: { x: 0.23, y: 0.4, z: 0.8 },
+			scale: 2.55
+		},
+		"fishchunk-long-7-*": {
+			rotation: { x: 150, y: -140, z: 36 },
+			origin: { x: 0.53, y: 0.4, z: 0.8 },
+			scale: 1.4
+		},
+		"fishchunk-long-*": {
+			rotation: { x: 150, y: -140, z: 36 },
+			origin: { x: 0.45, y: 0.4, z: 0.8 },
+			scale: 1.4
+		},
+		"fishchunk-standard-2-*": {
+			rotation: { x: 150, y: -140, z: 36 },
+			origin: { x: 0.25, y: 0.4, z: 0.84 },
+			scale: 1.5
+		},
+		"*": {
+			rotation: { x: 150, y: -140, z: 36 },
+			origin: { x: 0.5, y: 0.4, z: 0.84 },
+			scale: 1.47
+		}
+	},	
+	tpHandTransformByType: {
+		"fishchunk-standard-*": {
+			translation: { x: -0.2, y: -0.2, z: -0.35 },
+			rotation: { x: -90, y: -4, z: 177 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		},
+		"*": {
+			translation: { x: -0.45, y: -0.14, z: -0.35 },
+			rotation: { x: -80, y: -4, z: 77 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1
+		}
+	},
+	groundTransform: {
+		translation: { x: 0.2, y: 0.01, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5299 },
+		scale: 5
+	}
+}

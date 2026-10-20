@@ -1,0 +1,20 @@
+[
+	{
+		code: "fishviaborax",
+		sealHours: 18,
+		ingredients: [
+			{ type: "item", code: "dilutedboraxportion", litres: 1, consumeLitres: 1 },
+			{ type: "item", code: "fishraw-*", name: "type", quantity: 1 }
+		],
+		output: { type: "item", code: "taxidermy-fish-{type}", stackSize: 1 }
+	},
+	{
+		code: "fishviazincsulfate",
+		sealHours: 12,
+			ingredients: [
+			{ type: "item", code: "sulfate-full-zinc", litres: 1, consumeLitres: 1 },
+			{ type: "item", code: "fishraw-*", name: "type", quantity: 1 }
+		],
+		output: { type: "item", code: "taxidermy-fish-{type}", stackSize: 1 }
+	},
+]

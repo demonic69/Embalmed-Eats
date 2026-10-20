@@ -1,0 +1,9 @@
+{
+	code: "cottagecheese",
+	sealHours: 24,
+	ingredients: [
+		{ type: "item", code: "curdledmilkportion", litres: 5 },
+		{ type: "item", code: "salt" }
+	],
+	output: { type: "item", code: "cottagecheeseportion", litres: 5 }
+}

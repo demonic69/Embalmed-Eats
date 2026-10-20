@@ -1,0 +1,55 @@
+{
+	code: "fat",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } },
+	],
+	variantgroups: [
+		{ code:"form", states: ["rendered"] }
+	],
+	shape: { base: "item/resource/fat-rendered" },
+	texture: { base: "block/food/dairy/curdledmilk" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	attributes: {
+		inContainerTexture: { base: "block/food/dairy/curdledmilk" },
+		displaycaseable: true, 
+		shelvable: true,
+        displayable: {
+            shelf: {
+                size: { width: 6, height: 2, length: 6 }
+            }
+        },
+		onDisplayTransform: {
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.55
+		},
+		groundStorageTransform: {
+			rotation: { x: 0, y: 5, z: 0 }
+		},
+		canSealCrock: true
+	},
+	maxstacksize: 64,
+	materialDensity: 620,
+	combustibleProps: {
+		burnTemperature: 400,
+		burnDuration: 96,
+	},
+	nutritionProps: { satiety: 200, foodcategory: "Protein" },
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 154, y: 20, z: -5 },
+		origin: { x: 0.48, y: 0.06, z: 0.5 },
+		scale: 3.55
+	},
+	tpHandTransform: {
+		translation: { x: -0.5, y: -0.13, z: -0.53 },
+		rotation: { x: 90, y: 0, z: 0 },
+		origin: { x: 0.5, y: -0, z: 0.5 },
+		scale: 1
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4
+	}
+}

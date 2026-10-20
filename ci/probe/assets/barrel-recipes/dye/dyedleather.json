@@ -1,0 +1,20 @@
+[
+	{
+		code: "dyedcloth",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "dye-*", name: "color", litres: 5, consumelitres: 5, allowedVariants: ["orange", "black", "red", "blue", "green", "yellow", "white", "gray", "purple", "pink"] },
+			{ type: "item", code: "leather-normal-plain", quantity: 1 }
+		],
+		output: { type: "item", code: "leather-normal-{color}", stackSize: 1 }
+	},
+	{
+		code: "dyedcloth",
+		sealHours: 8,
+		ingredients: [
+			{ type: "item", code: "dye-woad", litres: 5, consumelitres: 5 },
+			{ type: "item", code: "leather-normal-plain", quantity: 1 }
+		],
+		output: { type: "item", code: "leather-normal-blue", stackSize: 1 }
+	}
+]
