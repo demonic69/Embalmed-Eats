@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EmbalmedEats.Core;
+using EmbalmedEats.Decoration;
 using HarmonyLib;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -41,9 +43,9 @@ public static class HandbookPatches
         PatchUtil.PatchAll(harmony, PatchUtil.FindBaseAndOverrides(typeof(BlockCookedContainerBase), "HandbookPageCodeForStack", providerArgs),
             typeof(HandbookPatches), postfix: nameof(ProviderPageCodePostfix), label: Label);
 
-        // No pages for preserved copies
+        // No pages for preserved copies; and a safe answer when vanilla calls this on the server (see the prefix)
         PatchUtil.PatchAll(harmony, PatchUtil.FindBaseAndOverrides(typeof(CollectibleObject), nameof(CollectibleObject.GetHandBookStacks), new[] { typeof(ICoreClientAPI) }),
-            typeof(HandbookPatches), postfix: nameof(HandbookStacksPostfix), label: Label);
+            typeof(HandbookPatches), prefix: nameof(HandbookStacksPrefix), postfix: nameof(HandbookStacksPostfix), label: Label);
 
         var t = typeof(CollectibleBehaviorHandbookTextAndExtraInfo);
         var outer = AccessTools.Method(t, "addIngredientForInfo");
@@ -68,6 +70,40 @@ public static class HandbookPatches
     public static void ProviderPageCodePostfix(object[] __args, ref string? __result)
     {
         if (__args.Length > 1 && __args[1] is ItemStack stack && Preservation.IsPreserved(stack)) __result = GuidePageCode;
+    }
+
+    /// <summary>
+    /// Vanilla crock and cooking pot code calls GetHandBookStacks on the server, with no client API. The vanilla
+    /// method only copes with that for collectibles without creative stack lists, and this mod gives foods one.
+    /// For those, on the server, return what vanilla returned before: the food's normal creative stacks.
+    /// </summary>
+    public static bool HandbookStacksPrefix(CollectibleObject __instance, ICoreClientAPI? capi, ref List<ItemStack>? __result)
+    {
+        if (capi != null) return true;
+        var lists = __instance.CreativeInventoryStacks;
+        if (lists == null || !lists.Any(list => list?.Tabs?.Any(CreativeTabs.IsOurTab) == true)) return true;
+
+        if (__instance.Attributes?["handbook"]?["exclude"].AsBool() == true)
+        {
+            __result = null;
+            return false;
+        }
+
+        var stacks = new List<ItemStack>();
+        foreach (var list in lists)
+        {
+            if (list?.Stacks == null || list.Tabs?.Any(CreativeTabs.IsOurTab) == true) continue;
+            foreach (var jstack in list.Stacks)
+            {
+                if (jstack?.ResolvedItemstack is not ItemStack resolved) continue;
+                ItemStack stack = resolved.Clone();
+                stack.StackSize = stack.Collectible.MaxStackSize;
+                string key = stack.Attributes?.ToJsonToken() ?? "";
+                if (!stacks.Any(s => s.Collectible == stack.Collectible && (s.Attributes?.ToJsonToken() ?? "") == key)) stacks.Add(stack);
+            }
+        }
+        __result = stacks;
+        return false;
     }
 
     public static void HandbookStacksPostfix(List<ItemStack>? __result)

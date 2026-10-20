@@ -63,7 +63,6 @@ Preserved food is kept out of food processing so it can't be turned back into ed
 - barrel amounts and seal times
 - `AlwaysPreservable` / `NeverPreservable` code lists (wildcards like `mymod:*`)
 - shelf, display case and ground support, display scale
-- the creative tabs
 - whether preserved food is blocked from recipes
 - toxicity per item, decay rate and every toxicity stage
 

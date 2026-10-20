@@ -16,8 +16,11 @@ namespace EmbalmedEats.Decoration;
 /// kept as the first list item so it still shows where it did before. Preserved stacks are kept out of the
 /// handbook's page list by HandbookPatches.
 ///
-/// Client only: some vanilla code calls GetHandBookStacks on the server with no client API, which only works
-/// for collectibles without creative stack lists, so the server's collectibles are left as they are.
+/// The server and every player must end up with exactly the same lists, in the same order: the server hands
+/// out creative items by their position in its own copy of the list, so any difference gives players the
+/// wrong item. So the lists are built on both sides by the same code, from data both sides share, without the
+/// config (which may not have reached the player yet). Vanilla code that calls GetHandBookStacks on the
+/// server without a client API is handled by HandbookPatches.
 /// </summary>
 public static class CreativeTabs
 {
@@ -30,8 +33,6 @@ public static class CreativeTabs
     /// <summary>Adds the preserved stacks to every food's creative entries. Safe to run more than once. Returns how many foods got them.</summary>
     public static int AddToCreativeInventory(ICoreAPI api)
     {
-        if (!Preservation.Config.ShowCreativeTabs) return 0;
-
         int foods = 0;
         foreach (CollectibleObject coll in api.World.Collectibles)
         {
@@ -55,15 +56,20 @@ public static class CreativeTabs
         return true;
     }
 
-    /// <summary>The collectible's creative entries with the preserved ones added, or null if it gets none (or already has them).</summary>
-    public static CreativeTabAndStackList[]? Build(CollectibleObject? coll)
+    /// <summary>
+    /// The collectible's creative entries with the preserved ones added, or null if it gets none or already has them.
+    /// With <paramref name="rebuild"/>, entries already added are ignored and built again (for the self test).
+    /// </summary>
+    public static CreativeTabAndStackList[]? Build(CollectibleObject? coll, bool rebuild = false)
     {
         if (coll?.Code == null || coll.IsMissing) return null;
-        if (!Preservation.IsPreservableCollectible(coll)) return null;
+        if (!Preservation.IsFoodByDefault(coll)) return null;
 
         CreativeTabAndStackList[]? existing = coll.CreativeInventoryStacks;
-        // Already done
-        if (existing != null && existing.Any(list => list?.Tabs?.Any(IsOurTab) == true)) return null;
+        bool hasOurs = existing != null && existing.Any(list => list?.Tabs?.Any(IsOurTab) == true);
+        if (hasOurs && !rebuild) return null; // already done (on this side, or received with the item)
+        // Rebuilding: start from the entries that aren't ours (for a food that only had tabs, that's the normal entry this class made)
+        if (hasOurs) existing = existing!.Where(list => list?.Tabs?.Any(IsOurTab) != true).ToArray();
 
         var lists = new List<CreativeTabAndStackList>();
         var sources = new List<ItemStack>();
@@ -95,7 +101,7 @@ public static class CreativeTabs
         var unique = new List<ItemStack>();
         foreach (var stack in sources)
         {
-            if (!Preservation.CanPreserve(stack)) continue;
+            if (!Preservation.CanPreserveByDefault(stack)) continue;
             string key = AttributesKey(stack);
             if (unique.Any(u => u.Collectible == stack.Collectible && AttributesKey(u) == key)) continue;
             unique.Add(stack);
@@ -119,6 +125,11 @@ public static class CreativeTabs
     }
 
     static string AttributesKey(ItemStack stack) => stack.Attributes?.ToJsonToken() ?? "";
+
+    /// <summary>A text form of a list of creative entries, to check two sides built the same thing.</summary>
+    public static string Signature(CreativeTabAndStackList[]? lists) => lists == null ? "" : string.Join(" | ", lists.Select(list =>
+        string.Join(",", list?.Tabs ?? Array.Empty<string>()) + ": " +
+        string.Join(";", (list?.Stacks ?? Array.Empty<JsonItemStack>()).Select(j => j?.ResolvedItemstack is ItemStack s ? s.Collectible.Code + AttributesKey(s) : "?"))));
 
     static JsonItemStack ToJson(ItemStack stack) => new()
     {

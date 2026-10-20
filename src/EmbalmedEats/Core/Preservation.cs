@@ -131,6 +131,16 @@ public static class Preservation
         if (coll.IsMissing) return false;
         if (MatchesAny(Config.NeverPreservable, coll.Code)) return false;
         if (MatchesAny(Config.AlwaysPreservable, coll.Code)) return true;
+        return IsFoodByDefault(coll);
+    }
+
+    /// <summary>
+    /// The built-in food detection, without the config's always/never lists. Used where the server and every
+    /// player must get the same answer before the server's config has reached the player (the creative tabs).
+    /// </summary>
+    public static bool IsFoodByDefault(CollectibleObject? coll)
+    {
+        if (coll?.Code == null || coll.IsMissing) return false;
 
         // Modders can opt in or out with an attribute: "embalmedeatsPreservable": true/false
         var attrs = coll.Attributes;
@@ -151,10 +161,16 @@ public static class Preservation
     }
 
     /// <summary>True if this particular stack can be preserved right now.</summary>
-    public static bool CanPreserve(ItemStack? stack)
+    public static bool CanPreserve(ItemStack? stack) =>
+        stack?.Collectible != null && IsPreservableCollectible(stack.Collectible) && CanPreserveStack(stack);
+
+    /// <summary>The per-stack part of CanPreserve, with the built-in food detection only (see IsFoodByDefault).</summary>
+    public static bool CanPreserveByDefault(ItemStack? stack) =>
+        stack?.Collectible != null && IsFoodByDefault(stack.Collectible) && CanPreserveStack(stack);
+
+    static bool CanPreserveStack(ItemStack stack)
     {
-        if (stack?.Collectible == null || IsPreserved(stack)) return false;
-        if (!IsPreservableCollectible(stack.Collectible)) return false;
+        if (IsPreserved(stack)) return false;
 
         // Containers only make sense with something in them (an empty bowl is not food)
         if (stack.Collectible is IBlockMealContainer)

@@ -327,34 +327,79 @@ public static class SelfTest
 
         Check("creative tabs, one per method", () =>
         {
-            if (!cfg.ShowCreativeTabs) return null;
             foreach (string method in PreservationMethods.All)
             {
                 string tab = CreativeTabs.TabFor(method);
                 if (!Lang.HasTranslation("tabname-" + tab)) return "no name for tab " + tab;
             }
 
-            // Built here the way the client builds them (the server's own items are left as they are)
-            CreativeTabAndStackList[]? meatLists = CreativeTabs.Build(meat);
-            if (meatLists == null) return "raw meat gets no creative entries";
+            CreativeTabAndStackList[]? meatLists = meat.CreativeInventoryStacks;
             var entries = CreativeTabs.PreservedEntries(meatLists).ToList();
             foreach (string method in PreservationMethods.All)
             {
                 if (!entries.Any(e => e.tab == CreativeTabs.TabFor(method) && Preservation.GetMethod(e.stack) == method && e.stack.Collectible == meat))
                 {
-                    return $"raw meat missing from the {method} tab";
+                    return $"raw meat missing from the server's {method} tab";
                 }
             }
             // Still in its normal tabs
-            bool normal = meatLists.Any(l => !l.Tabs.Any(CreativeTabs.IsOurTab) && l.Stacks.Any(j => j.ResolvedItemstack?.Collectible == meat && !Preservation.IsPreserved(j.ResolvedItemstack)));
+            bool normal = meatLists!.Any(l => !l.Tabs.Any(CreativeTabs.IsOurTab) && l.Stacks.Any(j => j.ResolvedItemstack?.Collectible == meat && !Preservation.IsPreserved(j.ResolvedItemstack)));
             if (!normal) return "raw meat no longer in its normal tabs";
 
-            int foods = world.Collectibles.Count(c => c?.Code != null && CreativeTabs.PreservedEntries(CreativeTabs.Build(c)).Any());
-            if (meat.CreativeInventoryStacks?.Any(l => l.Tabs?.Any(CreativeTabs.IsOurTab) == true) == true) return "the server's own items were changed";
-            if (foods < 50) return $"only {foods} foods in the creative tabs";
+            var withTabs = world.Collectibles.Where(c => c?.Code != null && CreativeTabs.PreservedEntries(c.CreativeInventoryStacks).Any()).ToList();
+            if (withTabs.Count < 50) return $"only {withTabs.Count} foods in the server's creative tabs";
 
             IAsset? tabs = sapi.Assets.TryGet(new AssetLocation("game", "config/creativetabs.json"));
             if (tabs != null && !tabs.ToText().Contains("embalmedeats-wax")) return "creative tab order patch not applied";
+            return null;
+        });
+
+        Check("creative lists: players get exactly the server's", () =>
+        {
+            // Players' games build the same lists with the same code; the server hands out creative items by
+            // their position in its list, so any difference gives players the wrong item.
+            var withTabs = world.Collectibles.Where(c => c?.Code != null && CreativeTabs.PreservedEntries(c.CreativeInventoryStacks).Any()).ToList();
+            foreach (var coll in withTabs)
+            {
+                string server = CreativeTabs.Signature(coll.CreativeInventoryStacks);
+                string rebuilt = CreativeTabs.Signature(CreativeTabs.Build(coll, rebuild: true));
+                if (server != rebuilt) return $"{coll.Code}: building the list again gives a different result";
+            }
+
+            // Must not depend on the server's config, which may not have reached the player yet
+            var saved = Preservation.Config;
+            try
+            {
+                Preservation.Config = new Config.EmbalmedEatsConfig { NeverPreservable = new[] { "game:*" }, AlwaysPreservable = new[] { "game:*" } };
+                Preservation.ClearCache();
+                if (CreativeTabs.Signature(CreativeTabs.Build(meat, rebuild: true)) != CreativeTabs.Signature(meat.CreativeInventoryStacks))
+                {
+                    return "the lists change with the config";
+                }
+            }
+            finally
+            {
+                Preservation.Config = saved;
+                Preservation.ClearCache();
+            }
+
+            // Already built: nothing more is added on a second pass (what happens when the lists arrive with the items)
+            if (CreativeTabs.Build(meat) != null) return "a second pass would add the tabs twice";
+            return null;
+        });
+
+        Check("server-side handbook calls are safe", () =>
+        {
+            // Vanilla crock and cooking pot code calls this on the server with no client (this crashed a 1.1.0 test)
+            foreach (var coll in world.Collectibles.Where(c => c?.Code != null && CreativeTabs.PreservedEntries(c.CreativeInventoryStacks).Any()))
+            {
+                List<ItemStack>? stacks;
+                try { stacks = coll.GetHandBookStacks(null!); }
+                catch (Exception e) { return $"{coll.Code}: {e.GetType().Name}"; }
+                if (stacks?.Any(Preservation.IsPreserved) == true) return $"{coll.Code}: returned preserved copies";
+            }
+            var meatStacks = meat.GetHandBookStacks(null!);
+            if (meatStacks == null || !meatStacks.Any(st => st.Collectible == meat)) return "raw meat's normal stack missing";
             return null;
         });
 

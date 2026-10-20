@@ -121,9 +121,9 @@ public class EmbalmedEatsModSystem : ModSystem
     }
 
     /// <summary>
-    /// On the server: wax/resin recipes and ground storage. The ground storage behavior reaches clients with the
-    /// item definitions (the same way vanilla adds behaviors); the client repeats it only for items that didn't
-    /// get it that way. Creative tabs are client only.
+    /// On the server: wax/resin recipes, ground storage and creative tabs. The item changes reach players with the
+    /// item definitions (the same way vanilla adds behaviors); players' games repeat them only for items that
+    /// didn't get them that way.
     /// </summary>
     public override void AssetsFinalize(ICoreAPI api)
     {
@@ -139,10 +139,13 @@ public class EmbalmedEatsModSystem : ModSystem
             int n = GroundStorageSupport.AddToPreservableItems(api);
             api.Logger.Notification("[Embalmed Eats] Ground storage added to {0} preservable items that didn't have it ({1}).", n, api.Side);
         });
-        if (api.Side == EnumAppSide.Client) AddCreativeTabs(api);
+        AddCreativeTabs(api);
     }
 
-    /// <summary>Client only (see CreativeTabs). Runs at the first of two points after the items arrive; the second finds nothing left to do.</summary>
+    /// <summary>
+    /// On the server here, so the lists go to players with the item definitions. Players' games repeat it
+    /// (BlockTexturesLoaded) for anything that didn't arrive that way; it skips food that already has them.
+    /// </summary>
     void AddCreativeTabs(ICoreAPI api)
     {
         Step(api, "add creative tabs", () =>
