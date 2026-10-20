@@ -1,0 +1,31 @@
+# Changelog
+
+Each version's section becomes its GitHub release notes, and from there its changelog on the Mod DB.
+
+## 1.1.1
+
+- Fixed: taking items from the Embalmed Eats creative tabs could give you the wrong item (this could also affect other creative tabs). The server and players now have exactly the same creative lists.
+- The server and every player need this version.
+
+## 1.1.0
+
+- Preserved food can go on the ground with shift + right-click, even food that normally can't (cheese, butter, pemmican and others). Fresh food that can't normally go on the ground still can't.
+- Clicking a preserved item in the handbook, or pressing the handbook key while hovering one, opens the Embalmed Eats guide, which explains how each kind is made.
+- New `/embalmedeats help` command (or just `/embalmedeats`) lists all the commands.
+- Four new creative tabs: Embalmed Eats: Wax-sealed, Lacquered, Embalmed and Mummified, with every food preserved each way.
+
+## 1.0.2
+
+- New icon: a pretty cake sitting in a pool of formaldehyde.
+
+## 1.0.1
+
+- New icon.
+
+## 1.0.0
+
+- First release.
+- Preserve any food, vanilla or modded, so it never rots and keeps its look: wax dipping, resin lacquer, a formaldehyde barrel soak, or a salt and lime barrel cure.
+- Preserved food goes on shelves and in display cases.
+- Eating preserved food makes you vomit, and it gets worse the more you eat, up to a lethal dose.
+- Commands, a config file and a handbook guide.

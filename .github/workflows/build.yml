@@ -19,6 +19,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Every version needs a CHANGELOG.md section: it becomes the release notes, and the Mod DB changelog
+      - name: Check the changelog
+        run: |
+          version=$(python3 -c "import json;print(json.load(open('modinfo.json'))['version'])")
+          python3 .github/scripts/changelog.py "$version" > /dev/null || { echo "::error::CHANGELOG.md has no section for $version"; exit 1; }
+
       - name: Cache Vintage Story server
         uses: actions/cache@v4
         with:
@@ -71,12 +77,25 @@ jobs:
         run: |
           version=$(python3 -c "import json;print(json.load(open('modinfo.json'))['version'])")
           zip=$(ls out/*.zip | head -1)
-          notes="Tested on Vintage Story ${VS_VERSION}: built against the game DLLs and booted on a dedicated server with the self test passing. Install: drop the zip into your Mods folder (client and server)."
+          notes=$(mktemp)
+          python3 .github/scripts/changelog.py "$version" > "$notes"
           if gh release view "v$version" > /dev/null 2>&1; then
             gh release upload "v$version" "$zip" --clobber
+            gh release edit "v$version" --notes-file "$notes"
           else
-            gh release create "v$version" "$zip" --title "Embalmed Eats v$version" --notes "$notes" --target "$GITHUB_SHA"
+            gh release create "v$version" "$zip" --title "Embalmed Eats v$version" --notes-file "$notes" --target "$GITHUB_SHA"
           fi
+          # Keep earlier releases' notes in step with CHANGELOG.md
+          for v in $(python3 .github/scripts/changelog.py --versions); do
+            [ "$v" = "$version" ] && continue
+            gh release view "v$v" > /dev/null 2>&1 || continue
+            python3 .github/scripts/changelog.py "$v" > "$notes" && gh release edit "v$v" --notes-file "$notes" && echo "Updated notes for v$v"
+          done
+          # What the releases say now, for checking from the ci-results branch
+          mkdir -p ci
+          for v in $(python3 .github/scripts/changelog.py --versions); do
+            echo "== v$v"; gh release view "v$v" --json body -q .body 2>&1 || true
+          done > ci/release-notes.txt
 
       - name: Publish results to ci-results branch
         if: always()
